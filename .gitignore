@@ -13,9 +13,6 @@ build/
 .env.local
 .env.*.local
 
-# payload generated
-src/payload-types.ts
-
 # media uploads
 public/media/
 

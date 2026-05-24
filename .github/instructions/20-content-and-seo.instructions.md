@@ -1,5 +1,5 @@
 ---
-applyTo: "src/app/**/*.tsx,src/components/**/*.tsx,src/lib/**/*.ts,payload/collections/**/*.ts,payload/globals/**/*.ts"
+applyTo: "src/app/**/*.tsx,src/components/**/*.tsx,src/lib/**/*.ts"
 description: "Use when creating pages, content blocks, metadata, internal links, and structured data."
 ---
 

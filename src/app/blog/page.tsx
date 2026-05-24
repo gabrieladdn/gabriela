@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
+import { getAllPosts } from '@/lib/posts'
 import { BlogCard } from '@/components/blog/BlogCard'
 import { BlogFilterBar } from '@/components/blog/BlogFilterBar'
 import { Reveal } from '@/components/ui/Reveal'
 import { HoverLink } from '@/components/ui/HoverLink'
-import { getPayload } from 'payload'
-import config from '../../payload.config'
 
 export const metadata: Metadata = {
   title: 'Artigos',
@@ -13,14 +12,14 @@ export const metadata: Metadata = {
 }
 
 const categories = [
-  { value: '',                      label: 'Todos' },
-  { value: 'ansiedade',             label: 'Ansiedade' },
-  { value: 'autoestima',            label: 'Autoestima' },
-  { value: 'relacionamentos',       label: 'Relacionamentos' },
-  { value: 'psicanalise',           label: 'Psicanálise' },
-  { value: 'autoconhecimento',      label: 'Autoconhecimento' },
-  { value: 'corpo-e-alimentacao',   label: 'Corpo e Alimentação' },
-  { value: 'saude-mental',          label: 'Saúde Mental' },
+  { value: '',                     label: 'Todos' },
+  { value: 'ansiedade',            label: 'Ansiedade' },
+  { value: 'autoestima',           label: 'Autoestima' },
+  { value: 'relacionamentos',      label: 'Relacionamentos' },
+  { value: 'psicanalise',          label: 'Psicanálise' },
+  { value: 'autoconhecimento',     label: 'Autoconhecimento' },
+  { value: 'corpo-e-alimentacao',  label: 'Corpo e Alimentação' },
+  { value: 'saude-mental',         label: 'Saúde Mental' },
 ]
 
 interface Props {
@@ -31,17 +30,8 @@ export default async function BlogPage({ searchParams }: Props) {
   const { categoria } = await searchParams
   const active = categoria ?? ''
 
-  const payload = await getPayload({ config })
-  const { docs: posts } = await payload.find({
-    collection: 'posts',
-    where: {
-      status: { equals: 'published' },
-      ...(active ? { category: { equals: active } } : {}),
-    },
-    sort: '-publishedAt',
-  })
-
-  const filtered = posts
+  const allPosts = getAllPosts()
+  const filtered = active ? allPosts.filter((p) => p.category === active) : allPosts
 
   return (
     <>
@@ -96,7 +86,7 @@ export default async function BlogPage({ searchParams }: Props) {
         </div>
       </section>
 
-      {/* Filter bar — client component */}
+      {/* Filter bar */}
       <div
         style={{
           paddingBlock: '24px',
@@ -142,31 +132,18 @@ export default async function BlogPage({ searchParams }: Props) {
                 gap: '32px',
               }}
             >
-              {filtered.map((post, i) => {
-                const coverImageUrl =
-                  typeof post.coverImage === 'object' && post.coverImage !== null
-                    ? (post.coverImage as any).url
-                    : undefined
-                const coverImageAlt =
-                  typeof post.coverImage === 'object' && post.coverImage !== null
-                    ? (post.coverImage as any).alt
-                    : undefined
-
-                return (
-                  <Reveal key={post.slug} delay={(i % 3) as 0 | 1 | 2}>
-                    <BlogCard
-                      slug={post.slug}
-                      title={post.title}
-                      excerpt={post.excerpt}
-                      category={post.category}
-                      publishedAt={post.publishedAt || undefined}
-                      readingTime={post.readingTime || undefined}
-                      coverImageUrl={coverImageUrl}
-                      coverImageAlt={coverImageAlt}
-                    />
-                  </Reveal>
-                )
-              })}
+              {filtered.map((post, i) => (
+                <Reveal key={post.slug} delay={(i % 3) as 0 | 1 | 2}>
+                  <BlogCard
+                    slug={post.slug}
+                    title={post.title}
+                    excerpt={post.excerpt}
+                    category={post.category}
+                    publishedAt={String(post.publishedAt)}
+                    readingTime={post.readingTime}
+                  />
+                </Reveal>
+              ))}
             </div>
           )}
         </div>

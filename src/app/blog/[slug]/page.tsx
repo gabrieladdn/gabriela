@@ -1,11 +1,10 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import { getAllPosts, getPostBySlug } from '@/lib/posts'
 import { Reveal } from '@/components/ui/Reveal'
 import { HoverLink } from '@/components/ui/HoverLink'
-import { RichText } from '@/components/ui/RichText'
-import { getPayload } from 'payload'
-import config from '../../../payload.config'
 
 const categoryLabels: Record<string, string> = {
   ansiedade: 'Ansiedade',
@@ -17,16 +16,105 @@ const categoryLabels: Record<string, string> = {
   'saude-mental': 'Saúde Mental',
 }
 
-async function getPost(slug: string) {
-  const payload = await getPayload({ config })
-  const { docs } = await payload.find({
-    collection: 'posts',
-    where: {
-      slug: { equals: slug },
-    },
-    limit: 1,
-  })
-  return docs[0] ?? null
+// MDX custom components — mantém o visual do RichText anterior
+const mdxComponents = {
+  h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h2
+      {...props}
+      style={{
+        fontFamily: 'var(--font-display)',
+        fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
+        fontWeight: 700,
+        color: 'var(--color-on-surface)',
+        letterSpacing: '-0.01em',
+        lineHeight: 1.3,
+        marginTop: '2.5rem',
+        marginBottom: '1rem',
+      }}
+    />
+  ),
+  h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h3
+      {...props}
+      style={{
+        fontFamily: 'var(--font-display)',
+        fontSize: '1.25rem',
+        fontWeight: 600,
+        color: 'var(--color-on-surface)',
+        lineHeight: 1.4,
+        marginTop: '2rem',
+        marginBottom: '0.75rem',
+      }}
+    />
+  ),
+  p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
+    <p
+      {...props}
+      style={{
+        fontSize: '1.0625rem',
+        lineHeight: 1.8,
+        color: 'var(--color-on-surface-variant)',
+        marginBottom: '1.5rem',
+      }}
+    />
+  ),
+  blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
+    <blockquote
+      {...props}
+      style={{
+        borderLeft: '3px solid var(--color-secondary)',
+        paddingLeft: '1.5rem',
+        marginBlock: '2rem',
+        marginInline: 0,
+        fontFamily: 'var(--font-display)',
+        fontSize: '1.125rem',
+        fontStyle: 'italic',
+        color: 'var(--color-secondary)',
+        lineHeight: 1.7,
+      }}
+    />
+  ),
+  ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
+    <ul
+      {...props}
+      style={{
+        paddingLeft: '1.5rem',
+        marginBottom: '1.5rem',
+        color: 'var(--color-on-surface-variant)',
+        lineHeight: 1.8,
+        fontSize: '1.0625rem',
+      }}
+    />
+  ),
+  ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
+    <ol
+      {...props}
+      style={{
+        paddingLeft: '1.5rem',
+        marginBottom: '1.5rem',
+        color: 'var(--color-on-surface-variant)',
+        lineHeight: 1.8,
+        fontSize: '1.0625rem',
+      }}
+    />
+  ),
+  strong: (props: React.HTMLAttributes<HTMLElement>) => (
+    <strong {...props} style={{ fontWeight: 700, color: 'var(--color-on-surface)' }} />
+  ),
+  hr: () => (
+    <hr
+      style={{
+        border: 'none',
+        borderTop: '1px solid var(--color-outline-variant)',
+        marginBlock: '2.5rem',
+      }}
+    />
+  ),
+}
+
+export async function generateStaticParams() {
+  const posts = getAllPosts()
+  return posts.map((p) => ({ slug: p.slug }))
 }
 
 export async function generateMetadata({
@@ -35,30 +123,23 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const post = await getPost(slug)
+  const post = getPostBySlug(slug)
   if (!post) return { title: 'Artigo não encontrado' }
   return {
     title: post.title,
     description: post.excerpt,
-    openGraph: { title: post.title, description: post.excerpt, type: 'article', publishedTime: post.publishedAt || undefined },
-  }
-}
-
-export async function generateStaticParams() {
-  const payload = await getPayload({ config })
-  const { docs: posts } = await payload.find({
-    collection: 'posts',
-    where: {
-      status: { equals: 'published' },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+      publishedTime: String(post.publishedAt),
     },
-    limit: 100,
-  })
-  return posts.map((p) => ({ slug: p.slug }))
+  }
 }
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const post = await getPost(slug)
+  const post = getPostBySlug(slug)
   if (!post) notFound()
 
   const formattedDate = post.publishedAt
@@ -68,15 +149,6 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         year: 'numeric',
       })
     : ''
-
-  const coverImageUrl =
-    typeof post.coverImage === 'object' && post.coverImage !== null
-      ? (post.coverImage as any).url
-      : undefined
-  const coverImageAlt =
-    typeof post.coverImage === 'object' && post.coverImage !== null
-      ? (post.coverImage as any).alt
-      : undefined
 
   return (
     <>
@@ -89,7 +161,16 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         }}
       >
         <div className="container">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8125rem', color: 'var(--color-outline)', marginBottom: '40px' }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              fontSize: '0.8125rem',
+              color: 'var(--color-outline)',
+              marginBottom: '40px',
+            }}
+          >
             <Link href="/" style={{ color: 'inherit' }}>Home</Link>
             <span>›</span>
             <Link href="/blog" style={{ color: 'inherit' }}>Artigos</Link>
@@ -131,14 +212,40 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               {post.title}
             </h1>
 
-            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: 'var(--color-on-surface-variant)', fontStyle: 'italic', marginBottom: '32px' }}>
+            <p
+              style={{
+                fontSize: '1.125rem',
+                lineHeight: 1.7,
+                color: 'var(--color-on-surface-variant)',
+                fontStyle: 'italic',
+                marginBottom: '32px',
+              }}
+            >
               {post.excerpt}
             </p>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', paddingTop: '24px', borderTop: '1px solid var(--color-outline-variant)' }}>
-              <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--color-surface-container)', flexShrink: 0 }} />
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                paddingTop: '24px',
+                borderTop: '1px solid var(--color-outline-variant)',
+              }}
+            >
+              <div
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  background: 'var(--color-surface-container)',
+                  flexShrink: 0,
+                }}
+              />
               <div>
-                <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-on-surface)' }}>Gabriela Nunes</p>
+                <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-on-surface)' }}>
+                  Gabriela Nunes
+                </p>
                 <p style={{ fontSize: '0.75rem', color: 'var(--color-outline)', marginTop: '2px' }}>
                   {formattedDate} · {post.readingTime} min de leitura
                 </p>
@@ -148,37 +255,108 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         </div>
       </section>
 
-      {/* Cover image */}
-      <div style={{ width: '100%', maxWidth: 'var(--container-max)', margin: '0 auto', paddingInline: 'var(--gutter)', marginBottom: '-48px' }}>
-        <div style={{ aspectRatio: '16/6', borderRadius: '24px', overflow: 'hidden', position: 'relative', background: 'linear-gradient(135deg, var(--color-surface-container-high), var(--color-surface-container))' }}>
-          {coverImageUrl && (
-            <img
-              src={coverImageUrl}
-              alt={coverImageAlt || post.title}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-          )}
-        </div>
+      {/* Cover placeholder */}
+      <div
+        style={{
+          width: '100%',
+          maxWidth: 'var(--container-max)',
+          margin: '0 auto',
+          paddingInline: 'var(--gutter)',
+          marginBottom: '-48px',
+        }}
+      >
+        <div
+          style={{
+            aspectRatio: '16/6',
+            borderRadius: '24px',
+            overflow: 'hidden',
+            background:
+              'linear-gradient(135deg, var(--color-surface-container-high), var(--color-surface-container))',
+          }}
+        />
       </div>
 
       {/* Content */}
-      <section style={{ paddingBlock: 'clamp(80px, 12vh, 120px)', background: 'var(--color-background)' }}>
+      <section
+        style={{ paddingBlock: 'clamp(80px, 12vh, 120px)', background: 'var(--color-background)' }}
+      >
         <div className="container">
-          <RichText content={post.content} style={{ margin: '0 auto', maxWidth: '720px' }} className="prose" />
+          <div style={{ margin: '0 auto', maxWidth: '720px' }}>
+            <MDXRemote source={post.content} components={mdxComponents} />
+          </div>
 
-          <div style={{ maxWidth: '720px', margin: '80px auto 0', padding: '32px', background: 'var(--color-surface-container-low)', borderRadius: '20px', display: 'flex', gap: '24px', alignItems: 'flex-start' }}>
-            <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'var(--color-surface-container)', flexShrink: 0 }} />
+          {/* Author box */}
+          <div
+            style={{
+              maxWidth: '720px',
+              margin: '80px auto 0',
+              padding: '32px',
+              background: 'var(--color-surface-container-low)',
+              borderRadius: '20px',
+              display: 'flex',
+              gap: '24px',
+              alignItems: 'flex-start',
+            }}
+          >
+            <div
+              style={{
+                width: '64px',
+                height: '64px',
+                borderRadius: '50%',
+                background: 'var(--color-surface-container)',
+                flexShrink: 0,
+              }}
+            />
             <div>
-              <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-secondary)', marginBottom: '6px' }}>Escrito por</p>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-on-surface)', marginBottom: '8px' }}>Gabriela Nunes</p>
-              <p style={{ fontSize: '0.875rem', lineHeight: 1.65, color: 'var(--color-on-surface-variant)' }}>
-                Psicóloga clínica com abordagem psicanalítica. Especializada no atendimento a mulheres que vivem em autocobrança e ansiedade.
+              <p
+                style={{
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-secondary)',
+                  marginBottom: '6px',
+                }}
+              >
+                Escrito por
+              </p>
+              <p
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.125rem',
+                  fontWeight: 600,
+                  color: 'var(--color-on-surface)',
+                  marginBottom: '8px',
+                }}
+              >
+                Gabriela Nunes
+              </p>
+              <p
+                style={{
+                  fontSize: '0.875rem',
+                  lineHeight: 1.65,
+                  color: 'var(--color-on-surface-variant)',
+                }}
+              >
+                Psicóloga clínica com abordagem psicanalítica. Especializada no atendimento a
+                mulheres que vivem em autocobrança e ansiedade.
               </p>
             </div>
           </div>
 
           <div style={{ maxWidth: '720px', margin: '48px auto 0', textAlign: 'center' }}>
-            <Link href="/blog" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-secondary)', letterSpacing: '0.04em' }}>
+            <Link
+              href="/blog"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                fontSize: '0.875rem',
+                fontWeight: 600,
+                color: 'var(--color-secondary)',
+                letterSpacing: '0.04em',
+              }}
+            >
               ← Voltar para artigos
             </Link>
           </div>
@@ -186,14 +364,26 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       </section>
 
       {/* CTA */}
-      <section style={{ paddingBlock: '80px', background: 'var(--color-secondary)', textAlign: 'center' }}>
+      <section
+        style={{
+          paddingBlock: '80px',
+          background: 'var(--color-secondary)',
+          textAlign: 'center',
+        }}
+      >
         <div className="container">
-          <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 600, color: '#fff', marginBottom: '24px' }}>
+          <p
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+              fontWeight: 600,
+              color: '#fff',
+              marginBottom: '24px',
+            }}
+          >
             Esse texto tocou em algo?
           </p>
-          <HoverLink href="https://wa.me/5500000000000">
-            Agendar uma conversa
-          </HoverLink>
+          <HoverLink href="https://wa.me/5500000000000">Agendar uma conversa</HoverLink>
         </div>
       </section>
     </>

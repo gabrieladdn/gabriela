@@ -1,6 +1,6 @@
 # Gabriela Nunes — Site Clínico
 
-Site profissional de psicoterapia construído com **Next.js 15** + **Payload CMS 3** (headless), com design editorial minimalista e sistema de blog gerenciável.
+Site profissional de psicoterapia construído com **Next.js 15** e **MDX local**, com design editorial minimalista e blog alimentado por arquivos em `content/posts`.
 
 ---
 
@@ -9,12 +9,11 @@ Site profissional de psicoterapia construído com **Next.js 15** + **Payload CMS
 | Camada | Tecnologia |
 |---|---|
 | Framework | Next.js 15 (App Router) |
-| CMS | Payload CMS 3 (self-hosted) |
-| Banco de dados | MongoDB |
-| Editor de rich text | Lexical |
+| Conteúdo | MDX local (`content/posts`) |
+| Editor de rich text | MDX |
 | Estilização | CSS Variables + inline styles |
 | Fontes | Playfair Display + Manrope (Google Fonts) |
-| Deploy | Vercel + MongoDB Atlas |
+| Deploy | Vercel |
 
 ---
 
@@ -23,20 +22,11 @@ Site profissional de psicoterapia construído com **Next.js 15** + **Payload CMS
 ```
 src/
 ├── app/
-│   ├── (payload)/             # Rotas do Payload CMS (admin + API)
-│   │   ├── admin/[[...segments]]/
-│   │   └── api/[[...segments]]/
 │   ├── blog/
 │   │   ├── page.tsx           # Listagem de artigos + filtro por categoria
 │   │   └── [slug]/page.tsx    # Artigo individual
 │   ├── layout.tsx             # Layout global (Navbar + Footer + fontes)
 │   └── page.tsx               # Home page
-│
-├── collections/               # Schemas do Payload CMS
-│   ├── Posts.ts               # Artigos do blog (rich text, SEO, draft/publish)
-│   ├── Testimonials.ts        # Depoimentos de pacientes
-│   ├── Media.ts               # Upload de imagens (com resize automático)
-│   └── Users.ts               # Usuários admin
 │
 ├── components/
 │   ├── layout/
@@ -57,10 +47,12 @@ src/
 │       └── Reveal.tsx         # Animação de scroll reveal (IntersectionObserver)
 │
 ├── lib/
+│   ├── posts.ts               # Leitura de MDX e metadados do blog
 │   └── useScrollReveal.ts     # Hook alternativo de scroll reveal
 ├── styles/
 │   └── globals.css            # Design tokens, reset, tipografia, prose
-└── payload.config.ts          # Configuração do Payload CMS
+└── content/
+    └── posts/                 # Artigos do blog em MDX
 ```
 
 ---
@@ -70,7 +62,6 @@ src/
 ### 1. Pré-requisitos
 
 - Node.js ≥ 20.9
-- MongoDB rodando localmente ou URI do Atlas
 
 ### 2. Instalar dependências
 
@@ -78,85 +69,46 @@ src/
 npm install
 ```
 
-### 3. Configurar variáveis de ambiente
-
-```bash
-cp .env.example .env.local
-```
-
-Edite `.env.local`:
-
-```env
-DATABASE_URI=mongodb://localhost:27017/gabriela-nunes
-PAYLOAD_SECRET=gere-um-segredo-forte-aqui
-NEXT_PUBLIC_SERVER_URL=http://localhost:3000
-```
-
-> Para gerar um segredo seguro: `openssl rand -base64 32`
-
-### 4. Rodar em desenvolvimento
+### 3. Rodar em desenvolvimento
 
 ```bash
 npm run dev
 ```
 
 - Site: http://localhost:3000
-- Admin CMS: http://localhost:3000/admin
-
-Na primeira vez que acessar `/admin`, crie o usuário administrador.
 
 ---
 
-## CMS — Como usar
+## Publicar artigos
 
-### Publicar artigos
+O blog é atualizado por arquivos MDX em `content/posts`.
 
-1. Acesse `/admin` → **Posts**
-2. Clique em **Create New**
-3. Preencha: título, slug (gerado automaticamente), resumo, imagem de capa, categoria, conteúdo (rich text)
-4. Mude o **Status** para `Publicado`
-5. Salve — o artigo aparece em `/blog`
+### Criar um novo artigo
 
-### Gerenciar depoimentos
+1. Adicione um arquivo `content/posts/seu-artigo.mdx`
+2. Inclua frontmatter com `title`, `excerpt`, `category`, `publishedAt` e `readingTime`
+3. Escreva o conteúdo em MDX
+4. Salve o arquivo — o dev server recompila automaticamente
 
-1. Acesse `/admin` → **Testimonials**
-2. Adicione ou edite depoimentos
-3. Marque **Exibir no site** para ativar
+### Exemplo de frontmatter
 
-### Uploads de imagens
+```mdx
+---
+title: "O que é autocobrança"
+excerpt: "Entenda como a autocobrança aparece no seu dia a dia e como começar a transformar essa voz interna."
+category: "autoconhecimento"
+publishedAt: "2025-09-12"
+readingTime: 5
+---
 
-O Payload gera automaticamente 3 tamanhos ao fazer upload:
-- `thumbnail` — 400×300 (listagem)
-- `card` — 768×512 (cards do blog)
-- `hero` — 1200×800 (capa do artigo)
+Seu conteúdo aqui...
+```
 
 ---
 
-## Conectando o CMS ao frontend
+## Conteúdo local e blog
 
-Os componentes estão prontos para receber dados do Payload. Para ativar, substitua os dados placeholder:
-
-**Em `src/app/page.tsx`:**
-```tsx
-import { getPayload } from 'payload'
-import config from '@payload-config'
-
-const payload = await getPayload({ config })
-const { docs: testimonials } = await payload.find({
-  collection: 'testimonials',
-  where: { active: { equals: true } },
-  sort: 'order',
-})
-```
-
-**Em `src/app/blog/page.tsx`:**
-```tsx
-const { docs: posts } = await payload.find({
-  collection: 'posts',
-  where: { status: { equals: 'published' } },
-  sort: '-publishedAt',
-})
-```
+O frontend lê os arquivos em `content/posts` usando `src/lib/posts.ts` e renderiza os artigos com `next-mdx-remote`.
 
 ---
 
@@ -175,14 +127,10 @@ Todas as cores, tipografia e espaçamentos estão como CSS variables em `src/sty
 
 ---
 
-## Deploy (Vercel + MongoDB Atlas)
+## Deploy (Vercel)
 
-1. Crie um cluster no [MongoDB Atlas](https://cloud.mongodb.com)
-2. No Vercel, adicione as variáveis de ambiente:
-   - `DATABASE_URI` — connection string do Atlas
-   - `PAYLOAD_SECRET` — segredo gerado
-   - `NEXT_PUBLIC_SERVER_URL` — URL do site em produção
-3. Faça push para a branch principal — o Vercel faz deploy automático
+1. Configure `NEXT_PUBLIC_SERVER_URL` no Vercel
+2. Faça push para a branch principal — o Vercel faz deploy automático
 
 ---
 
@@ -193,7 +141,5 @@ Todas as cores, tipografia e espaçamentos estão como CSS variables em `src/sty
 - [ ] Substituir `contato@gabrielanunes.com.br` pelo e-mail real
 - [ ] Preencher CRP real no footer e nas páginas
 - [ ] Adicionar foto real da Gabriela nas seções Hero e Sobre
-- [ ] Publicar primeiros artigos no CMS
+- [ ] Publicar primeiros artigos em `content/posts`
 - [ ] Configurar domínio `gabrielanunes.com.br` no Vercel
-- [ ] Criar usuário admin em produção via `/admin`
-- [ ] Configurar MongoDB Atlas com IP whitelist + usuário dedicado

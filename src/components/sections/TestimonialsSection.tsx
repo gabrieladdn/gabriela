@@ -2,7 +2,7 @@
 
 import { Reveal } from '@/components/ui/Reveal'
 
-// Fallback data — real data comes from Payload CMS
+// Fallback testimonial data for the home page
 const fallbackTestimonials = [
   {
     quote:

@@ -6,28 +6,23 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "generate:types": "payload generate:types",
-    "payload": "payload"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@payloadcms/db-mongodb": "^3.84.1",
-    "@payloadcms/next": "^3.84.1",
-    "@payloadcms/richtext-lexical": "^3.84.1",
-    "graphql": "^16.9.0",
-    "next": "15.3.9",
-    "payload": "^3.84.1",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "sharp": "^0.34.2"
+    "gray-matter": "^4.0.3",
+    "next": "16.2.6",
+    "next-mdx-remote": "^6.0.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
-    "@types/node": "^22.15.0",
-    "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.0",
-    "eslint": "^9.27.0",
-    "eslint-config-next": "15.3.9",
-    "typescript": "^5.8.3"
+    "@types/node": "^25.9.1",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^10.4.0",
+    "eslint-config-next": "16.2.6",
+    "typescript": "^6.0.3"
   },
   "engines": {
     "node": ">=20.9.0"
