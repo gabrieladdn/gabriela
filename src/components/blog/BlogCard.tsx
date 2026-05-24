@@ -45,121 +45,132 @@ export function BlogCard({
   return (
     <Link
       href={`/blog/${slug}`}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        borderRadius: '20px',
-        overflow: 'hidden',
-        background: '#fff',
-        border: '1px solid rgba(253,235,220,0.7)',
-        boxShadow: 'var(--shadow-card)',
-        transition: 'transform 0.3s, box-shadow 0.3s',
-        textDecoration: 'none',
-      }}
-      onMouseEnter={(e) => {
-        const el = e.currentTarget as HTMLElement
-        el.style.transform = 'translateY(-4px)'
-        el.style.boxShadow = '0 16px 48px rgba(143,75,66,0.12)'
-      }}
-      onMouseLeave={(e) => {
-        const el = e.currentTarget as HTMLElement
-        el.style.transform = 'translateY(0)'
-        el.style.boxShadow = 'var(--shadow-card)'
-      }}
+      className="blog-card"
     >
-      {/* Cover image */}
-      <div
-        style={{
-          position: 'relative',
-          aspectRatio: '16/9',
-          overflow: 'hidden',
-          background: 'var(--color-surface-container)',
-        }}
-      >
+      <div className="blog-card-cover">
         {coverImageUrl ? (
           <Image
             src={coverImageUrl}
             alt={coverImageAlt || title}
             fill
-            style={{ objectFit: 'cover', transition: 'transform 0.5s' }}
+            className="blog-card-cover-image"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
-          <div
-            style={{
-              width: '100%',
-              height: '100%',
-              background:
-                'linear-gradient(135deg, var(--color-surface-container-high), var(--color-surface-container))',
-            }}
-          />
+          <div className="blog-card-cover-placeholder" />
         )}
-        {/* Category badge */}
-        <span
-          style={{
-            position: 'absolute',
-            top: '16px',
-            left: '16px',
-            background: 'rgba(255,248,244,0.95)',
-            backdropFilter: 'blur(8px)',
-            color: 'var(--color-secondary)',
-            fontSize: '0.7rem',
-            fontWeight: 700,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            padding: '5px 12px',
-            borderRadius: '9999px',
-          }}
-        >
+        <span className="blog-card-category">
           {categoryLabels[category] || category}
         </span>
       </div>
 
-      {/* Content */}
-      <div style={{ padding: '28px 28px 32px', flex: 1, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-        <h3
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '1.125rem',
-            fontWeight: 600,
-            color: 'var(--color-on-surface)',
-            lineHeight: 1.4,
-          }}
-        >
+      <div className="blog-card-content">
+        <h3 className="blog-card-title">
           {title}
         </h3>
-        <p
-          style={{
-            fontSize: '0.875rem',
-            lineHeight: 1.65,
-            color: 'var(--color-on-surface-variant)',
-            flex: 1,
-            display: '-webkit-box',
-            WebkitLineClamp: 3,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-          }}
-        >
+        <p className="blog-card-excerpt">
           {excerpt}
         </p>
 
-        {/* Meta */}
-        <div
-          style={{
-            display: 'flex',
-            gap: '16px',
-            marginTop: '8px',
-            fontSize: '0.75rem',
-            fontWeight: 600,
-            letterSpacing: '0.04em',
-            color: 'var(--color-outline)',
-            textTransform: 'uppercase',
-          }}
-        >
+        <div className="blog-card-meta">
           {formattedDate && <span>{formattedDate}</span>}
           {readingTime && <span>· {readingTime} min de leitura</span>}
         </div>
       </div>
+
+      <style>{`
+        .blog-card {
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          border: 1px solid rgba(253,235,220,0.7);
+          border-radius: 20px;
+          background: #fff;
+          box-shadow: var(--shadow-card);
+          text-decoration: none;
+          transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .blog-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 16px 48px rgba(143,75,66,0.12);
+        }
+
+        .blog-card-cover {
+          position: relative;
+          aspect-ratio: 16 / 9;
+          overflow: hidden;
+          background: var(--color-surface-container);
+        }
+
+        .blog-card-cover-image {
+          object-fit: cover;
+          transition: transform 0.5s;
+        }
+
+        .blog-card:hover .blog-card-cover-image {
+          transform: scale(1.04);
+        }
+
+        .blog-card-cover-placeholder {
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, var(--color-surface-container-high), var(--color-surface-container));
+        }
+
+        .blog-card-category {
+          position: absolute;
+          top: 16px;
+          left: 16px;
+          padding: 5px 12px;
+          border-radius: 9999px;
+          background: rgba(255,248,244,0.95);
+          backdrop-filter: blur(8px);
+          font-size: 0.7rem;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--color-secondary);
+        }
+
+        .blog-card-content {
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          gap: 12px;
+          padding: 28px 28px 32px;
+        }
+
+        .blog-card-title {
+          font-family: var(--font-display);
+          font-size: 1.125rem;
+          font-weight: 600;
+          line-height: 1.4;
+          color: var(--color-on-surface);
+        }
+
+        .blog-card-excerpt {
+          flex: 1;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          font-size: 0.875rem;
+          line-height: 1.65;
+          color: var(--color-on-surface-variant);
+        }
+
+        .blog-card-meta {
+          display: flex;
+          gap: 16px;
+          margin-top: 8px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--color-outline);
+        }
+      `}</style>
     </Link>
   )
 }

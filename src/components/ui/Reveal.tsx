@@ -4,7 +4,7 @@ import { useEffect, useRef, type ReactNode, type CSSProperties } from 'react'
 
 interface RevealProps extends React.HTMLAttributes<HTMLElement> {
   children: ReactNode
-  delay?: 0 | 1 | 2 | 3 | 4 | 5
+  delay?: number
   style?: CSSProperties
   className?: string
   as?: any // polymorphic tag support

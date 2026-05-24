@@ -1,115 +1,88 @@
-'use client'
-
+import { identification } from '@/content/sections'
 import { Reveal } from '@/components/ui/Reveal'
-
-const cards = [
-  {
-    icon: '🌿',
-    text: 'Você sente que precisa dar conta de tudo sozinha, mas a conta não fecha.',
-  },
-  {
-    icon: '✦',
-    text: 'A sensação de que nunca é o suficiente, independente de quanto você se esforce.',
-  },
-  {
-    icon: '◎',
-    text: 'A ansiedade que surge do medo de errar ou de decepcionar as expectativas alheias.',
-  },
-]
+import TextCarousel from '@/components/ui/TextCarousel'
 
 export function IdentificationSection() {
   return (
-    <section
-      style={{
-        paddingBlock: 'clamp(64px, 10vh, var(--section-gap-desktop))',
-        background: 'rgba(255,241,231,0.4)',
-      }}
-    >
+    <section className="identification-section">
       <div className="container">
-        <Reveal style={{ textAlign: 'center', marginBottom: '64px' }}>
-          <h2
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(1.75rem, 3vw, 2.25rem)',
-              fontWeight: 600,
-              color: 'var(--color-on-surface)',
-              marginBottom: '16px',
-              lineHeight: 1.3,
-            }}
-          >
-            Talvez, por fora, pareça que está tudo bem...
-          </h2>
-          <p
-            style={{
-              fontSize: '1.0625rem',
-              color: 'var(--color-on-surface-variant)',
-              maxWidth: '520px',
-              margin: '0 auto',
-            }}
-          >
-            Mas por dentro, o cansaço é silencioso e a mente nunca para.
-          </p>
-        </Reveal>
-
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '24px',
-          }}
-        >
-          {cards.map(({ icon, text }, i) => (
-            <Reveal
-              key={i}
-              delay={((i + 1) as 1 | 2 | 3)}
-              style={{
-                background: 'rgba(255,255,255,0.7)',
-                backdropFilter: 'blur(8px)',
-                WebkitBackdropFilter: 'blur(8px)',
-                borderRadius: '24px',
-                padding: '40px 32px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '20px',
-                boxShadow: 'var(--shadow-ambient)',
-                transition: 'transform 0.3s',
-              }}
-              onMouseEnter={(e) => {
-                ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)'
-              }}
-              onMouseLeave={(e) => {
-                ;(e.currentTarget as HTMLElement).style.transform = 'translateY(0)'
-              }}
-            >
-              <span
-                style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '12px',
-                  background: 'rgba(143,75,66,0.1)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '1.25rem',
-                  color: 'var(--color-secondary)',
-                  flexShrink: 0,
-                }}
-              >
-                {icon}
-              </span>
-              <p
-                style={{
-                  fontSize: '1rem',
-                  lineHeight: 1.65,
-                  color: 'var(--color-on-surface)',
-                }}
-              >
-                {text}
-              </p>
+            <Reveal className="identification-header">
+              <h2 className="identification-title">Talvez, por fora, pareça que está tudo bem.</h2>
             </Reveal>
-          ))}
-        </div>
-      </div>
+
+            <div className="identification-content">
+              <Reveal className="identification-description">
+                <span className="identification-subtitle-text">Você estuda, trabalha, dá conta do que precisa, mas por dentro existe um cansaço constante. Uma voz que cobra, critica e nunca parece satisfeita(o).</span>
+              </Reveal>
+
+              <div className="identification-carousel">
+                <Reveal className="carousel-wrap">
+                  <p className="lead">E talvez você se reconheça em alguns desses sentimentos:</p>
+
+                  <TextCarousel items={identification.listItems} className="site-text-carousel" />
+
+                  <div className="identification-conclusion">
+                    <p className="conclusion">Muitas vezes, sustentar esses sofrimentos sozinha(o) pode ser exaustivo. Quando a dor encontra um espaço de escuta, algo também pode começar a se transformar.</p>
+                  </div>
+                </Reveal>
+              </div>
+            </div>
+          </div>
+
+      <style>{`
+        .identification-section {
+          padding-block: clamp(64px, 10vh, var(--section-gap-desktop));
+          background: rgba(255,241,231,0.4);
+        }
+
+        .identification-title {
+          font-family: var(--font-display);
+          font-size: clamp(1.75rem, 3vw, 2.25rem);
+          font-weight: 600;
+          line-height: 1.3;
+          color: var(--color-on-surface);
+          margin-bottom: 16px;
+        }
+
+        .identification-description {
+          max-width: 520px;
+          font-size: 1.0625rem;
+          color: var(--color-on-surface-variant);
+        }
+
+        .identification-content {
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+        }
+
+        .identification-carousel {
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        .identification-carousel .lead {
+          color: var(--color-on-surface-variant);
+          font-size: 1.0625rem;
+          text-align: center;
+        }
+
+        .identification-conclusion .conclusion {
+            padding: 16px 18px;
+            border-radius: 12px;
+            font-size: 0.98rem;
+            line-height: 1.5;
+            color: var(--color-on-surface-variant);
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        @media (max-width: 880px) {
+          .identification-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
     </section>
   )
 }

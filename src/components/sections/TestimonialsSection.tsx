@@ -1,26 +1,7 @@
-'use client'
+ 'use client'
 
 import { Reveal } from '@/components/ui/Reveal'
-
-// Fallback testimonial data for the home page
-const fallbackTestimonials = [
-  {
-    quote:
-      'As sessões com a Gabriela me trouxeram uma clareza que eu não conseguia ter sozinha. Aprendi a ser mais gentil comigo mesma.',
-    author: 'A. M., 32 anos',
-  },
-  {
-    quote:
-      'A forma como ela escuta e pontua as coisas é muito transformadora. Sinto que finalmente estou lidando com a minha ansiedade.',
-    author: 'L. F., 28 anos',
-  },
-  {
-    quote:
-      'O atendimento online é impecável. Gabriela transmite uma paz e uma segurança incríveis, mesmo através da tela.',
-    author: 'M. S., 40 anos',
-  },
-]
-
+import { fallbackTestimonials } from '@/content/sections'
 interface Testimonial {
   quote: string
   author: string
@@ -32,105 +13,32 @@ interface Props {
 
 export function TestimonialsSection({ testimonials = fallbackTestimonials }: Props) {
   return (
-    <section
-      style={{
-        paddingBlock: 'clamp(64px, 10vh, var(--section-gap-desktop))',
-        background: 'var(--color-background)',
-      }}
-    >
+    <section className="testimonials-section">
       <div className="container">
-        <Reveal style={{ textAlign: 'center', marginBottom: '64px' }}>
-          <h2
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(1.75rem, 3vw, 2.25rem)',
-              fontWeight: 600,
-              color: 'var(--color-on-surface)',
-            }}
-          >
+        <Reveal className="testimonials-header">
+          <h2 className="testimonials-title">
             O que dizem as pacientes
           </h2>
         </Reveal>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '24px',
-          }}
-        >
+        <div className="testimonials-grid">
           {testimonials.map(({ quote, author }, i) => (
             <Reveal
               key={i}
               delay={((i + 1) as 1 | 2 | 3)}
-              style={{
-                position: 'relative',
-                background: '#fff',
-                borderRadius: '20px',
-                padding: '40px 32px 32px',
-                border: '1px solid var(--color-surface-container-low)',
-                boxShadow: '0 4px 24px rgba(143,75,66,0.06)',
-                transition: 'box-shadow 0.3s, transform 0.3s',
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.boxShadow = '0 12px 40px rgba(143,75,66,0.1)'
-                el.style.transform = 'translateY(-3px)'
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.boxShadow = '0 4px 24px rgba(143,75,66,0.06)'
-                el.style.transform = 'translateY(0)'
-              }}
+              className="testimonials-card"
             >
-              {/* Quote mark */}
-              <span
-                aria-hidden
-                style={{
-                  position: 'absolute',
-                  top: '-18px',
-                  left: '24px',
-                  fontFamily: 'var(--font-display)',
-                  fontSize: '5rem',
-                  lineHeight: 1,
-                  color: 'var(--color-tertiary-fixed-dim)',
-                  opacity: 0.35,
-                  userSelect: 'none',
-                }}
-              >
+              <span aria-hidden className="testimonials-quote-mark">
                 "
               </span>
 
-              <p
-                style={{
-                  fontSize: '0.9375rem',
-                  lineHeight: 1.75,
-                  fontStyle: 'italic',
-                  color: 'var(--color-on-surface-variant)',
-                  marginBottom: '24px',
-                }}
-              >
+              <p className="testimonials-quote">
                 {quote}
               </p>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <div
-                  style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
-                    background: 'var(--color-surface-container)',
-                    flexShrink: 0,
-                  }}
-                />
-                <span
-                  style={{
-                    fontSize: '0.8125rem',
-                    fontWeight: 600,
-                    color: 'var(--color-secondary)',
-                    letterSpacing: '0.02em',
-                  }}
-                >
+              <div className="testimonials-author-row">
+                <div className="testimonials-avatar" />
+                <span className="testimonials-author">
                   {author}
                 </span>
               </div>
@@ -138,6 +46,87 @@ export function TestimonialsSection({ testimonials = fallbackTestimonials }: Pro
           ))}
         </div>
       </div>
+
+      <style>{`
+        .testimonials-section {
+          padding-block: clamp(64px, 10vh, var(--section-gap-desktop));
+          background: var(--color-background);
+        }
+
+        .testimonials-header {
+          text-align: center;
+          margin-bottom: 64px;
+        }
+
+        .testimonials-title {
+          font-family: var(--font-display);
+          font-size: clamp(1.75rem, 3vw, 2.25rem);
+          font-weight: 600;
+          color: var(--color-on-surface);
+        }
+
+        .testimonials-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 24px;
+        }
+
+        .testimonials-card {
+          position: relative;
+          padding: 40px 32px 32px;
+          border: 1px solid var(--color-surface-container-low);
+          border-radius: 20px;
+          background: #fff;
+          box-shadow: 0 4px 24px rgba(143,75,66,0.06);
+          transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .testimonials-card:hover {
+          box-shadow: 0 12px 40px rgba(143,75,66,0.1);
+          transform: translateY(-3px);
+        }
+
+        .testimonials-quote-mark {
+          position: absolute;
+          top: -18px;
+          left: 24px;
+          font-family: var(--font-display);
+          font-size: 5rem;
+          line-height: 1;
+          color: var(--color-tertiary-fixed-dim);
+          opacity: 0.35;
+          user-select: none;
+        }
+
+        .testimonials-quote {
+          margin-bottom: 24px;
+          font-size: 0.9375rem;
+          line-height: 1.75;
+          font-style: italic;
+          color: var(--color-on-surface-variant);
+        }
+
+        .testimonials-author-row {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .testimonials-avatar {
+          width: 40px;
+          height: 40px;
+          flex-shrink: 0;
+          border-radius: 50%;
+          background: var(--color-surface-container);
+        }
+
+        .testimonials-author {
+          font-size: 0.8125rem;
+          font-weight: 600;
+          letter-spacing: 0.02em;
+          color: var(--color-secondary);
+        }
+      `}</style>
     </section>
   )
 }

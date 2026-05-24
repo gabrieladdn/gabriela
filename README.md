@@ -136,7 +136,7 @@ Todas as cores, tipografia e espaçamentos estão como CSS variables em `src/sty
 
 ## Checklist antes do go-live
 
-- [ ] Substituir `https://wa.me/5500000000000` pelo número real da Gabriela
+- [ ] Substituir `https://wa.me/5513982007343` pelo número real da Gabriela
 - [ ] Substituir `@gabriela.psic` pelo @ real do Instagram
 - [ ] Substituir `contato@gabrielanunes.com.br` pelo e-mail real
 - [ ] Preencher CRP real no footer e nas páginas

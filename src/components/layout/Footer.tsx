@@ -13,88 +13,31 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer
-      style={{
-        background: 'var(--color-surface-container-low)',
-        borderTop: '1px solid rgba(199,199,191,0.3)',
-        paddingBlock: '64px',
-      }}
-    >
+    <footer className="footer-shell">
       <div className="container">
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
-            gap: '40px',
-          }}
-        >
-          {/* Brand */}
-          <div>
-            <p
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '1.5rem',
-                fontWeight: 700,
-                color: 'var(--color-on-surface)',
-                marginBottom: '8px',
-              }}
-            >
+        <div className="footer-content">
+          <div className="footer-brand">
+            <p className="footer-brand-name">
               Gabriela Nunes
             </p>
-            <p
-              style={{
-                fontSize: '0.8125rem',
-                fontWeight: 600,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                color: 'var(--color-outline)',
-              }}
-            >
+            <p className="footer-brand-role">
               Psicóloga Clínica
             </p>
           </div>
 
-          {/* Nav Links */}
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              gap: '8px 32px',
-            }}
-          >
+          <div className="footer-nav-links">
             {footerLinks.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                style={{
-                  fontSize: '0.8125rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.05em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-on-surface-variant)',
-                  transition: 'color 0.2s',
-                }}
-                onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color = 'var(--color-secondary)')
-                }
-                onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color = 'var(--color-on-surface-variant)')
-                }
-              >
+              <Link key={href} href={href} className="footer-nav-link">
                 {label}
               </Link>
             ))}
           </div>
 
-          {/* Social Links */}
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <div className="footer-socials">
             {[
               { label: 'Instagram', icon: 'IG', href: 'https://instagram.com/gabriela.psic' },
               { label: 'E-mail',    icon: '✉',  href: 'mailto:contato@gabrielanunes.com.br' },
-              { label: 'WhatsApp',  icon: 'WA', href: 'https://wa.me/5500000000000' },
+              { label: 'WhatsApp',  icon: 'WA', href: 'https://wa.me/5513982007343' },
             ].map(({ label, icon, href }) => (
               <a
                 key={label}
@@ -102,83 +45,137 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  border: '1.5px solid rgba(143,75,66,0.3)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '0.75rem',
-                  fontWeight: 700,
-                  color: 'var(--color-secondary)',
-                  transition: 'background 0.2s, color 0.2s, transform 0.2s',
-                }}
-                onMouseEnter={(e) => {
-                  ;(e.currentTarget as HTMLElement).style.background = 'var(--color-secondary)'
-                  ;(e.currentTarget as HTMLElement).style.color = '#fff'
-                  ;(e.currentTarget as HTMLElement).style.transform = 'scale(1.1)'
-                }}
-                onMouseLeave={(e) => {
-                  ;(e.currentTarget as HTMLElement).style.background = 'transparent'
-                  ;(e.currentTarget as HTMLElement).style.color = 'var(--color-secondary)'
-                  ;(e.currentTarget as HTMLElement).style.transform = 'scale(1)'
-                }}
+                className="footer-social"
               >
                 {icon}
               </a>
             ))}
           </div>
 
-          {/* Divider + Legal */}
-          <div
-            style={{
-              width: '100%',
-              maxWidth: '480px',
-              borderTop: '1px solid rgba(199,199,191,0.3)',
-              paddingTop: '32px',
-            }}
-          >
-            <p
-              style={{
-                fontSize: '0.8125rem',
-                color: 'var(--color-on-surface-variant)',
-                marginBottom: '12px',
-              }}
-            >
+          <div className="footer-legal-shell">
+            <p className="footer-legal-copy">
               Gabriela Nunes | Psicóloga Clínica | CRP 06/XXXXX
             </p>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                gap: '8px',
-                fontSize: '0.75rem',
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em',
-                color: 'rgba(70,71,66,0.5)',
-              }}
-            >
+            <div className="footer-legal-links">
               <Link href="/privacidade">Privacidade</Link>
               <span>•</span>
               <Link href="/termos">Termos de Uso</Link>
               <span>•</span>
               <Link href="/faq">FAQ</Link>
             </div>
-            <p
-              style={{
-                marginTop: '24px',
-                fontSize: '0.75rem',
-                color: 'rgba(70,71,66,0.45)',
-                letterSpacing: '0.03em',
-              }}
-            >
+            <p className="footer-copyright">
               © {new Date().getFullYear()} Gabriela Nunes — Todos os direitos reservados.
             </p>
           </div>
         </div>
       </div>
+
+      <style>{`
+        .footer-shell {
+          padding-block: 64px;
+          border-top: 1px solid rgba(199,199,191,0.3);
+          background: var(--color-surface-container-low);
+        }
+
+        .footer-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 40px;
+          text-align: center;
+        }
+
+        .footer-brand-name {
+          margin-bottom: 8px;
+          font-family: var(--font-display);
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--color-on-surface);
+        }
+
+        .footer-brand-role {
+          font-size: 0.8125rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--color-outline);
+        }
+
+        .footer-nav-links {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px 32px;
+        }
+
+        .footer-nav-link {
+          font-size: 0.8125rem;
+          font-weight: 600;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: var(--color-on-surface-variant);
+          transition: color 0.2s;
+        }
+
+        .footer-nav-link:hover {
+          color: var(--color-secondary);
+        }
+
+        .footer-socials {
+          display: flex;
+          gap: 12px;
+        }
+
+        .footer-social {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border: 1.5px solid rgba(143,75,66,0.3);
+          border-radius: 50%;
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: var(--color-secondary);
+          transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+
+        .footer-social:hover {
+          background: var(--color-secondary);
+          color: #fff;
+          transform: scale(1.1);
+        }
+
+        .footer-legal-shell {
+          width: 100%;
+          max-width: 480px;
+          padding-top: 32px;
+          border-top: 1px solid rgba(199,199,191,0.3);
+        }
+
+        .footer-legal-copy {
+          margin-bottom: 12px;
+          font-size: 0.8125rem;
+          color: var(--color-on-surface-variant);
+        }
+
+        .footer-legal-links {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          font-size: 0.75rem;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: rgba(70,71,66,0.5);
+        }
+
+        .footer-copyright {
+          margin-top: 24px;
+          font-size: 0.75rem;
+          letter-spacing: 0.03em;
+          color: rgba(70,71,66,0.45);
+        }
+      `}</style>
     </footer>
   )
 }

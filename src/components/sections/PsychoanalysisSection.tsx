@@ -1,183 +1,44 @@
 import { Reveal } from '@/components/ui/Reveal'
-
-const bullets = [
-  'Lugar de não julgamento',
-  'Respeito ao seu tempo e ritmo',
-  'Foco na singularidade de cada história',
-]
+import { psychoText, psychoBullets } from '@/content/sections'
 
 export function PsychoanalysisSection() {
   return (
-    <section
-      id="psicanalise"
-      style={{
-        paddingBlock: 'clamp(64px, 10vh, var(--section-gap-desktop))',
-        background: 'var(--color-surface-container-lowest)',
-      }}
-    >
+    <section id="psicanalise" className="psycho-section">
       <div className="container">
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr',
-            gap: '64px',
-            alignItems: 'center',
-          }}
-          className="psycho-grid"
-        >
-          {/* Image side */}
-          <Reveal style={{ position: 'relative' }}>
-            <div
-              style={{
-                position: 'relative',
-                width: '100%',
-                maxWidth: '480px',
-                margin: '0 auto',
-              }}
-            >
-              {/* Circle image */}
-              <div
-                style={{
-                  aspectRatio: '1',
-                  borderRadius: '50%',
-                  overflow: 'hidden',
-                  border: '8px solid var(--color-background)',
-                  boxShadow: 'var(--shadow-hero)',
-                  background:
-                    'linear-gradient(135deg, var(--color-surface-container-high), var(--color-surface-container))',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '0.9rem',
-                    color: 'var(--color-on-surface-variant)',
-                    opacity: 0.5,
-                  }}
-                >
-                  Foto do consultório
-                </span>
+        <div className="psycho-grid">
+          <Reveal className="psycho-visual">
+            <div className="psycho-visual-shell">
+              <div className="psycho-circle">
+                <span className="psycho-circle-text">Foto do consultório</span>
               </div>
-              {/* Decorative blob */}
-              <div
-                aria-hidden
-                style={{
-                  position: 'absolute',
-                  top: '-40px',
-                  left: '-40px',
-                  width: '130px',
-                  height: '130px',
-                  borderRadius: '50%',
-                  background: 'rgba(246,184,170,0.2)',
-                  filter: 'blur(32px)',
-                  zIndex: -1,
-                }}
-              />
+              <div aria-hidden className="psycho-blob" />
             </div>
           </Reveal>
 
-          {/* Text side */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div className="psycho-copy">
             <Reveal delay={1}>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(1.75rem, 3vw, 2.25rem)',
-                  fontWeight: 600,
-                  color: 'var(--color-on-surface)',
-                  lineHeight: 1.3,
-                }}
-              >
-                A Psicanálise como escuta ética
-              </h2>
+              <h2 className="psycho-title">{psychoText.title}</h2>
             </Reveal>
 
             <Reveal delay={2}>
-              <blockquote
-                style={{
-                  borderLeft: '3px solid var(--color-secondary)',
-                  paddingLeft: '20px',
-                  fontFamily: 'var(--font-display)',
-                  fontStyle: 'italic',
-                  fontSize: '1.125rem',
-                  color: 'var(--color-secondary)',
-                  lineHeight: 1.6,
-                }}
-              >
-                "A análise não é sobre mudar quem você é, mas sobre descobrir quem você se tornou
-                por trás de tantas camadas."
-              </blockquote>
+              <blockquote className="blockquote-accent">{psychoText.blockquote}</blockquote>
             </Reveal>
 
             <Reveal delay={3}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <p
-                  style={{
-                    fontSize: '1rem',
-                    lineHeight: 1.75,
-                    color: 'var(--color-on-surface-variant)',
-                  }}
-                >
-                  Diferente de abordagens focadas apenas em metas, a psicanálise convida você a
-                  investigar a raiz do seu sofrimento. É um processo de falar e ser ouvida de uma
-                  maneira que você talvez nunca tenha experimentado.
-                </p>
-                <p
-                  style={{
-                    fontSize: '1rem',
-                    lineHeight: 1.75,
-                    color: 'var(--color-on-surface-variant)',
-                  }}
-                >
-                  Em cada sessão, construímos juntas um vocabulário para seus sentimentos,
-                  transformando a angústia em palavras e as palavras em novas formas de existir no
-                  mundo.
-                </p>
+              <div className="psycho-paragraphs">
+                {psychoText.paragraphs.map((p, idx) => (
+                  <p key={idx} className="psycho-paragraph">
+                    {p}
+                  </p>
+                ))}
               </div>
             </Reveal>
 
             <Reveal delay={4}>
-              <ul
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '12px',
-                  listStyle: 'none',
-                  padding: 0,
-                  marginTop: '8px',
-                }}
-              >
-                {bullets.map((item) => (
-                  <li
-                    key={item}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px',
-                      fontSize: '0.875rem',
-                      fontWeight: 600,
-                      letterSpacing: '0.02em',
-                      color: 'var(--color-secondary)',
-                    }}
-                  >
-                    <span
-                      style={{
-                        width: '20px',
-                        height: '20px',
-                        borderRadius: '50%',
-                        background: 'rgba(143,75,66,0.12)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '0.7rem',
-                        flexShrink: 0,
-                      }}
-                    >
-                      ✓
-                    </span>
+              <ul className="psycho-bullets">
+                {psychoBullets.map((item) => (
+                  <li key={item} className="psycho-bullet">
+                    <span className="psycho-bullet-icon">✓</span>
                     {item}
                   </li>
                 ))}
@@ -188,9 +49,117 @@ export function PsychoanalysisSection() {
       </div>
 
       <style>{`
-        .psycho-grid {
-          grid-template-columns: 1fr;
+        .psycho-section {
+          padding-block: clamp(64px, 10vh, var(--section-gap-desktop));
+          background: var(--color-surface-container-lowest);
         }
+
+        .psycho-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 64px;
+          align-items: center;
+        }
+
+        .psycho-visual {
+          position: relative;
+        }
+
+        .psycho-visual-shell {
+          position: relative;
+          width: 100%;
+          max-width: 480px;
+          margin: 0 auto;
+        }
+
+        .psycho-circle {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          aspect-ratio: 1;
+          overflow: hidden;
+          border: 8px solid var(--color-background);
+          border-radius: 50%;
+          background: linear-gradient(135deg, var(--color-surface-container-high), var(--color-surface-container));
+          box-shadow: var(--shadow-hero);
+        }
+
+        .psycho-circle-text {
+          font-family: var(--font-display);
+          font-size: 0.9rem;
+          color: var(--color-on-surface-variant);
+          opacity: 0.5;
+        }
+
+        .psycho-blob {
+          position: absolute;
+          top: -40px;
+          left: -40px;
+          z-index: -1;
+          width: 130px;
+          height: 130px;
+          border-radius: 50%;
+          background: rgba(246,184,170,0.2);
+          filter: blur(32px);
+        }
+
+        .psycho-copy {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+        }
+
+        .psycho-title {
+          font-family: var(--font-display);
+          font-size: clamp(1.75rem, 3vw, 2.25rem);
+          font-weight: 600;
+          line-height: 1.3;
+          color: var(--color-on-surface);
+        }
+
+        .psycho-paragraphs {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .psycho-paragraph {
+          font-size: 1rem;
+          line-height: 1.75;
+          color: var(--color-on-surface-variant);
+        }
+
+        .psycho-bullets {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          margin-top: 8px;
+          padding: 0;
+          list-style: none;
+        }
+
+        .psycho-bullet {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          font-size: 0.875rem;
+          font-weight: 600;
+          letter-spacing: 0.02em;
+          color: var(--color-secondary);
+        }
+
+        .psycho-bullet-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: rgba(143,75,66,0.12);
+          font-size: 0.7rem;
+        }
+
         @media (min-width: 900px) {
           .psycho-grid {
             grid-template-columns: 1fr 1fr;

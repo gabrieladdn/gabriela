@@ -170,7 +170,7 @@ export default async function BlogPage({ searchParams }: Props) {
             >
               Identificou algo que ressoa com você?
             </p>
-            <HoverLink href="https://wa.me/5500000000000">
+            <HoverLink href="https://wa.me/5513982007343">
               Agendar uma conversa
             </HoverLink>
           </Reveal>

@@ -61,17 +61,7 @@ const mdxComponents = {
   blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
       {...props}
-      style={{
-        borderLeft: '3px solid var(--color-secondary)',
-        paddingLeft: '1.5rem',
-        marginBlock: '2rem',
-        marginInline: 0,
-        fontFamily: 'var(--font-display)',
-        fontSize: '1.125rem',
-        fontStyle: 'italic',
-        color: 'var(--color-secondary)',
-        lineHeight: 1.7,
-      }}
+      className={`blockquote-accent ${props.className ?? ''}`.trim()}
     />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
@@ -383,7 +373,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           >
             Esse texto tocou em algo?
           </p>
-          <HoverLink href="https://wa.me/5500000000000">Agendar uma conversa</HoverLink>
+          <HoverLink href="https://wa.me/5513982007343">Agendar uma conversa</HoverLink>
         </div>
       </section>
     </>

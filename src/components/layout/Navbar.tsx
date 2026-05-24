@@ -47,52 +47,20 @@ export function Navbar() {
   }
 
   return (
-    <header
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        transition: 'box-shadow 0.3s',
-        background: 'rgba(255,248,244,0.92)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        boxShadow: scrolled ? '0 1px 0 rgba(199,199,191,0.6)' : 'none',
-      }}
-    >
-      <nav
-        className="container"
-        style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '80px' }}
-      >
-        {/* Logo */}
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-on-surface)', letterSpacing: '-0.01em' }}>
-            Gabriela Nunes
-          </span>
-          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--color-secondary)', flexShrink: 0 }} />
-          <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-outline)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-            Psicóloga
-          </span>
+    <header className={scrolled ? 'navbar-shell navbar-shell-scrolled' : 'navbar-shell'}>
+      <nav className="container navbar-inner">
+        <Link href="/" className="navbar-brand" aria-label="Gabriela Nunes">
+          <img className="navbar-brand-logo" src="/logo.png" alt="Gabriela Nunes" />
         </Link>
 
-        {/* Desktop links */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }} className="desktop-nav">
+        <div className="desktop-nav">
           {navLinks.map((link) => {
             const active = isLinkActive(link)
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                style={{
-                  fontSize: '0.8125rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: active ? 'var(--color-secondary)' : 'var(--color-on-surface-variant)',
-                  borderBottom: active ? '2px solid var(--color-secondary)' : '2px solid transparent',
-                  paddingBottom: '2px',
-                  transition: 'color 0.2s, border-color 0.2s',
-                  whiteSpace: 'nowrap',
-                }}
+                className={active ? 'navbar-link navbar-link-active' : 'navbar-link'}
               >
                 {link.label}
               </Link>
@@ -100,113 +68,44 @@ export function Navbar() {
           })}
         </div>
 
-        {/* CTA */}
         <a
-          href="https://wa.me/5500000000000"
+          href="https://wa.me/5513982007343"
           target="_blank"
           rel="noopener noreferrer"
-          className="cta-btn"
-          style={{
-            background: 'var(--color-secondary)',
-            color: '#fff',
-            fontSize: '0.8125rem',
-            fontWeight: 600,
-            letterSpacing: '0.06em',
-            textTransform: 'uppercase',
-            padding: '10px 24px',
-            borderRadius: '9999px',
-            boxShadow: '0 4px 16px rgba(143,75,66,0.25)',
-            whiteSpace: 'nowrap',
-            transition: 'transform 0.2s, box-shadow 0.2s',
-          }}
-          onMouseEnter={(e) => {
-            ;(e.currentTarget as HTMLElement).style.transform = 'scale(1.04)'
-            ;(e.currentTarget as HTMLElement).style.boxShadow = '0 6px 24px rgba(143,75,66,0.35)'
-          }}
-          onMouseLeave={(e) => {
-            ;(e.currentTarget as HTMLElement).style.transform = 'scale(1)'
-            ;(e.currentTarget as HTMLElement).style.boxShadow = '0 4px 16px rgba(143,75,66,0.25)'
-          }}
+          className="navbar-cta"
         >
           Agendar Consulta
         </a>
 
-        {/* Burger */}
         <button
           className="mobile-burger"
           onClick={() => setMobileOpen((o) => !o)}
           aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px', display: 'none', flexDirection: 'column', gap: '5px' }}
         >
-          {[0, 1, 2].map((i) => (
-            <span
-              key={i}
-              style={{
-                display: 'block',
-                width: '22px',
-                height: '2px',
-                background: 'var(--color-on-surface)',
-                borderRadius: '2px',
-                transition: 'transform 0.3s, opacity 0.3s',
-                transform: mobileOpen
-                  ? i === 0 ? 'translateY(7px) rotate(45deg)'
-                  : i === 1 ? 'scaleX(0)'
-                  : 'translateY(-7px) rotate(-45deg)'
-                  : 'none',
-                opacity: mobileOpen && i === 1 ? 0 : 1,
-              }}
-            />
-          ))}
+          <span className={mobileOpen ? 'burger-line burger-line-top burger-line-top-open' : 'burger-line burger-line-top'} />
+          <span className={mobileOpen ? 'burger-line burger-line-middle burger-line-middle-open' : 'burger-line burger-line-middle'} />
+          <span className={mobileOpen ? 'burger-line burger-line-bottom burger-line-bottom-open' : 'burger-line burger-line-bottom'} />
         </button>
       </nav>
 
-      {/* Mobile drawer */}
-      <div
-        style={{
-          maxHeight: mobileOpen ? '400px' : '0',
-          overflow: 'hidden',
-          transition: 'max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
-          background: 'rgba(255,248,244,0.97)',
-          backdropFilter: 'blur(12px)',
-          borderTop: mobileOpen ? '1px solid var(--color-outline-variant)' : 'none',
-        }}
-      >
-        <div style={{ padding: '16px var(--margin-mobile) 24px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+      <div className={mobileOpen ? 'navbar-drawer navbar-drawer-open' : 'navbar-drawer'}>
+        <div className="navbar-drawer-inner">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              style={{
-                padding: '12px 8px',
-                fontSize: '0.875rem',
-                fontWeight: 600,
-                letterSpacing: '0.05em',
-                textTransform: 'uppercase',
-                color: 'var(--color-on-surface-variant)',
-                borderBottom: '1px solid var(--color-outline-variant)',
-              }}
+              className="navbar-drawer-link"
             >
               {link.label}
             </Link>
           ))}
           <a
-            href="https://wa.me/5500000000000"
+            href="https://wa.me/5513982007343"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMobileOpen(false)}
-            style={{
-              marginTop: '16px',
-              background: 'var(--color-secondary)',
-              color: '#fff',
-              fontSize: '0.8125rem',
-              fontWeight: 600,
-              letterSpacing: '0.06em',
-              textTransform: 'uppercase',
-              padding: '14px 24px',
-              borderRadius: '9999px',
-              textAlign: 'center',
-            }}
+            className="navbar-drawer-cta"
           >
             Agendar Consulta
           </a>
@@ -214,9 +113,169 @@ export function Navbar() {
       </div>
 
       <style>{`
+        .navbar-shell {
+          position: sticky;
+          top: 0;
+          z-index: 50;
+          background: rgba(255,248,244,0.92);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          transition: box-shadow 0.3s;
+        }
+
+        .navbar-shell-scrolled {
+          box-shadow: 0 1px 0 rgba(199,199,191,0.6);
+        }
+
+        .navbar-inner {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 80px;
+        }
+
+        .navbar-brand {
+          display: flex;
+          align-items: center;
+        }
+
+        .navbar-brand-logo {
+          display: block;
+          width: auto;
+          height: 38px;
+          max-width: min(280px, 52vw);
+          object-fit: contain;
+        }
+
+        .desktop-nav {
+          display: flex;
+          align-items: center;
+          gap: 32px;
+        }
+
+        .navbar-link {
+          padding-bottom: 2px;
+          border-bottom: 2px solid transparent;
+          font-size: 0.8125rem;
+          font-weight: 600;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          white-space: nowrap;
+          color: var(--color-on-surface-variant);
+          transition: color 0.2s, border-color 0.2s;
+        }
+
+        .navbar-link-active {
+          color: var(--color-secondary);
+          border-bottom-color: var(--color-secondary);
+        }
+
+        .navbar-cta {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 10px 24px;
+          border-radius: 9999px;
+          background: var(--color-secondary);
+          box-shadow: 0 4px 16px rgba(143,75,66,0.25);
+          font-size: 0.8125rem;
+          font-weight: 600;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          white-space: nowrap;
+          color: #fff;
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .navbar-cta:hover {
+          transform: scale(1.04);
+          box-shadow: 0 6px 24px rgba(143,75,66,0.35);
+        }
+
+        .mobile-burger {
+          display: none;
+          flex-direction: column;
+          gap: 5px;
+          padding: 8px;
+          border: none;
+          background: none;
+          cursor: pointer;
+        }
+
+        .burger-line {
+          display: block;
+          width: 22px;
+          height: 2px;
+          border-radius: 2px;
+          background: var(--color-on-surface);
+          transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .burger-line-top-open {
+          transform: translateY(7px) rotate(45deg);
+        }
+
+        .burger-line-middle-open {
+          transform: scaleX(0);
+          opacity: 0;
+        }
+
+        .burger-line-bottom-open {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .navbar-drawer {
+          max-height: 0;
+          overflow: hidden;
+          background: rgba(255,248,244,0.97);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-top 0.2s;
+        }
+
+        .navbar-drawer-open {
+          max-height: 400px;
+          border-top: 1px solid var(--color-outline-variant);
+        }
+
+        .navbar-drawer-inner {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          padding: 16px var(--margin-mobile) 24px;
+        }
+
+        .navbar-drawer-link {
+          padding: 12px 8px;
+          border-bottom: 1px solid var(--color-outline-variant);
+          font-size: 0.875rem;
+          font-weight: 600;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: var(--color-on-surface-variant);
+        }
+
+        .navbar-drawer-cta {
+          margin-top: 16px;
+          padding: 14px 24px;
+          border-radius: 9999px;
+          background: var(--color-secondary);
+          font-size: 0.8125rem;
+          font-weight: 600;
+          letter-spacing: 0.06em;
+          text-align: center;
+          text-transform: uppercase;
+          color: #fff;
+        }
+
         @media (max-width: 900px) {
+          .navbar-brand-logo {
+            height: 30px;
+            max-width: min(220px, 56vw);
+          }
+
           .desktop-nav { display: none !important; }
-          .cta-btn     { display: none !important; }
+          .navbar-cta { display: none !important; }
           .mobile-burger { display: flex !important; }
         }
       `}</style>

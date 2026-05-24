@@ -170,14 +170,15 @@ a {
   color: var(--color-on-surface-variant);
 }
 
-.prose blockquote {
+.prose blockquote,
+.blockquote-accent {
   border-left: 3px solid var(--color-secondary);
   padding-left: 1.5rem;
-  margin: 2rem 0;
   font-style: italic;
   font-family: var(--font-display);
   font-size: 1.2rem;
   color: var(--color-secondary);
+  line-height: 1.7;
 }
 
 .prose strong {

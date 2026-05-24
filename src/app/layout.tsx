@@ -21,6 +21,11 @@ export const metadata: Metadata = {
     'terapia para mulheres',
   ],
   authors: [{ name: 'Gabriela Nunes' }],
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/icon.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
