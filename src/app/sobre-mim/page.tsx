@@ -1,36 +1,36 @@
-import type { Metadata } from 'next'
-import Image from 'next/image'
-import { Reveal } from '@/components/ui/Reveal'
-import { aboutContent } from '@/content/sections'
-import { buildBreadcrumbSchema, buildCanonicalUrl, buildServiceMetadata } from '@/lib/seo'
+import type { Metadata } from "next";
+import Image from "next/image";
+import { Reveal } from "@/components/ui/Reveal";
+import { aboutContent } from "@/content/sections";
+import { buildBreadcrumbSchema, buildCanonicalUrl, buildServiceMetadata } from "@/lib/seo";
 
-const route = '/sobre-mim/'
+const route = "/sobre-mim/";
 
 export const metadata: Metadata = buildServiceMetadata({
-  title: 'Sobre Mim | Gabriela Nunes',
+  title: "Sobre Mim | Gabriela Nunes",
   description:
-    'Conheça a trajetória de Gabriela Nunes, psicóloga clínica com abordagem psicanalítica e atuação em sofrimento emocional, corpo e alimentação.',
+    "Conheça a trajetória de Gabriela Nunes, psicóloga clínica com abordagem psicanalítica e atuação em sofrimento emocional, corpo e alimentação.",
   pathname: route,
-  image: '/images/services/bariatrica/hero.jpg',
-})
+  image: "/images/services/bariatrica/hero.jpg",
+});
 
 export default function SobreMimPage() {
-  const canonical = buildCanonicalUrl(route)
+  const canonical = buildCanonicalUrl(route);
 
   const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: 'Home', url: buildCanonicalUrl('/') },
-    { name: 'Sobre Mim', url: canonical },
-  ])
+    { name: "Home", url: buildCanonicalUrl("/") },
+    { name: "Sobre Mim", url: canonical },
+  ]);
 
   const personSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Gabriela Nunes',
-    jobTitle: 'Psicóloga Clínica',
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Gabriela Nunes",
+    jobTitle: "Psicóloga Clínica",
     description:
-      'Psicóloga clínica com abordagem psicanalítica, com foco em sofrimento emocional, autoimagem, autoestima e relação com corpo e alimentação.',
+      "Psicóloga clínica com abordagem psicanalítica, com foco em sofrimento emocional, autoimagem, autoestima e relação com corpo e alimentação.",
     url: canonical,
-  }
+  };
 
   return (
     <>
@@ -48,7 +48,9 @@ export default function SobreMimPage() {
           <Reveal>
             <p className="about-page-kicker">Gabriela Nunes</p>
             <h1 className="about-page-title">Sobre mim</h1>
-            <p className="about-page-lead">Psicóloga clínica com escuta psicanalítica e cuidado sensível ao seu tempo.</p>
+            <p className="about-page-lead">
+              Psicóloga clínica com escuta psicanalítica e cuidado sensível ao seu tempo.
+            </p>
           </Reveal>
 
           <Reveal delay={1}>
@@ -157,5 +159,5 @@ export default function SobreMimPage() {
         }
       `}</style>
     </>
-  )
+  );
 }

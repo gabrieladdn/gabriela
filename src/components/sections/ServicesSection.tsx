@@ -1,8 +1,8 @@
- 'use client'
+"use client";
 
-import Link from 'next/link'
-import { Reveal } from '@/components/ui/Reveal'
-import { services } from '@/content/sections'
+import Link from "next/link";
+import { Reveal } from "@/components/ui/Reveal";
+import { services } from "@/content/sections";
 
 export function ServicesSection() {
   return (
@@ -10,9 +10,7 @@ export function ServicesSection() {
       <div className="container">
         <div className="services-header">
           <Reveal className="services-header-copy">
-            <h2 className="services-title">
-              Áreas de escuta e cuidado
-            </h2>
+            <h2 className="services-title">Áreas de escuta e cuidado</h2>
             <p className="services-description">
               Um espaço seguro para nomear o que dói e encontrar novos caminhos para o bem-estar.
             </p>
@@ -23,18 +21,12 @@ export function ServicesSection() {
           {services.map(({ icon, title, description, offset, route }, i) => (
             <Reveal
               key={title}
-              delay={((i % 5) as 0 | 1 | 2 | 3 | 4)}
-              className={`services-card${offset ? ' services-card-offset' : ''}`}
+              delay={(i % 5) as 0 | 1 | 2 | 3 | 4}
+              className={`services-card${offset ? " services-card-offset" : ""}`}
             >
-              <div className="services-icon">
-                {icon}
-              </div>
-              <h3 className="services-card-title">
-                {title}
-              </h3>
-              <p className="services-card-description">
-                {description}
-              </p>
+              <div className="services-icon">{icon}</div>
+              <h3 className="services-card-title">{title}</h3>
+              <p className="services-card-description">{description}</p>
 
               <Link href={route} className="services-card-link">
                 Saiba mais
@@ -154,5 +146,5 @@ export function ServicesSection() {
         }
       `}</style>
     </section>
-  )
+  );
 }

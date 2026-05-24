@@ -1,14 +1,14 @@
- 'use client'
+"use client";
 
-import { Reveal } from '@/components/ui/Reveal'
-import { fallbackTestimonials } from '@/content/sections'
+import { Reveal } from "@/components/ui/Reveal";
+import { fallbackTestimonials } from "@/content/sections";
 interface Testimonial {
-  quote: string
-  author: string
+  quote: string;
+  author: string;
 }
 
 interface Props {
-  testimonials?: Testimonial[]
+  testimonials?: Testimonial[];
 }
 
 export function TestimonialsSection({ testimonials = fallbackTestimonials }: Props) {
@@ -16,31 +16,21 @@ export function TestimonialsSection({ testimonials = fallbackTestimonials }: Pro
     <section className="testimonials-section">
       <div className="container">
         <Reveal className="testimonials-header">
-          <h2 className="testimonials-title">
-            O que dizem as pacientes
-          </h2>
+          <h2 className="testimonials-title">O que dizem as pacientes</h2>
         </Reveal>
 
         <div className="testimonials-grid">
           {testimonials.map(({ quote, author }, i) => (
-            <Reveal
-              key={i}
-              delay={((i + 1) as 1 | 2 | 3)}
-              className="testimonials-card"
-            >
+            <Reveal key={i} delay={(i + 1) as 1 | 2 | 3} className="testimonials-card">
               <span aria-hidden className="testimonials-quote-mark">
-                "
+                &ldquo;
               </span>
 
-              <p className="testimonials-quote">
-                {quote}
-              </p>
+              <p className="testimonials-quote">{quote}</p>
 
               <div className="testimonials-author-row">
                 <div className="testimonials-avatar" />
-                <span className="testimonials-author">
-                  {author}
-                </span>
+                <span className="testimonials-author">{author}</span>
               </div>
             </Reveal>
           ))}
@@ -128,5 +118,5 @@ export function TestimonialsSection({ testimonials = fallbackTestimonials }: Pro
         }
       `}</style>
     </section>
-  )
+  );
 }

@@ -1,11 +1,11 @@
- 'use client'
+"use client";
 
-import Link from 'next/link'
-import { Reveal } from '@/components/ui/Reveal'
-import { aboutContent } from '@/content/sections'
+import Link from "next/link";
+import { Reveal } from "@/components/ui/Reveal";
+import { aboutContent } from "@/content/sections";
 
 export function AboutSection() {
-  const aboutSummary = aboutContent.slice(0, 2)
+  const aboutSummary = aboutContent.slice(0, 2);
 
   return (
     <section id="sobre" className="about-section">
@@ -197,5 +197,5 @@ export function AboutSection() {
         }
       `}</style>
     </section>
-  )
+  );
 }

@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.mjs,.cjs",
+    "lint:fix": "pnpm run lint --fix",
+    "format": "prettier . --check",
+    "format:fix": "prettier . --write",
+    "fix": "(pnpm run lint:fix || true) && pnpm run format:fix"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -20,8 +24,10 @@
     "@types/node": "^25.9.1",
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
-    "eslint": "^10.4.0",
+    "eslint": "^9.39.1",
     "eslint-config-next": "16.2.6",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.6.2",
     "typescript": "^6.0.3"
   },
   "engines": {

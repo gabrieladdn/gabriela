@@ -1,12 +1,10 @@
-import type { NextConfig } from 'next'
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: '**' },
-    ],
+    remotePatterns: [{ protocol: "https", hostname: "**" }],
   },
-  pageExtensions: ['ts', 'tsx', 'mdx'],
-}
+  pageExtensions: ["ts", "tsx", "mdx"],
+};
 
-export default nextConfig
+export default nextConfig;

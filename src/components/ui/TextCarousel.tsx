@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 export interface TextCarouselProps {
-  items: string[]
+  items: string[];
   // If `interval` is provided, it's used as a fixed duration (ms) per slide.
   // If omitted, duration is computed proportionally to the text length.
-  interval?: number
-  autoplay?: boolean
-  showDots?: boolean
-  showControls?: boolean
-  className?: string
+  interval?: number;
+  autoplay?: boolean;
+  showDots?: boolean;
+  showControls?: boolean;
+  className?: string;
 }
 
 export default function TextCarousel({
@@ -19,111 +19,120 @@ export default function TextCarousel({
   autoplay = true,
   showDots = true,
   showControls = true,
-  className = '',
+  className = "",
 }: TextCarouselProps) {
-  const [index, setIndex] = useState(0)
-  const [textHeight, setTextHeight] = useState<number | null>(null)
-  const measureRefs = useRef<(HTMLParagraphElement | null)[]>([])
-  const viewportRef = useRef<HTMLDivElement | null>(null)
+  const [index, setIndex] = useState(0);
+  const [textHeight, setTextHeight] = useState<number | null>(null);
+  const measureRefs = useRef<(HTMLParagraphElement | null)[]>([]);
+  const viewportRef = useRef<HTMLDivElement | null>(null);
 
-  const formatItem = (item: string) => `${item}.`
+  const formatItem = (item: string) => `${item}.`;
 
   useLayoutEffect(() => {
     const updateHeight = () => {
       const heights = measureRefs.current
         .map((element) => element?.offsetHeight ?? 0)
-        .filter((height) => height > 0)
+        .filter((height) => height > 0);
 
-      if (!heights.length) return
+      if (!heights.length) return;
 
-      setTextHeight(Math.max(...heights))
-    }
+      setTextHeight(Math.max(...heights));
+    };
 
-    updateHeight()
+    updateHeight();
 
-    if (!viewportRef.current || typeof ResizeObserver === 'undefined') return
+    if (!viewportRef.current || typeof ResizeObserver === "undefined") return;
 
     const observer = new ResizeObserver(() => {
-      updateHeight()
-    })
+      updateHeight();
+    });
 
-    observer.observe(viewportRef.current)
+    observer.observe(viewportRef.current);
 
-    return () => observer.disconnect()
-  }, [items])
+    return () => observer.disconnect();
+  }, [items]);
 
   // Compute slide duration. If `interval` prop is provided, use it as a fixed
   // duration (milliseconds). Otherwise compute proportional time based on
   // text length (words * msPerWord) clamped between min and max.
   useEffect(() => {
-    if (!autoplay || items.length <= 1) return
+    if (!autoplay || items.length <= 1) return;
 
-    const computeDuration = (text = '') => {
-      const words = String(text).trim().split(/\s+/).filter(Boolean).length
-      const msPerWord = 400 // average milliseconds per word
-      const minMs = 1500
-      const maxMs = 10000
-      const ms = Math.round(words * msPerWord)
-      return Math.min(maxMs, Math.max(minMs, ms || minMs)) + 1000
-    }
+    const computeDuration = (text = "") => {
+      const words = String(text).trim().split(/\s+/).filter(Boolean).length;
+      const msPerWord = 400; // average milliseconds per word
+      const minMs = 1500;
+      const maxMs = 10000;
+      const ms = Math.round(words * msPerWord);
+      return Math.min(maxMs, Math.max(minMs, ms || minMs)) + 1000;
+    };
 
     const getDuration = () => {
-      if (typeof interval === 'number') return interval
-      return computeDuration(items[index] ?? '')
-    }
+      if (typeof interval === "number") return interval;
+      return computeDuration(items[index] ?? "");
+    };
 
     const id = setTimeout(() => {
-      setIndex((i) => (i + 1) % items.length)
-    }, getDuration())
+      setIndex((i) => (i + 1) % items.length);
+    }, getDuration());
 
-    return () => clearTimeout(id)
-  }, [autoplay, interval, items, index])
+    return () => clearTimeout(id);
+  }, [autoplay, interval, items, index]);
 
-  const prev = () => setIndex((i) => (i - 1 + items.length) % items.length)
-  const next = () => setIndex((i) => (i + 1) % items.length)
+  const prev = () => setIndex((i) => (i - 1 + items.length) % items.length);
+  const next = () => setIndex((i) => (i + 1) % items.length);
 
   return (
     <div className={`text-carousel ${className}`}>
-     <div className="carousel-viewport" ref={viewportRef} style={textHeight ? { height: `${textHeight}px` } : undefined}>
-       <p className="carousel-text">{formatItem(items[index] ?? '')}</p>
+      <div
+        className="carousel-viewport"
+        ref={viewportRef}
+        style={textHeight ? { height: `${textHeight}px` } : undefined}
+      >
+        <p className="carousel-text">{formatItem(items[index] ?? "")}</p>
 
-
-       <div className="carousel-measurement" aria-hidden="true">
-         {items.map((item, i) => (
-           <p
-             key={`${item}-${i}`}
-             ref={(element) => {
-               measureRefs.current[i] = element
-             }}
-             className="carousel-text"
-           >
-             {formatItem(item)}
-           </p>
-         ))}
-       </div>
-     </div>
-
-             {showDots && (
-        <div className="carousel-dots">
-            {items.map((_, i) => (
-            <button
-                key={i}
-                className={`dot-btn ${i === index ? 'active' : ''}`}
-                onClick={() => setIndex(i)}
-                aria-label={`Ir para ${i + 1}`}
-            />
-            ))}
+        <div className="carousel-measurement" aria-hidden="true">
+          {items.map((item, i) => (
+            <p
+              key={`${item}-${i}`}
+              ref={(element) => {
+                measureRefs.current[i] = element;
+              }}
+              className="carousel-text"
+            >
+              {formatItem(item)}
+            </p>
+          ))}
         </div>
-        )}
-        {showControls && (
-            <div className="carousel-controls">
-            <button className="carousel-btn prev" onClick={prev} aria-label="Anterior">‹</button>
-            <span className="carousel-index">{index + 1}/{items.length}</span>
-            <button className="carousel-btn next" onClick={next} aria-label="Próximo">›</button>
-            </div>
-        )}
+      </div>
 
-    <style>{`
+      {showDots && (
+        <div className="carousel-dots">
+          {items.map((_, i) => (
+            <button
+              key={i}
+              className={`dot-btn ${i === index ? "active" : ""}`}
+              onClick={() => setIndex(i)}
+              aria-label={`Ir para ${i + 1}`}
+            />
+          ))}
+        </div>
+      )}
+      {showControls && (
+        <div className="carousel-controls">
+          <button className="carousel-btn prev" onClick={prev} aria-label="Anterior">
+            ‹
+          </button>
+          <span className="carousel-index">
+            {index + 1}/{items.length}
+          </span>
+          <button className="carousel-btn next" onClick={next} aria-label="Próximo">
+            ›
+          </button>
+        </div>
+      )}
+
+      <style>{`
         .carousel {
           display: flex;
           align-items: center;
@@ -228,6 +237,5 @@ export default function TextCarousel({
         }    
     `}</style>
     </div>
-
-  )
+  );
 }

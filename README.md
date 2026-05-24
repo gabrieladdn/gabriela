@@ -6,14 +6,14 @@ Site profissional de psicoterapia construído com **Next.js 15** e **MDX local**
 
 ## Stack
 
-| Camada | Tecnologia |
-|---|---|
-| Framework | Next.js 15 (App Router) |
-| Conteúdo | MDX local (`content/posts`) |
-| Editor de rich text | MDX |
-| Estilização | CSS Variables + inline styles |
-| Fontes | Playfair Display + Manrope (Google Fonts) |
-| Deploy | Vercel |
+| Camada              | Tecnologia                                |
+| ------------------- | ----------------------------------------- |
+| Framework           | Next.js 15 (App Router)                   |
+| Conteúdo            | MDX local (`content/posts`)               |
+| Editor de rich text | MDX                                       |
+| Estilização         | CSS Variables + inline styles             |
+| Fontes              | Playfair Display + Manrope (Google Fonts) |
+| Deploy              | Vercel                                    |
 
 ---
 
@@ -116,14 +116,14 @@ O frontend lê os arquivos em `content/posts` usando `src/lib/posts.ts` e render
 
 Todas as cores, tipografia e espaçamentos estão como CSS variables em `src/styles/globals.css`.
 
-| Token | Valor |
-|---|---|
-| `--color-secondary` | `#8f4b42` (terracota — CTA, ênfase) |
-| `--color-background` | `#fff8f4` (fundo principal) |
-| `--font-display` | Playfair Display (títulos) |
-| `--font-body` | Manrope (corpo) |
-| `--section-gap-desktop` | `120px` |
-| `--container-max` | `1200px` |
+| Token                   | Valor                               |
+| ----------------------- | ----------------------------------- |
+| `--color-secondary`     | `#8f4b42` (terracota — CTA, ênfase) |
+| `--color-background`    | `#fff8f4` (fundo principal)         |
+| `--font-display`        | Playfair Display (títulos)          |
+| `--font-body`           | Manrope (corpo)                     |
+| `--section-gap-desktop` | `120px`                             |
+| `--container-max`       | `1200px`                            |
 
 ---
 

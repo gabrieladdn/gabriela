@@ -1,28 +1,28 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import Image from 'next/image'
+import Link from "next/link";
+import Image from "next/image";
 
 interface BlogCardProps {
-  slug: string
-  title: string
-  excerpt: string
-  category: string
-  publishedAt?: string
-  readingTime?: number
-  coverImageUrl?: string
-  coverImageAlt?: string
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  publishedAt?: string;
+  readingTime?: number;
+  coverImageUrl?: string;
+  coverImageAlt?: string;
 }
 
 const categoryLabels: Record<string, string> = {
-  ansiedade:              'Ansiedade',
-  autoestima:             'Autoestima',
-  relacionamentos:        'Relacionamentos',
-  psicanalise:            'Psicanálise',
-  autoconhecimento:       'Autoconhecimento',
-  'corpo-e-alimentacao':  'Corpo e Alimentação',
-  'saude-mental':         'Saúde Mental',
-}
+  ansiedade: "Ansiedade",
+  autoestima: "Autoestima",
+  relacionamentos: "Relacionamentos",
+  psicanalise: "Psicanálise",
+  autoconhecimento: "Autoconhecimento",
+  "corpo-e-alimentacao": "Corpo e Alimentação",
+  "saude-mental": "Saúde Mental",
+};
 
 export function BlogCard({
   slug,
@@ -35,18 +35,15 @@ export function BlogCard({
   coverImageAlt,
 }: BlogCardProps) {
   const formattedDate = publishedAt
-    ? new Date(publishedAt).toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: 'long',
-        year: 'numeric',
+    ? new Date(publishedAt).toLocaleDateString("pt-BR", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
       })
-    : null
+    : null;
 
   return (
-    <Link
-      href={`/blog/${slug}`}
-      className="blog-card"
-    >
+    <Link href={`/blog/${slug}`} className="blog-card">
       <div className="blog-card-cover">
         {coverImageUrl ? (
           <Image
@@ -59,18 +56,12 @@ export function BlogCard({
         ) : (
           <div className="blog-card-cover-placeholder" />
         )}
-        <span className="blog-card-category">
-          {categoryLabels[category] || category}
-        </span>
+        <span className="blog-card-category">{categoryLabels[category] || category}</span>
       </div>
 
       <div className="blog-card-content">
-        <h3 className="blog-card-title">
-          {title}
-        </h3>
-        <p className="blog-card-excerpt">
-          {excerpt}
-        </p>
+        <h3 className="blog-card-title">{title}</h3>
+        <p className="blog-card-excerpt">{excerpt}</p>
 
         <div className="blog-card-meta">
           {formattedDate && <span>{formattedDate}</span>}
@@ -172,5 +163,5 @@ export function BlogCard({
         }
       `}</style>
     </Link>
-  )
+  );
 }

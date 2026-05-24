@@ -1,13 +1,12 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { Reveal } from '@/components/ui/Reveal'
-import { WHATSAPP_URL } from '@/lib/whatsapp'
-import type { ServicePageContent } from '@/content/services'
+import Image from "next/image";
+import Link from "next/link";
+import { Reveal } from "@/components/ui/Reveal";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
+import type { ServicePageContent } from "@/content/services";
 
 interface ServicePageTemplateProps {
-  content: ServicePageContent
+  content: ServicePageContent;
 }
-
 
 export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
   return (
@@ -18,7 +17,12 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
             <p className="service-kicker">Corpo, Alimentação e Imagem Corporal</p>
             <h1 className="service-title">{content.title}</h1>
             <p className="service-lead">{content.heroHighlight}</p>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="service-button">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="service-button"
+            >
               {content.heroCtaLabel}
             </a>
           </Reveal>
@@ -47,7 +51,11 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
 
           <div className="service-benefits-grid">
             {content.benefits.map((item, index) => (
-              <Reveal key={item.title} delay={(index % 3) as 0 | 1 | 2} className="service-benefit-card">
+              <Reveal
+                key={item.title}
+                delay={(index % 3) as 0 | 1 | 2}
+                className="service-benefit-card"
+              >
                 <h3 className="service-benefit-title">{item.title}</h3>
                 <p className="service-benefit-description">{item.description}</p>
               </Reveal>
@@ -70,7 +78,10 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
           <Reveal delay={1}>
             <div className="service-importance-images">
               {content.importanceImages.map((image, index) => (
-                <div key={image.src} className={index === 0 ? 'service-image-square' : 'service-image-portrait'}>
+                <div
+                  key={image.src}
+                  className={index === 0 ? "service-image-square" : "service-image-portrait"}
+                >
                   <Image
                     src={image.src}
                     alt={image.alt}
@@ -94,7 +105,12 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="service-inline-link">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="service-inline-link"
+            >
               {content.processCtaLabel}
             </a>
           </Reveal>
@@ -117,13 +133,19 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
         <div className="container service-bottom-cta-content">
           <Reveal>
             <p className="service-bottom-cta-text">{content.footerCtaText}</p>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="service-button service-button-inverse">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="service-button service-button-inverse"
+            >
               {content.footerCtaLabel}
             </a>
           </Reveal>
           <Reveal delay={1}>
             <p className="service-internal-links">
-              Explore também <Link href="/">a página inicial</Link> e <Link href="/blog">os artigos</Link>.
+              Explore também <Link href="/">a página inicial</Link> e{" "}
+              <Link href="/blog">os artigos</Link>.
             </p>
           </Reveal>
         </div>
@@ -409,5 +431,5 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
         }
       `}</style>
     </>
-  )
+  );
 }

@@ -1,18 +1,13 @@
-'use client'
+"use client";
 
 interface Props {
-  href: string
-  children: React.ReactNode
+  href: string;
+  children: React.ReactNode;
 }
 
 export function HoverLink({ href, children }: Props) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="hover-link"
-    >
+    <a href={href} target="_blank" rel="noopener noreferrer" className="hover-link">
       {children}
 
       <style>{`
@@ -37,5 +32,5 @@ export function HoverLink({ href, children }: Props) {
         }
       `}</style>
     </a>
-  )
+  );
 }

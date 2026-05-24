@@ -1,36 +1,24 @@
- 'use client'
+"use client";
 
-import { Reveal } from '@/components/ui/Reveal'
-import { howSteps } from '@/content/sections'
+import { Reveal } from "@/components/ui/Reveal";
+import { howSteps } from "@/content/sections";
 
 export function HowItWorksSection() {
   return (
     <section id="atendimento" className="how-section">
       <div className="container">
         <Reveal className="how-header">
-          <h2 className="how-title">
-            Como funciona o atendimento online?
-          </h2>
+          <h2 className="how-title">Como funciona o atendimento online?</h2>
         </Reveal>
 
         <div className="how-grid">
           {howSteps.map(({ icon, title, description }, i) => (
-            <Reveal
-              key={title}
-              delay={((i + 1) as 1 | 2 | 3)}
-              className="how-step"
-            >
-              <div className="how-step-icon">
-                {icon}
-              </div>
+            <Reveal key={title} delay={(i + 1) as 1 | 2 | 3} className="how-step">
+              <div className="how-step-icon">{icon}</div>
 
               <div>
-                <h3 className="how-step-title">
-                  {title}
-                </h3>
-                <p className="how-step-description">
-                  {description}
-                </p>
+                <h3 className="how-step-title">{title}</h3>
+                <p className="how-step-description">{description}</p>
               </div>
             </Reveal>
           ))}
@@ -102,5 +90,5 @@ export function HowItWorksSection() {
         }
       `}</style>
     </section>
-  )
+  );
 }

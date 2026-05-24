@@ -1,5 +1,5 @@
-import { Reveal } from '@/components/ui/Reveal'
-import { psychoText, psychoBullets } from '@/content/sections'
+import { Reveal } from "@/components/ui/Reveal";
+import { psychoText, psychoBullets } from "@/content/sections";
 
 export function PsychoanalysisSection() {
   return (
@@ -167,5 +167,5 @@ export function PsychoanalysisSection() {
         }
       `}</style>
     </section>
-  )
+  );
 }

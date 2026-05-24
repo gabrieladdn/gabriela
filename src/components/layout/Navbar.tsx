@@ -1,104 +1,127 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { WHATSAPP_URL } from '@/lib/whatsapp'
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
 
 const navLinks = [
-  { href: '/#home',        label: 'Home',               section: 'home' },
-  { href: '/#sobre',       label: 'Sobre Mim',          section: 'sobre' },
-  { href: '/#psicanalise', label: 'Psicanálise',        section: 'psicanalise' },
-  { href: '/#atendimento', label: 'Atendimento Online', section: 'atendimento' },
-  { href: '/blog',         label: 'Artigos',            section: null },
-]
+  { href: "/#home", label: "Home", section: "home" },
+  { href: "/#sobre", label: "Sobre Mim", section: "sobre" },
+  { href: "/#psicanalise", label: "Psicanálise", section: "psicanalise" },
+  { href: "/#atendimento", label: "Atendimento Online", section: "atendimento" },
+  { href: "/blog", label: "Artigos", section: null },
+];
 
 export function Navbar() {
-  const pathname = usePathname()
-  const [scrolled, setScrolled]       = useState(false)
-  const [mobileOpen, setMobileOpen]   = useState(false)
-  const [activeSection, setActiveSection] = useState('')
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   // Scroll shadow
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Active section via IntersectionObserver — only on home
   useEffect(() => {
-    if (pathname !== '/') return
-    const sections = document.querySelectorAll('section[id]')
+    if (pathname !== "/") return;
+    const sections = document.querySelectorAll("section[id]");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id)
-        })
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
       },
-      { rootMargin: '-30% 0px -60% 0px' }
-    )
-    sections.forEach((s) => observer.observe(s))
-    return () => observer.disconnect()
-  }, [pathname])
+      { rootMargin: "-30% 0px -60% 0px" }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, [pathname]);
 
-  const isLinkActive = (link: typeof navLinks[0]) => {
-    if (link.section === 'sobre') return pathname === '/sobre-mim' || (pathname === '/' && activeSection === 'sobre')
-    if (link.href === '/blog') return pathname.startsWith('/blog')
-    return pathname === '/' && activeSection === link.section
-  }
+  const isLinkActive = (link: (typeof navLinks)[0]) => {
+    if (link.section === "sobre")
+      return pathname === "/sobre-mim" || (pathname === "/" && activeSection === "sobre");
+    if (link.href === "/blog") return pathname.startsWith("/blog");
+    return pathname === "/" && activeSection === link.section;
+  };
 
-  const getHref = (link: typeof navLinks[0]) => {
-    if (link.section === 'sobre') {
-      return pathname === '/' ? '/#sobre' : '/sobre-mim/'
+  const getHref = (link: (typeof navLinks)[0]) => {
+    if (link.section === "sobre") {
+      return pathname === "/" ? "/#sobre" : "/sobre-mim/";
     }
 
-    return link.href
-  }
+    return link.href;
+  };
 
   return (
-    <header className={scrolled ? 'navbar-shell navbar-shell-scrolled' : 'navbar-shell'}>
+    <header className={scrolled ? "navbar-shell navbar-shell-scrolled" : "navbar-shell"}>
       <nav className="container navbar-inner">
         <Link href="/" className="navbar-brand" aria-label="Gabriela Nunes">
-          <img className="navbar-brand-logo" src="/logo.png" alt="Gabriela Nunes" />
+          <Image
+            className="navbar-brand-logo"
+            src="/logo.png"
+            alt="Gabriela Nunes"
+            width={280}
+            height={38}
+            priority
+            sizes="(max-width: 768px) 52vw, 280px"
+          />
         </Link>
 
         <div className="desktop-nav">
           {navLinks.map((link) => {
-            const active = isLinkActive(link)
+            const active = isLinkActive(link);
             return (
               <Link
                 key={link.href}
                 href={getHref(link)}
-                className={active ? 'navbar-link navbar-link-active' : 'navbar-link'}
+                className={active ? "navbar-link navbar-link-active" : "navbar-link"}
               >
                 {link.label}
               </Link>
-            )
+            );
           })}
         </div>
 
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="navbar-cta"
-        >
+        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="navbar-cta">
           Agendar Consulta
         </a>
 
         <button
           className="mobile-burger"
           onClick={() => setMobileOpen((o) => !o)}
-          aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
+          aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
         >
-          <span className={mobileOpen ? 'burger-line burger-line-top burger-line-top-open' : 'burger-line burger-line-top'} />
-          <span className={mobileOpen ? 'burger-line burger-line-middle burger-line-middle-open' : 'burger-line burger-line-middle'} />
-          <span className={mobileOpen ? 'burger-line burger-line-bottom burger-line-bottom-open' : 'burger-line burger-line-bottom'} />
+          <span
+            className={
+              mobileOpen
+                ? "burger-line burger-line-top burger-line-top-open"
+                : "burger-line burger-line-top"
+            }
+          />
+          <span
+            className={
+              mobileOpen
+                ? "burger-line burger-line-middle burger-line-middle-open"
+                : "burger-line burger-line-middle"
+            }
+          />
+          <span
+            className={
+              mobileOpen
+                ? "burger-line burger-line-bottom burger-line-bottom-open"
+                : "burger-line burger-line-bottom"
+            }
+          />
         </button>
       </nav>
 
-      <div className={mobileOpen ? 'navbar-drawer navbar-drawer-open' : 'navbar-drawer'}>
+      <div className={mobileOpen ? "navbar-drawer navbar-drawer-open" : "navbar-drawer"}>
         <div className="navbar-drawer-inner">
           {navLinks.map((link) => (
             <Link
@@ -151,9 +174,8 @@ export function Navbar() {
 
         .navbar-brand-logo {
           display: block;
+          height: 60px;
           width: auto;
-          height: 38px;
-          max-width: min(280px, 52vw);
           object-fit: contain;
         }
 
@@ -281,7 +303,7 @@ export function Navbar() {
         @media (max-width: 900px) {
           .navbar-brand-logo {
             height: 30px;
-            max-width: min(220px, 56vw);
+            width: auto;
           }
 
           .desktop-nav { display: none !important; }
@@ -290,5 +312,5 @@ export function Navbar() {
         }
       `}</style>
     </header>
-  )
+  );
 }

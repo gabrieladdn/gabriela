@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { WHATSAPP_URL } from '@/lib/whatsapp'
+import Link from "next/link";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
 
 const footerLinks = [
-  { href: '/#home',       label: 'Home' },
-  { href: '/#sobre',      label: 'Sobre Mim' },
-  { href: '/#psicanalise', label: 'Psicanálise' },
-  { href: '/#atendimento', label: 'Atendimento Online' },
-  { href: '/blog',        label: 'Artigos' },
-  { href: '/#contato',    label: 'Contato' },
-]
+  { href: "/#home", label: "Home" },
+  { href: "/#sobre", label: "Sobre Mim" },
+  { href: "/#psicanalise", label: "Psicanálise" },
+  { href: "/#atendimento", label: "Atendimento Online" },
+  { href: "/blog", label: "Artigos" },
+  { href: "/#contato", label: "Contato" },
+];
 
 export function Footer() {
   return (
@@ -18,12 +18,8 @@ export function Footer() {
       <div className="container">
         <div className="footer-content">
           <div className="footer-brand">
-            <p className="footer-brand-name">
-              Gabriela Nunes
-            </p>
-            <p className="footer-brand-role">
-              Psicóloga Clínica
-            </p>
+            <p className="footer-brand-name">Gabriela Nunes</p>
+            <p className="footer-brand-role">Psicóloga Clínica</p>
           </div>
 
           <div className="footer-nav-links">
@@ -36,9 +32,9 @@ export function Footer() {
 
           <div className="footer-socials">
             {[
-              { label: 'Instagram', icon: 'IG', href: 'https://instagram.com/gabriela.psic' },
-              { label: 'E-mail',    icon: '✉',  href: 'mailto:contato@gabrielanunes.com.br' },
-              { label: 'WhatsApp',  icon: 'WA', href: WHATSAPP_URL },
+              { label: "Instagram", icon: "IG", href: "https://instagram.com/gabriela.psic" },
+              { label: "E-mail", icon: "✉", href: "mailto:contato@gabrielanunes.com.br" },
+              { label: "WhatsApp", icon: "WA", href: WHATSAPP_URL },
             ].map(({ label, icon, href }) => (
               <a
                 key={label}
@@ -54,9 +50,7 @@ export function Footer() {
           </div>
 
           <div className="footer-legal-shell">
-            <p className="footer-legal-copy">
-              Gabriela Nunes | Psicóloga Clínica | CRP 06/XXXXX
-            </p>
+            <p className="footer-legal-copy">Gabriela Nunes | Psicóloga Clínica | CRP 06/XXXXX</p>
             <div className="footer-legal-links">
               <Link href="/privacidade">Privacidade</Link>
               <span>•</span>
@@ -178,5 +172,5 @@ export function Footer() {
         }
       `}</style>
     </footer>
-  )
+  );
 }

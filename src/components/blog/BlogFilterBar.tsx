@@ -1,29 +1,29 @@
-'use client'
+"use client";
 
 interface Category {
-  value: string
-  label: string
+  value: string;
+  label: string;
 }
 
 interface Props {
-  categories: Category[]
-  active: string
+  categories: Category[];
+  active: string;
 }
 
 export function BlogFilterBar({ categories, active }: Props) {
   return (
     <div className="blog-filter-bar">
       {categories.map(({ value, label }) => {
-        const isActive = active === value
+        const isActive = active === value;
         return (
           <a
             key={value}
-            href={value ? `/blog?categoria=${value}` : '/blog'}
-            className={isActive ? 'blog-filter-pill blog-filter-pill-active' : 'blog-filter-pill'}
+            href={value ? `/blog?categoria=${value}` : "/blog"}
+            className={isActive ? "blog-filter-pill blog-filter-pill-active" : "blog-filter-pill"}
           >
             {label}
           </a>
-        )
+        );
       })}
       <style>{`
         .blog-filter-bar {
@@ -60,5 +60,5 @@ export function BlogFilterBar({ categories, active }: Props) {
         }
       `}</style>
     </div>
-  )
+  );
 }

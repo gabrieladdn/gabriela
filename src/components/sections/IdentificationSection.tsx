@@ -1,33 +1,39 @@
-import { identification } from '@/content/sections'
-import { Reveal } from '@/components/ui/Reveal'
-import TextCarousel from '@/components/ui/TextCarousel'
+import { identification } from "@/content/sections";
+import { Reveal } from "@/components/ui/Reveal";
+import TextCarousel from "@/components/ui/TextCarousel";
 
 export function IdentificationSection() {
   return (
     <section className="identification-section">
       <div className="container">
-            <Reveal className="identification-header">
-              <h2 className="identification-title">Talvez, por fora, pareça que está tudo bem.</h2>
-            </Reveal>
+        <Reveal className="identification-header">
+          <h2 className="identification-title">Talvez, por fora, pareça que está tudo bem.</h2>
+        </Reveal>
 
-            <div className="identification-content">
-              <Reveal className="identification-description">
-                <span className="identification-subtitle-text">Você estuda, trabalha, dá conta do que precisa, mas por dentro existe um cansaço constante. Uma voz que cobra, critica e nunca parece satisfeita(o).</span>
-              </Reveal>
+        <div className="identification-content">
+          <Reveal className="identification-description">
+            <span className="identification-subtitle-text">
+              Você estuda, trabalha, dá conta do que precisa, mas por dentro existe um cansaço
+              constante. Uma voz que cobra, critica e nunca parece satisfeita(o).
+            </span>
+          </Reveal>
 
-              <div className="identification-carousel">
-                <Reveal className="carousel-wrap">
-                  <p className="lead">E talvez você se reconheça em alguns desses sentimentos:</p>
+          <div className="identification-carousel">
+            <Reveal className="carousel-wrap">
+              <p className="lead">E talvez você se reconheça em alguns desses sentimentos:</p>
 
-                  <TextCarousel items={identification.listItems} className="site-text-carousel" />
+              <TextCarousel items={identification.listItems} className="site-text-carousel" />
 
-                  <div className="identification-conclusion">
-                    <p className="conclusion">Muitas vezes, sustentar esses sofrimentos sozinha(o) pode ser exaustivo. Quando a dor encontra um espaço de escuta, algo também pode começar a se transformar.</p>
-                  </div>
-                </Reveal>
+              <div className="identification-conclusion">
+                <p className="conclusion">
+                  Muitas vezes, sustentar esses sofrimentos sozinha(o) pode ser exaustivo. Quando a
+                  dor encontra um espaço de escuta, algo também pode começar a se transformar.
+                </p>
               </div>
-            </div>
+            </Reveal>
           </div>
+        </div>
+      </div>
 
       <style>{`
         .identification-section {
@@ -84,5 +90,5 @@ export function IdentificationSection() {
         }
       `}</style>
     </section>
-  )
+  );
 }

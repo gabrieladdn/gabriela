@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { Reveal } from '@/components/ui/Reveal'
-import { ctaText } from '@/content/sections'
-import { WHATSAPP_URL } from '@/lib/whatsapp'
+import { Reveal } from "@/components/ui/Reveal";
+import { ctaText } from "@/content/sections";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
 
 export function CTASection() {
   return (
@@ -113,5 +113,5 @@ export function CTASection() {
         }
       `}</style>
     </section>
-  )
+  );
 }
