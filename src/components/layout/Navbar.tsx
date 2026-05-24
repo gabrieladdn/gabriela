@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { WHATSAPP_URL } from '@/lib/whatsapp'
 
 const navLinks = [
   { href: '/#home',        label: 'Home',               section: 'home' },
@@ -42,8 +43,17 @@ export function Navbar() {
   }, [pathname])
 
   const isLinkActive = (link: typeof navLinks[0]) => {
+    if (link.section === 'sobre') return pathname === '/sobre-mim' || (pathname === '/' && activeSection === 'sobre')
     if (link.href === '/blog') return pathname.startsWith('/blog')
     return pathname === '/' && activeSection === link.section
+  }
+
+  const getHref = (link: typeof navLinks[0]) => {
+    if (link.section === 'sobre') {
+      return pathname === '/' ? '/#sobre' : '/sobre-mim/'
+    }
+
+    return link.href
   }
 
   return (
@@ -59,7 +69,7 @@ export function Navbar() {
             return (
               <Link
                 key={link.href}
-                href={link.href}
+                href={getHref(link)}
                 className={active ? 'navbar-link navbar-link-active' : 'navbar-link'}
               >
                 {link.label}
@@ -69,7 +79,7 @@ export function Navbar() {
         </div>
 
         <a
-          href="https://wa.me/5513982007343"
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="navbar-cta"
@@ -93,7 +103,7 @@ export function Navbar() {
           {navLinks.map((link) => (
             <Link
               key={link.href}
-              href={link.href}
+              href={getHref(link)}
               onClick={() => setMobileOpen(false)}
               className="navbar-drawer-link"
             >
@@ -101,7 +111,7 @@ export function Navbar() {
             </Link>
           ))}
           <a
-            href="https://wa.me/5513982007343"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMobileOpen(false)}

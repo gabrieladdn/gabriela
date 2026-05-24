@@ -1,21 +1,22 @@
  'use client'
 
-import { ReactNode } from 'react'
+import Link from 'next/link'
 import { Reveal } from '@/components/ui/Reveal'
 import { aboutContent } from '@/content/sections'
 
 export function AboutSection() {
+  const aboutSummary = aboutContent.slice(0, 2)
+
   return (
     <section id="sobre" className="about-section">
       <div className="container">
         <div className="about-grid">
           <div className="about-text">
             <Reveal delay={1}>
-              <h2 className="about-title">Sou Gabriela Nunes</h2>
+              <h2 className="about-title">Sobre mim</h2>
             </Reveal>
 
-            {/* Map over an array of content nodes sourced from central content */}
-            {aboutContent.map((content, i) => (
+            {aboutSummary.map((content, i) => (
               <Reveal key={i} delay={i + 2}>
                 {i === 0 ? (
                   <blockquote className="blockquote-accent">{content}</blockquote>
@@ -24,6 +25,12 @@ export function AboutSection() {
                 )}
               </Reveal>
             ))}
+
+            <Reveal delay={4}>
+              <Link href="/sobre-mim/" className="about-more-link">
+                Saiba mais
+              </Link>
+            </Reveal>
           </div>
 
           <Reveal className="about-visual">
@@ -73,6 +80,28 @@ export function AboutSection() {
         .about-paragraph-strong {
           font-size: 1.0625rem;
           color: var(--color-on-surface);
+        }
+
+        .about-more-link {
+          display: inline-flex;
+          align-items: center;
+          width: fit-content;
+          margin-top: 8px;
+          padding: 12px 22px;
+          border-radius: 9999px;
+          background: var(--color-secondary);
+          color: #fff;
+          font-size: 0.8125rem;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          box-shadow: 0 8px 28px rgba(143,75,66,0.2);
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .about-more-link:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 36px rgba(143,75,66,0.3);
         }
 
         .about-stats {

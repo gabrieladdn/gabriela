@@ -1,6 +1,7 @@
 'use client'
 
 import { Reveal } from '@/components/ui/Reveal'
+import { WHATSAPP_URL } from '@/lib/whatsapp'
 import { heroText } from '@/content/sections'
 
 export function HeroSection() {
@@ -32,7 +33,7 @@ export function HeroSection() {
 
             <Reveal delay={4}>
               <div className="hero-actions">
-                <a href="https://wa.me/5513982007343" target="_blank" rel="noopener noreferrer" className="hero-button hero-button-primary">
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hero-button hero-button-primary">
                   {heroText.actions[0]}
                 </a>
 

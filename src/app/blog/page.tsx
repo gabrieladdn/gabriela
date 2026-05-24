@@ -4,6 +4,7 @@ import { BlogCard } from '@/components/blog/BlogCard'
 import { BlogFilterBar } from '@/components/blog/BlogFilterBar'
 import { Reveal } from '@/components/ui/Reveal'
 import { HoverLink } from '@/components/ui/HoverLink'
+import { WHATSAPP_URL } from '@/lib/whatsapp'
 
 export const metadata: Metadata = {
   title: 'Artigos',
@@ -170,7 +171,7 @@ export default async function BlogPage({ searchParams }: Props) {
             >
               Identificou algo que ressoa com você?
             </p>
-            <HoverLink href="https://wa.me/5513982007343">
+            <HoverLink href={WHATSAPP_URL}>
               Agendar uma conversa
             </HoverLink>
           </Reveal>

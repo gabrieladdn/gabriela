@@ -77,7 +77,7 @@ export const services = [
     description:
       'Questões relacionadas à alimentação, autoimagem e à relação com o próprio corpo, incluindo compulsão alimentar, anorexia, bulimia, insatisfação corporal e acompanhamento psicológico no preparo e pós-cirurgia bariátrica.',
     offset: true,
-    route: '/servicos/corpo-alimentacao-e-imagem-corporal',
+    route: '/avaliacao-cirurgia-bariatrica/',
   },
 
 ]

@@ -2,6 +2,7 @@
 
 import { Reveal } from '@/components/ui/Reveal'
 import { ctaText } from '@/content/sections'
+import { WHATSAPP_URL } from '@/lib/whatsapp'
 
 export function CTASection() {
   return (
@@ -23,7 +24,7 @@ export function CTASection() {
         ))}
 
         <Reveal delay={3}>
-          <a href="https://wa.me/5513982007343" target="_blank" rel="noopener noreferrer" className="cta-button">
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="cta-button">
             {ctaText.button}
           </a>
         </Reveal>

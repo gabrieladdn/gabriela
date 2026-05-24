@@ -10,3 +10,4 @@
 - Keep generated artifacts ignored, including `.next/`, `node_modules/`, and local `.env` files.
 - Run `npm run lint` and `npm run build` after meaningful code changes.
 - Reuse the existing design tokens and SEO helpers before adding new ones.
+- Preserve Portuguese (pt-BR) orthography in user-facing text, including accents and cedilla (ã, á, â, é, ê, í, ó, ô, õ, ú, ç); do not normalize content copy to ASCII.

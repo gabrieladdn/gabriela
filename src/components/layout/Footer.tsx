@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { WHATSAPP_URL } from '@/lib/whatsapp'
 
 const footerLinks = [
   { href: '/#home',       label: 'Home' },
@@ -37,7 +38,7 @@ export function Footer() {
             {[
               { label: 'Instagram', icon: 'IG', href: 'https://instagram.com/gabriela.psic' },
               { label: 'E-mail',    icon: '✉',  href: 'mailto:contato@gabrielanunes.com.br' },
-              { label: 'WhatsApp',  icon: 'WA', href: 'https://wa.me/5513982007343' },
+              { label: 'WhatsApp',  icon: 'WA', href: WHATSAPP_URL },
             ].map(({ label, icon, href }) => (
               <a
                 key={label}

@@ -5,6 +5,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getAllPosts, getPostBySlug } from '@/lib/posts'
 import { Reveal } from '@/components/ui/Reveal'
 import { HoverLink } from '@/components/ui/HoverLink'
+import { WHATSAPP_URL } from '@/lib/whatsapp'
 
 const categoryLabels: Record<string, string> = {
   ansiedade: 'Ansiedade',
@@ -373,7 +374,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           >
             Esse texto tocou em algo?
           </p>
-          <HoverLink href="https://wa.me/5513982007343">Agendar uma conversa</HoverLink>
+            <HoverLink href={WHATSAPP_URL}>Agendar uma conversa</HoverLink>
         </div>
       </section>
     </>
