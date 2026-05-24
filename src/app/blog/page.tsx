@@ -1,42 +1,204 @@
-import Link from 'next/link'
-import React from 'react'
-import Card from '@/components/Card'
-import StructuredData from '@/components/StructuredData'
-import { blogPosts } from '@/lib/content'
-import { pageMetadata, schemaBreadcrumb } from '@/lib/seo'
+import type { Metadata } from 'next'
+import { BlogCard } from '@/components/blog/BlogCard'
+import { BlogFilterBar } from '@/components/blog/BlogFilterBar'
+import { Reveal } from '@/components/ui/Reveal'
+import { HoverLink } from '@/components/ui/HoverLink'
+import { getPayload } from 'payload'
+import config from '../../payload.config'
 
-export const metadata = pageMetadata({
-  title: 'Blog | Gabriela Nunes',
-  description: 'Artigos sobre compulsão alimentar, ansiedade, bariátrica, autoestima e saúde emocional.',
-  canonical: '/blog',
-})
+export const metadata: Metadata = {
+  title: 'Artigos',
+  description:
+    'Reflexões sobre saúde mental, psicanálise, ansiedade e autoconhecimento. Textos escritos por Gabriela Nunes, psicóloga clínica.',
+}
 
-export default function BlogPage() {
-  const featured = blogPosts[0]
+const categories = [
+  { value: '',                      label: 'Todos' },
+  { value: 'ansiedade',             label: 'Ansiedade' },
+  { value: 'autoestima',            label: 'Autoestima' },
+  { value: 'relacionamentos',       label: 'Relacionamentos' },
+  { value: 'psicanalise',           label: 'Psicanálise' },
+  { value: 'autoconhecimento',      label: 'Autoconhecimento' },
+  { value: 'corpo-e-alimentacao',   label: 'Corpo e Alimentação' },
+  { value: 'saude-mental',          label: 'Saúde Mental' },
+]
+
+interface Props {
+  searchParams: Promise<{ categoria?: string }>
+}
+
+export default async function BlogPage({ searchParams }: Props) {
+  const { categoria } = await searchParams
+  const active = categoria ?? ''
+
+  const payload = await getPayload({ config })
+  const { docs: posts } = await payload.find({
+    collection: 'posts',
+    where: {
+      status: { equals: 'published' },
+      ...(active ? { category: { equals: active } } : {}),
+    },
+    sort: '-publishedAt',
+  })
+
+  const filtered = posts
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-16 lg:py-24 space-y-10">
-      <StructuredData data={schemaBreadcrumb([{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }])} />
-      <section className="max-w-3xl space-y-4">
-        <p className="uppercase tracking-[0.24em] text-xs text-[color:var(--color-textSoft)]">Blog</p>
-        <h1 className="serif-heading text-4xl lg:text-5xl">Conteúdo pensado para SEO, IA e leitura humana.</h1>
-        <p className="text-lg">Layout simples, destaque do artigo principal e grade limpa.</p>
+    <>
+      {/* Hero */}
+      <section
+        style={{
+          paddingTop: 'clamp(64px, 10vh, 100px)',
+          paddingBottom: 'clamp(48px, 6vh, 80px)',
+          background: 'var(--color-background)',
+          borderBottom: '1px solid var(--color-outline-variant)',
+        }}
+      >
+        <div className="container">
+          <Reveal>
+            <p
+              style={{
+                fontSize: '0.8125rem',
+                fontWeight: 600,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: 'var(--color-secondary)',
+                marginBottom: '16px',
+              }}
+            >
+              Reflexões
+            </p>
+            <h1
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontWeight: 700,
+                color: 'var(--color-on-surface)',
+                letterSpacing: '-0.02em',
+                lineHeight: 1.2,
+                marginBottom: '20px',
+              }}
+            >
+              Artigos sobre saúde mental
+            </h1>
+            <p
+              style={{
+                fontSize: '1.0625rem',
+                color: 'var(--color-on-surface-variant)',
+                maxWidth: '520px',
+                lineHeight: 1.7,
+              }}
+            >
+              Textos escritos com cuidado sobre ansiedade, autoconhecimento, relacionamentos e o
+              cotidiano da vida emocional.
+            </p>
+          </Reveal>
+        </div>
       </section>
 
-      <article className="rounded-[2rem] bg-[color:var(--color-surface)] border border-[color:var(--color-border)] p-8 shadow-soft max-w-3xl">
-        <p className="text-sm uppercase tracking-[0.2em]">Destaque</p>
-        <h2 className="serif-heading mt-3 text-3xl">{featured.title}</h2>
-        <p className="mt-3">{featured.excerpt}</p>
-        <Link href={`/blog/${featured.slug}`} className="inline-flex mt-5 rounded-full bg-[color:var(--color-accent)] px-5 py-3 text-white">
-          Ler artigo
-        </Link>
-      </article>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {blogPosts.slice(1).map((post) => (
-          <Card key={post.slug} title={post.title} excerpt={post.excerpt} href={`/blog/${post.slug}`} />
-        ))}
+      {/* Filter bar — client component */}
+      <div
+        style={{
+          paddingBlock: '24px',
+          background: 'rgba(255,241,231,0.4)',
+          borderBottom: '1px solid rgba(199,199,191,0.3)',
+          position: 'sticky',
+          top: '80px',
+          zIndex: 10,
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+        }}
+      >
+        <div className="container">
+          <BlogFilterBar categories={categories} active={active} />
+        </div>
       </div>
-    </main>
+
+      {/* Posts grid */}
+      <section
+        style={{
+          paddingBlock: 'clamp(48px, 8vh, 96px)',
+          background: 'var(--color-background)',
+        }}
+      >
+        <div className="container">
+          {filtered.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '80px 0' }}>
+              <p
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.25rem',
+                  color: 'var(--color-on-surface-variant)',
+                }}
+              >
+                Nenhum artigo encontrado nesta categoria.
+              </p>
+            </div>
+          ) : (
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+                gap: '32px',
+              }}
+            >
+              {filtered.map((post, i) => {
+                const coverImageUrl =
+                  typeof post.coverImage === 'object' && post.coverImage !== null
+                    ? (post.coverImage as any).url
+                    : undefined
+                const coverImageAlt =
+                  typeof post.coverImage === 'object' && post.coverImage !== null
+                    ? (post.coverImage as any).alt
+                    : undefined
+
+                return (
+                  <Reveal key={post.slug} delay={(i % 3) as 0 | 1 | 2}>
+                    <BlogCard
+                      slug={post.slug}
+                      title={post.title}
+                      excerpt={post.excerpt}
+                      category={post.category}
+                      publishedAt={post.publishedAt || undefined}
+                      readingTime={post.readingTime || undefined}
+                      coverImageUrl={coverImageUrl}
+                      coverImageAlt={coverImageAlt}
+                    />
+                  </Reveal>
+                )
+              })}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section
+        style={{
+          paddingBlock: 'clamp(48px, 8vh, 80px)',
+          background: 'var(--color-surface-container-low)',
+          textAlign: 'center',
+        }}
+      >
+        <div className="container">
+          <Reveal>
+            <p
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.5rem',
+                fontWeight: 600,
+                color: 'var(--color-on-surface)',
+                marginBottom: '24px',
+              }}
+            >
+              Identificou algo que ressoa com você?
+            </p>
+            <HoverLink href="https://wa.me/5500000000000">
+              Agendar uma conversa
+            </HoverLink>
+          </Reveal>
+        </div>
+      </section>
+    </>
   )
 }
