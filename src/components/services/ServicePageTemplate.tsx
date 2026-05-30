@@ -14,7 +14,15 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
       <section className="service-hero">
         <div className="container service-hero-grid">
           <Reveal>
-            <p className="service-kicker">Corpo, Alimentação e Imagem Corporal</p>
+            <p className="service-kicker">
+              {content.slug === "avaliacao-cirurgia-bariatrica"
+                ? "Corpo, Alimentação e Imagem Corporal"
+                : content.slug === "sofrimento-psiquico-instabilidade-emocional-e-vinculos"
+                ? "Sofrimento Psíquico e Vínculos"
+                : content.slug === "ansiedade-e-psicossomatica"
+                ? "Ansiedade e Psicossomática"
+                : "Autoestima e Autoimagem"}
+            </p>
             <h1 className="service-title">{content.title}</h1>
             <p className="service-lead">{content.heroHighlight}</p>
             <a

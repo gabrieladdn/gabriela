@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { aboutContent } from "@/content/sections";
 
@@ -37,7 +38,13 @@ export function AboutSection() {
             <div className="about-visual-shell">
               <div aria-hidden className="about-frame" />
               <div className="about-photo">
-                <span className="about-photo-text">Foto da Gabriela</span>
+                <Image
+                  src="/images/sobre.jpeg"
+                  alt="Gabriela Nunes - Psicóloga Clínica"
+                  fill
+                  sizes="(max-width: 900px) 100vw, 400px"
+                  style={{ objectFit: "cover" }}
+                />
               </div>
             </div>
           </Reveal>

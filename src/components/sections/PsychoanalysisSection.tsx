@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { psychoText, psychoBullets } from "@/content/sections";
 
@@ -8,9 +9,48 @@ export function PsychoanalysisSection() {
         <div className="psycho-grid">
           <Reveal className="psycho-visual">
             <div className="psycho-visual-shell">
+              {/* Imagem Principal */}
               <div className="psycho-circle">
-                <span className="psycho-circle-text">Foto do consultório</span>
+                <Image
+                  src="/images/consultorio.jpeg"
+                  alt="Consultório de Gabriela Nunes"
+                  fill
+                  sizes="(max-width: 900px) 100vw, 480px"
+                  style={{ objectFit: "cover" }}
+                />
               </div>
+
+              {/* Detalhes Flutuantes (extra1, extra2, extra3) */}
+              <div className="psycho-badge-pic psycho-badge-pic-1">
+                <Image
+                  src="/images/extra1.jpg"
+                  alt="Detalhes do consultório - Livros"
+                  fill
+                  sizes="110px"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+
+              <div className="psycho-badge-pic psycho-badge-pic-2">
+                <Image
+                  src="/images/extra2.jpg"
+                  alt="Detalhes do consultório - Escrivaninha"
+                  fill
+                  sizes="130px"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+
+              <div className="psycho-badge-pic psycho-badge-pic-3">
+                <Image
+                  src="/images/extra3.jpg"
+                  alt="Detalhes do consultório - Ambiente"
+                  fill
+                  sizes="100px"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+
               <div aria-hidden className="psycho-blob" />
             </div>
           </Reveal>
@@ -73,6 +113,7 @@ export function PsychoanalysisSection() {
         }
 
         .psycho-circle {
+          position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -84,11 +125,40 @@ export function PsychoanalysisSection() {
           box-shadow: var(--shadow-hero);
         }
 
-        .psycho-circle-text {
-          font-family: var(--font-display);
-          font-size: 0.9rem;
-          color: var(--color-on-surface-variant);
-          opacity: 0.5;
+        .psycho-badge-pic {
+          position: absolute;
+          overflow: hidden;
+          border-radius: 50%;
+          border: 6px solid var(--color-background);
+          box-shadow: var(--shadow-card);
+          z-index: 2;
+          transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .psycho-badge-pic:hover {
+          transform: scale(1.1) translateY(-4px);
+          z-index: 3;
+        }
+
+        .psycho-badge-pic-1 {
+          top: -10px;
+          right: -10px;
+          width: 110px;
+          height: 110px;
+        }
+
+        .psycho-badge-pic-2 {
+          bottom: -15px;
+          left: -20px;
+          width: 130px;
+          height: 130px;
+        }
+
+        .psycho-badge-pic-3 {
+          bottom: 20px;
+          right: -25px;
+          width: 100px;
+          height: 100px;
         }
 
         .psycho-blob {
@@ -101,6 +171,12 @@ export function PsychoanalysisSection() {
           border-radius: 50%;
           background: rgba(246,184,170,0.2);
           filter: blur(32px);
+        }
+
+        @media (max-width: 600px) {
+          .psycho-badge-pic {
+            display: none;
+          }
         }
 
         .psycho-copy {

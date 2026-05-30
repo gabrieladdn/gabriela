@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { WHATSAPP_URL } from "@/lib/whatsapp";
 import { heroText } from "@/content/sections";
@@ -52,9 +53,14 @@ export function HeroSection() {
 
           <Reveal delay={2} className="hero-visual">
             <div className="hero-photo-frame">
-              <div className="hero-photo-placeholder">
-                <span className="hero-photo-placeholder-text">Foto da Gabriela</span>
-              </div>
+              <Image
+                src="/images/gabriela1.jpeg"
+                alt="Gabriela Nunes - Psicóloga Clínica"
+                fill
+                priority
+                sizes="(max-width: 900px) 100vw, 460px"
+                style={{ objectFit: "cover" }}
+              />
               <div aria-hidden className="hero-photo-overlay" />
             </div>
             <div aria-hidden className="hero-photo-ring" />

@@ -11,7 +11,7 @@ export const metadata: Metadata = buildServiceMetadata({
   description:
     "Conheça a trajetória de Gabriela Nunes, psicóloga clínica com abordagem psicanalítica e atuação em sofrimento emocional, corpo e alimentação.",
   pathname: route,
-  image: "/images/services/bariatrica/hero.jpg",
+  image: "/images/sobre.jpeg",
 });
 
 export default function SobreMimPage() {
@@ -56,7 +56,7 @@ export default function SobreMimPage() {
           <Reveal delay={1}>
             <div className="about-page-image-wrap">
               <Image
-                src="/images/services/bariatrica/hero.jpg"
+                src="/images/sobre.jpeg"
                 alt="Gabriela Nunes"
                 width={1024}
                 height={1024}
@@ -69,16 +69,54 @@ export default function SobreMimPage() {
       </section>
 
       <section className="about-page-content">
-        <div className="container about-page-copy">
-          {aboutContent.map((paragraph, index) => (
-            <Reveal key={paragraph.slice(0, 24)} delay={(index % 3) as 0 | 1 | 2}>
-              {index === 0 ? (
-                <blockquote className="blockquote-accent">{paragraph}</blockquote>
-              ) : (
-                <p>{paragraph}</p>
-              )}
+        <div className="container about-page-layout">
+          {/* Parte 1: Intro */}
+          <div className="about-page-block about-page-intro">
+            <Reveal>
+              <blockquote className="blockquote-accent">{aboutContent[0]}</blockquote>
             </Reveal>
-          ))}
+            <Reveal delay={1}>
+              <p>{aboutContent[1]}</p>
+            </Reveal>
+            <Reveal delay={2}>
+              <p>{aboutContent[2]}</p>
+            </Reveal>
+          </div>
+
+          {/* Parte 2: Grid com Imagem sobremim2 */}
+          <div className="about-page-block about-page-grid about-page-grid-reverse">
+            <Reveal className="about-block-image-wrap">
+              <Image
+                src="/images/sobremim2.jpg"
+                alt="Gabriela Nunes no consultório"
+                width={600}
+                height={750}
+                className="about-block-image"
+              />
+            </Reveal>
+            <Reveal delay={1} className="about-block-text">
+              <p>{aboutContent[3]}</p>
+              <p>{aboutContent[4]}</p>
+            </Reveal>
+          </div>
+
+          {/* Parte 3: Grid com Imagem sobremim3 */}
+          <div className="about-page-block about-page-grid">
+            <Reveal className="about-block-text">
+              <p>{aboutContent[5]}</p>
+              <p>{aboutContent[6]}</p>
+              <p>{aboutContent[7]}</p>
+            </Reveal>
+            <Reveal delay={1} className="about-block-image-wrap">
+              <Image
+                src="/images/sobremim3.jpg"
+                alt="Detalhe do ambiente de atendimento da psicóloga Gabriela Nunes"
+                width={600}
+                height={750}
+                className="about-block-image"
+              />
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -140,21 +178,72 @@ export default function SobreMimPage() {
           background: var(--color-background);
         }
 
-        .about-page-copy {
-          max-width: 860px;
-          display: grid;
-          gap: 16px;
+        .about-page-layout {
+          max-width: 960px;
+          display: flex;
+          flex-direction: column;
+          gap: clamp(48px, 8vh, 80px);
         }
 
-        .about-page-copy p {
+        .about-page-intro {
+          display: grid;
+          gap: 20px;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .about-page-intro p {
           font-size: 1.05rem;
           line-height: 1.8;
           color: var(--color-on-surface-variant);
         }
 
+        .about-page-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: clamp(28px, 5vw, 64px);
+          align-items: center;
+        }
+
+        .about-block-text {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .about-block-text p {
+          font-size: 1.05rem;
+          line-height: 1.8;
+          color: var(--color-on-surface-variant);
+        }
+
+        .about-block-image-wrap {
+          border-radius: 24px;
+          overflow: hidden;
+          box-shadow: var(--shadow-card);
+        }
+
+        .about-block-image {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          display: block;
+        }
+
         @media (max-width: 960px) {
           .about-page-hero-grid {
             grid-template-columns: 1fr;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .about-page-grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+          }
+          
+          .about-page-grid-reverse > *:first-child {
+            order: 2; /* Moves image below text on mobile devices */
           }
         }
       `}</style>
