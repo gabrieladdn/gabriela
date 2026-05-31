@@ -1,17 +1,9 @@
 "use client";
 
 import { Reveal } from "@/components/ui/Reveal";
-import { fallbackTestimonials } from "@/content/sections";
-interface Testimonial {
-  quote: string;
-  author: string;
-}
+import { DynamicTestimonials } from "@/components/ui/DynamicTestimonials";
 
-interface Props {
-  testimonials?: Testimonial[];
-}
-
-export function TestimonialsSection({ testimonials = fallbackTestimonials }: Props) {
+export function TestimonialsSection() {
   return (
     <section className="testimonials-section">
       <div className="container">
@@ -19,22 +11,7 @@ export function TestimonialsSection({ testimonials = fallbackTestimonials }: Pro
           <h2 className="testimonials-title">O que dizem as pacientes</h2>
         </Reveal>
 
-        <div className="testimonials-grid">
-          {testimonials.map(({ quote, author }, i) => (
-            <Reveal key={i} delay={(i + 1) as 1 | 2 | 3} className="testimonials-card">
-              <span aria-hidden className="testimonials-quote-mark">
-                &ldquo;
-              </span>
-
-              <p className="testimonials-quote">{quote}</p>
-
-              <div className="testimonials-author-row">
-                <div className="testimonials-avatar" />
-                <span className="testimonials-author">{author}</span>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <DynamicTestimonials limit={3} variant="home" />
       </div>
 
       <style>{`

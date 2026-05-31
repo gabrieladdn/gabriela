@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { WHATSAPP_URL } from "@/lib/whatsapp";
 import type { ServicePageContent } from "@/content/services";
+import { DynamicTestimonials } from "@/components/ui/DynamicTestimonials";
 
 interface ServicePageTemplateProps {
   content: ServicePageContent;
@@ -125,14 +126,7 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
 
           <Reveal delay={1} className="service-testimonials-panel">
             <p className="service-testimonial-heading">{content.testimonialsTitle}</p>
-            <div className="service-testimonials-list">
-              {content.testimonials.map((testimonial) => (
-                <article key={testimonial.author} className="service-testimonial-card">
-                  <p className="service-testimonial-quote">{testimonial.quote}</p>
-                  <p className="service-testimonial-author">{testimonial.author}</p>
-                </article>
-              ))}
-            </div>
+            <DynamicTestimonials limit={2} variant="service" />
           </Reveal>
         </div>
       </section>
