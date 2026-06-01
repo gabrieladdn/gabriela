@@ -14,7 +14,7 @@ export function IdentificationSection() {
           <Reveal className="identification-description">
             <span className="identification-subtitle-text">
               Você estuda, trabalha, dá conta do que precisa, mas por dentro existe um cansaço
-              constante. Uma voz que cobra, critica e nunca parece satisfeita(o).
+              constante. Uma voz que cobra, crítica e nunca parece satisfeita.
             </span>
           </Reveal>
 

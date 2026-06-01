@@ -10,44 +10,12 @@ interface DynamicTestimonialsProps {
 
 export function DynamicTestimonials({ limit = 3, variant = "home" }: DynamicTestimonialsProps) {
   const [displayed, setDisplayed] = useState<Testimonial[]>([]);
-  const [fadingIndex, setFadingIndex] = useState<number | null>(null);
 
-  // Initialize with deterministic first N items to avoid hydration mismatch
+  // Pick random unique items once on client mount to avoid hydration mismatches
   useEffect(() => {
-    setDisplayed(testimonialsList.slice(0, limit));
+    const shuffled = [...testimonialsList].sort(() => 0.5 - Math.random());
+    setDisplayed(shuffled.slice(0, limit));
   }, [limit]);
-
-  useEffect(() => {
-    if (displayed.length === 0 || testimonialsList.length <= limit) return;
-
-    const interval = setInterval(() => {
-      // Pick a random slot to update (0 to limit - 1)
-      const slotToReplace = Math.floor(Math.random() * limit);
-
-      // Find unused testimonials
-      const displayedTexts = displayed.map((d) => d.quote);
-      const unused = testimonialsList.filter((t) => !displayedTexts.includes(t.quote));
-
-      if (unused.length === 0) return;
-
-      const newTestimonial = unused[Math.floor(Math.random() * unused.length)];
-
-      // Trigger fade out
-      setFadingIndex(slotToReplace);
-
-      setTimeout(() => {
-        setDisplayed((prev) => {
-          const next = [...prev];
-          next[slotToReplace] = newTestimonial;
-          return next;
-        });
-        // Fade back in
-        setFadingIndex(null);
-      }, 400); // match with CSS transition duration
-    }, 6000); // rotation interval (6 seconds)
-
-    return () => clearInterval(interval);
-  }, [displayed, limit]);
 
   if (displayed.length === 0) {
     return <div className="testimonials-skeleton" style={{ minHeight: "200px" }} />;
@@ -57,10 +25,7 @@ export function DynamicTestimonials({ limit = 3, variant = "home" }: DynamicTest
     return (
       <div className="dynamic-service-list">
         {displayed.slice(0, 2).map(({ quote, author }, idx) => (
-          <article
-            key={idx}
-            className={`service-testimonial-card ${fadingIndex === idx ? "fade-out" : "fade-in"}`}
-          >
+          <article key={idx} className="service-testimonial-card">
             <p className="service-testimonial-quote">{quote}</p>
             <p className="service-testimonial-author">{author}</p>
           </article>
@@ -75,15 +40,7 @@ export function DynamicTestimonials({ limit = 3, variant = "home" }: DynamicTest
             border-radius: 16px;
             background: var(--color-surface-container-low);
             padding: 16px;
-            transition: opacity 0.4s ease, transform 0.4s ease;
-          }
-          .service-testimonial-card.fade-out {
-            opacity: 0;
-            transform: scale(0.98);
-          }
-          .service-testimonial-card.fade-in {
-            opacity: 1;
-            transform: scale(1);
+            box-shadow: var(--shadow-card);
           }
           .service-testimonial-quote {
             font-size: 0.96rem;
@@ -107,10 +64,7 @@ export function DynamicTestimonials({ limit = 3, variant = "home" }: DynamicTest
   return (
     <div className="testimonials-grid">
       {displayed.map(({ quote, author }, idx) => (
-        <div
-          key={idx}
-          className={`testimonials-card ${fadingIndex === idx ? "fade-out" : "fade-in"}`}
-        >
+        <div key={idx} className="testimonials-card">
           <span aria-hidden className="testimonials-quote-mark">
             &ldquo;
           </span>
@@ -138,22 +92,12 @@ export function DynamicTestimonials({ limit = 3, variant = "home" }: DynamicTest
           border-radius: 20px;
           background: #fff;
           box-shadow: 0 4px 24px rgba(143,75,66,0.06);
-          transition: box-shadow 0.3s, transform 0.3s, opacity 0.4s ease;
+          transition: box-shadow 0.3s, transform 0.3s;
         }
 
         .testimonials-card:hover {
           box-shadow: 0 12px 40px rgba(143,75,66,0.1);
           transform: translateY(-3px);
-        }
-
-        .testimonials-card.fade-out {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-
-        .testimonials-card.fade-in {
-          opacity: 1;
-          transform: translateY(0);
         }
 
         .testimonials-quote-mark {
@@ -174,7 +118,7 @@ export function DynamicTestimonials({ limit = 3, variant = "home" }: DynamicTest
           line-height: 1.75;
           font-style: italic;
           color: var(--color-on-surface-variant);
-          min-height: 80px; /* prevent layout shift on change */
+          min-height: 80px;
         }
 
         .testimonials-author-row {

@@ -27,7 +27,7 @@ export const psychoText = {
   blockquote:
     "Muitas vezes, aquilo que aparece como ansiedade, sofrimento emocional intenso, dentre outros sintomas, não surge do nada.",
   paragraphs: [
-    "Na psicoterapia, esses sentimentos podem começar a fazer sentido a partir da forma como você aprendeu a lidar com as emoções e com as vivências ao longo da vida, que atravessam suas escolhas, relações, comportamentos e formas de lidar como sofrimento.",
+    "Na psicoterapia, esses sentimentos podem começar a fazer sentido a partir da forma como você aprendeu a lidar com as emoções e com as vivências ao longo da vida, que atravessam suas escolhas, relações, comportamentos e formas de lidar com o sofrimento.",
     "Ao longo do processo terapêutico, também buscamos identificar padrões que se repetem, necessidades emocionais e experiências que, muitas vezes, permanecem difíceis de nomear. A partir disso, podem ser construídas formas mais conscientes e autênticas de se relacionar consigo mesma(o), com os afetos e vínculos, com sua própria história e existência.",
   ],
 };
