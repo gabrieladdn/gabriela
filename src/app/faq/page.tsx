@@ -11,27 +11,33 @@ interface FAQItem {
 const faqList: FAQItem[] = [
   {
     question: "Como funcionam as sessões de psicoterapia online?",
-    answer: "As sessões são realizadas por chamada de vídeo (normalmente via Google Meet) em um ambiente seguro, com total sigilo e criptografia. Você só precisa de uma conexão estável de internet e de um espaço reservado e silencioso onde se sinta confortável para falar livremente.",
+    answer:
+      "As sessões são realizadas por chamada de vídeo (normalmente via Google Meet) em um ambiente seguro, com total sigilo e criptografia. Você só precisa de uma conexão estável de internet e de um espaço reservado e silencioso onde se sinta confortável para falar livremente.",
   },
   {
     question: "Qual é a duração e a frequência das sessões?",
-    answer: "Cada sessão individual de psicoterapia dura aproximadamente 50 minutos. A frequência recomendada é semanal, o que possibilita a continuidade e o aprofundamento do processo terapêutico.",
+    answer:
+      "Cada sessão individual de psicoterapia dura aproximadamente 50 minutos. A frequência recomendada é semanal, o que possibilita a continuidade e o aprofundamento do processo terapêutico.",
   },
   {
     question: "Você atende convênios médicos (planos de saúde)?",
-    answer: "Os atendimentos são realizados de forma particular. No entanto, emito recibos e notas fiscais com todas as especificações necessárias (registro do CRP) para que você possa solicitar o reembolso diretamente junto ao seu plano de saúde.",
+    answer:
+      "Os atendimentos são realizados de forma particular. No entanto, emito recibos e notas fiscais com todas as especificações necessárias (registro do CRP) para que você possa solicitar o reembolso diretamente junto ao seu plano de saúde.",
   },
   {
     question: "Como funciona o reembolso do plano de saúde?",
-    answer: "A maioria dos convênios possui a modalidade de reembolso de livre escolha para consultas de psicologia. Você realiza o pagamento da sessão, eu te forneço o recibo profissional correspondente e você dá entrada no aplicativo do seu convênio para receber o valor de volta (conforme a tabela e contrato do seu plano).",
+    answer:
+      "A maioria dos convênios possui a modalidade de reembolso de livre escolha para consultas de psicologia. Você realiza o pagamento da sessão, eu te forneço o recibo profissional correspondente e você dá entrada no aplicativo do seu convênio para receber o valor de volta (conforme a tabela e contrato do seu plano).",
   },
   {
     question: "Como posso agendar uma primeira consulta?",
-    answer: "O agendamento é feito de forma simples e rápida diretamente via WhatsApp. Basta clicar no botão de contato presente no site para falar diretamente comigo. Alinharemos um dia e horário de sua preferência para darmos início.",
+    answer:
+      "O agendamento é feito de forma simples e rápida diretamente via WhatsApp. Basta clicar no botão de contato presente no site para falar diretamente comigo. Alinharemos um dia e horário de sua preferência para darmos início.",
   },
   {
     question: "Os atendimentos são estritamente confidenciais?",
-    answer: "Sim, absolutamente. O sigilo é um dos pilares mais fundamentais do atendimento psicológico, assegurado por lei através do Código de Ética Profissional do Psicólogo.",
+    answer:
+      "Sim, absolutamente. O sigilo é um dos pilares mais fundamentais do atendimento psicológico, assegurado por lei através do Código de Ética Profissional do Psicólogo.",
   },
 ];
 
@@ -50,7 +56,8 @@ export default function FAQPage() {
             <p className="faq-kicker">Dúvidas Frequentes</p>
             <h1 className="faq-title">Perguntas Frequentes (FAQ)</h1>
             <p className="faq-lead">
-              Encontre respostas para as principais dúvidas sobre como funcionam os atendimentos, agendamento, reembolso e a dinâmica da psicoterapia online.
+              Encontre respostas para as principais dúvidas sobre como funcionam os atendimentos,
+              agendamento, reembolso e a dinâmica da psicoterapia online.
             </p>
           </Reveal>
         </div>

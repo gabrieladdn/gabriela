@@ -20,7 +20,8 @@ export default function TermosPage() {
             <p className="legal-page-kicker">Termos Legais</p>
             <h1 className="legal-page-title">Termos de Uso</h1>
             <p className="legal-page-lead">
-              Ao navegar em nosso website, você concorda e aceita as diretrizes de utilização descritas abaixo.
+              Ao navegar em nosso website, você concorda e aceita as diretrizes de utilização
+              descritas abaixo.
             </p>
           </Reveal>
         </div>
@@ -31,22 +32,36 @@ export default function TermosPage() {
           <Reveal>
             <h2>1. Utilização de Conteúdo</h2>
             <p>
-              Todos os artigos do blog, imagens, designs e conteúdos textuais presentes neste site são protegidos por direitos autorais. A reprodução parcial ou integral do material para fins não comerciais só é permitida mediante atribuição de autoria clara e link direto para este website. A reprodução para fins comerciais é estritamente proibida sem consentimento prévio por escrito.
+              Todos os artigos do blog, imagens, designs e conteúdos textuais presentes neste site
+              são protegidos por direitos autorais. A reprodução parcial ou integral do material
+              para fins não comerciais só é permitida mediante atribuição de autoria clara e link
+              direto para este website. A reprodução para fins comerciais é estritamente proibida
+              sem consentimento prévio por escrito.
             </p>
 
             <h2>2. Finalidade Informativa</h2>
             <p>
-              As informações contidas nos artigos e páginas deste website possuem caráter estritamente educativo e informativo. Eles não substituem, sob qualquer hipótese, o diagnóstico, avaliação profissional ou tratamento psicológico/psiquiátrico individualizado conduzido por um especialista devidamente habilitado.
+              As informações contidas nos artigos e páginas deste website possuem caráter
+              estritamente educativo e informativo. Eles não substituem, sob qualquer hipótese, o
+              diagnóstico, avaliação profissional ou tratamento psicológico/psiquiátrico
+              individualizado conduzido por um especialista devidamente habilitado.
             </p>
 
             <h2>3. Canais de Contato e Comunicação</h2>
             <p>
-              Este site oferece atalhos de redirecionamento para contato direto via WhatsApp e e-mail. A solicitação de agendamento ou envio de dúvidas não configura o início do vínculo psicoterapêutico formal, o qual é estabelecido unicamente após a primeira entrevista e o alinhamento de contrato terapêutico verbal ou escrito entre a profissional e o paciente.
+              Este site oferece atalhos de redirecionamento para contato direto via WhatsApp e
+              e-mail. A solicitação de agendamento ou envio de dúvidas não configura o início do
+              vínculo psicoterapêutico formal, o qual é estabelecido unicamente após a primeira
+              entrevista e o alinhamento de contrato terapêutico verbal ou escrito entre a
+              profissional e o paciente.
             </p>
 
             <h2>4. Limitação de Responsabilidade</h2>
             <p>
-              Buscamos manter as informações e conteúdos deste site o mais atualizados e corretos possível. No entanto, não nos responsabilizamos por perdas de conexões, indisponibilidades temporárias do site ou qualquer instabilidade de servidores e ferramentas de terceiros que possam afetar a navegação.
+              Buscamos manter as informações e conteúdos deste site o mais atualizados e corretos
+              possível. No entanto, não nos responsabilizamos por perdas de conexões,
+              indisponibilidades temporárias do site ou qualquer instabilidade de servidores e
+              ferramentas de terceiros que possam afetar a navegação.
             </p>
           </Reveal>
         </div>

@@ -55,7 +55,11 @@ export function AboutSection() {
           </Reveal>
           <div className="about-niches-grid">
             {aboutHomepage.niches.map((niche, idx) => (
-              <Reveal key={idx} delay={idx + 1} className={`niche-card niche-card-${niche.colorType}`}>
+              <Reveal
+                key={idx}
+                delay={idx + 1}
+                className={`niche-card niche-card-${niche.colorType}`}
+              >
                 <p className="niche-text">{niche.text}</p>
               </Reveal>
             ))}
@@ -250,4 +254,3 @@ export function AboutSection() {
     </section>
   );
 }
-

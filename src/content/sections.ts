@@ -24,10 +24,11 @@ export const aboutContent = [
 
 export const psychoText = {
   title:
-    "A psicoterapia pode ser um espaço para compreender aquilo que, muitas vezes, se manifesta em forma de angústia, emoções intensas, conflitos nos vínculos ou sofrimento com o próprio corpo.",
+    "A psicoterapia pode ser um espaço para olhar para esses sofrimentos com cuidado.",
   blockquote:
-    "Muitas vezes, aquilo que aparece como sofrimento emocional intenso, ansiedade, dentre outros sintomas, não surgem do nada.",
+    "Muitas vezes, aquilo que aparece como sofrimento emocional intenso,  ansiedade, dentre outros sintomas, não surgem do nada.",
   paragraphs: [
+    "A psicoterapia pode ser um espaço para compreender aquilo que, muitas vezes, se manifesta em forma de angústia, emoções intensas, conflitos nos vínculos ou sofrimento com o próprio corpo.",
     "Ao longo do processo terapêutico, buscamos identificar padrões que se repetem, necessidades emocionais e experiências que, muitas vezes, permanecem difíceis de nomear. A partir dessa construção, podem surgir formas mais conscientes e autênticas de se relacionar consigo mesma, com as emoções, com os vínculos e com a própria história.",
     "A terapia favorece o autoconhecimento e a elaboração de conflitos, possibilitando compreender melhor os próprios sintomas, reconhecer recursos internos e ampliar a capacidade de lidar com os desafios da vida.",
     "Prezo por um processo singular, respeitando o tempo e a história de cada paciente, contribuindo para a construção de uma relação mais integrada consigo mesma, com os outros e com o mundo.",
@@ -59,7 +60,6 @@ export const aboutHomepage = {
   ],
 };
 
-
 export const psychoBullets = [
   "Um lugar seguro e sem julgamentos",
   "Um espaço para olhar para esses sofrimentos com mais cuidado",
@@ -80,31 +80,31 @@ export const services = [
     icon: "♡",
     title: "Sofrimento Psíquico, Instabilidade Emocional e Vínculos",
     description:
-      "Sentimentos persistentes de vazio, oscilações de humor, dificuldades em lidar com emoções intensas, vínculos afetivos, relações dolorosas e medo de abandono.",
+      "Sensação persistente de vazio, oscilações de humor, dificuldades em lidar com emoções intensas, relações dolorosas, além de possível medo de abandono.",
     route: "/servicos/sofrimento-psiquico-instabilidade-emocional-e-vinculos",
+  },
+  {
+    icon: "◌",
+    title: "Imagem Corporal, Autoestima e Alimentação",
+    description:
+      "Questões relacionadas à autoimagem, relação difícil com o corpo e o não reconhecimento do próprio valor; Sofrimentos que envolvem a alimentação, como compulsão alimentar, anorexia e bulimia; Avaliação e acompanhamento psicológico no preparo e pós-cirurgia bariátrica.",
+    offset: true,
+    route: "/avaliacao-cirurgia-bariatrica/",
   },
   {
     icon: "∿",
     title: "Ansiedade e Psicossomática",
     description:
-      "Ansiedade, exaustão emocional, pensamentos excessivos, sensação de estar sempre em alerta, dificuldade em desacelerar, sintomas físicos relacionados ao sofrimento emocional e tensão constante.",
-    offset: true,
+      "Ansiedade, exaustão emocional, pensamentos excessivos, sensação de estar sempre em alerta, dificuldade em desacelerar, sensações físicas como tensão constante, aperto no peito, nó na garganta, dificuldade para respirar, entre outros sintomas difíceis de serem nomeados.",
     route: "/servicos/ansiedade-e-psicossomatica",
   },
   {
     icon: "✧",
-    title: "Autoestima, Autoimagem e Autocrítica",
+    title: "Autocrítica e Perfeccionismo",
     description:
-      "Perfeccionismo, autocrítica intensa, vergonha, dificuldade em reconhecer o próprio valor e necessidade constante de aprovação e validação externa.",
-    route: "/servicos/autoestima-autoimagem-e-autocritica",
-  },
-  {
-    icon: "◌",
-    title: "Corpo, Alimentação e Imagem Corporal",
-    description:
-      "Questões relacionadas à alimentação, autoimagem e à relação com o próprio corpo, incluindo compulsão alimentar, anorexia, bulimia, insatisfação corporal e acompanhamento psicológico no preparo e pós-cirurgia bariátrica.",
+      "Autocrítica e autocobrança intensa, perfeccionismo, sensação de nunca ser suficiente, dificuldade em reconhecer conquistas e qualidades pessoais, além de um olhar severo para si mesma(o).",
     offset: true,
-    route: "/avaliacao-cirurgia-bariatrica/",
+    route: "/servicos/autoestima-autoimagem-e-autocritica",
   },
 ];
 

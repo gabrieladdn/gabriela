@@ -5,11 +5,13 @@ export interface Testimonial {
 
 export const testimonialsList: Testimonial[] = [
   {
-    quote: "Uma profissional maravilhosa, tranquila, empática e excepcional! Tem me ajudado a superar coisas que eu nem sabia que tinha que superar! Super recomendo!",
+    quote:
+      "Uma profissional maravilhosa, tranquila, empática e excepcional! Tem me ajudado a superar coisas que eu nem sabia que tinha que superar! Super recomendo!",
     author: "SGF",
   },
   {
-    quote: "Muito boa profissional, tem uma escuta sem julgamentos e com suas avaliações te leva a refletir de maneira mais clara.",
+    quote:
+      "Muito boa profissional, tem uma escuta sem julgamentos e com suas avaliações te leva a refletir de maneira mais clara.",
     author: "E.M",
   },
   {
@@ -25,7 +27,8 @@ export const testimonialsList: Testimonial[] = [
     author: "G.T",
   },
   {
-    quote: "Muito simpática e acolhedora me senti muito avontade e bem amparada, nunca consegui fazer terapia mas com ela estou disposta a tentar!",
+    quote:
+      "Muito simpática e acolhedora me senti muito avontade e bem amparada, nunca consegui fazer terapia mas com ela estou disposta a tentar!",
     author: "V.M",
   },
 ];

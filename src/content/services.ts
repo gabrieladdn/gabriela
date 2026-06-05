@@ -102,11 +102,13 @@ export const servicePages: Record<string, ServicePageContent> = {
         author: "Mariana",
       },
       {
-        quote: "A sensibilidade e a escuta atenta da Gabriela me ajudaram a passar por momentos de muita oscilação emocional.",
+        quote:
+          "A sensibilidade e a escuta atenta da Gabriela me ajudaram a passar por momentos de muita oscilação emocional.",
         author: "Patrícia",
       },
     ],
-    footerCtaText: "Se você sente que precisa de um espaço seguro para falar da sua dor emocional, entre em contato.",
+    footerCtaText:
+      "Se você sente que precisa de um espaço seguro para falar da sua dor emocional, entre em contato.",
     footerCtaLabel: "Agende agora",
     seo: {
       title: "Sofrimento Psíquico e Instabilidade Emocional | Gabriela Nunes",
@@ -175,7 +177,8 @@ export const servicePages: Record<string, ServicePageContent> = {
         author: "Juliana",
       },
       {
-        quote: "O acolhimento e a competência da Gabriela me ajudaram a sair de um ciclo constante de exaustão emocional.",
+        quote:
+          "O acolhimento e a competência da Gabriela me ajudaram a sair de um ciclo constante de exaustão emocional.",
         author: "Ricardo",
       },
     ],
@@ -248,11 +251,13 @@ export const servicePages: Record<string, ServicePageContent> = {
         author: "Beatriz",
       },
       {
-        quote: "Gabriela me ajudou a entender de onde vinha tanta vergonha e cobrança. Recomendo muito o trabalho dela.",
+        quote:
+          "Gabriela me ajudou a entender de onde vinha tanta vergonha e cobrança. Recomendo muito o trabalho dela.",
         author: "Fernanda",
       },
     ],
-    footerCtaText: "Se você deseja construir uma relação mais harmoniosa e acolhedora consigo mesma(o), agende uma consulta.",
+    footerCtaText:
+      "Se você deseja construir uma relação mais harmoniosa e acolhedora consigo mesma(o), agende uma consulta.",
     footerCtaLabel: "Agende agora",
     seo: {
       title: "Autoestima, Autoimagem e Autocrítica | Gabriela Nunes",

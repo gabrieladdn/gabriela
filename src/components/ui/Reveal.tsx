@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  useEffect,
-  useRef,
-  type CSSProperties,
-  type ElementType,
-  type ReactNode,
-} from "react";
+import { useEffect, useRef, type CSSProperties, type ElementType, type ReactNode } from "react";
 
 interface RevealProps extends React.HTMLAttributes<HTMLElement> {
   children: ReactNode;
