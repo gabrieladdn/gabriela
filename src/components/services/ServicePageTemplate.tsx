@@ -17,12 +17,14 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
           <Reveal>
             <p className="service-kicker">
               {content.slug === "avaliacao-cirurgia-bariatrica"
-                ? "Corpo, Alimentação e Imagem Corporal"
+                ? "Avaliação Bariátrica"
                 : content.slug === "sofrimento-psiquico-instabilidade-emocional-e-vinculos"
                   ? "Sofrimento Psíquico e Vínculos"
                   : content.slug === "ansiedade-e-psicossomatica"
                     ? "Ansiedade e Psicossomática"
-                    : "Autoestima e Autoimagem"}
+                    : content.slug === "imagem-corporal-autoestima-e-alimentacao"
+                      ? "Imagem Corporal e Alimentação"
+                      : "Autoestima e Autoimagem"}
             </p>
             <h1 className="service-title">{content.title}</h1>
             <p className="service-lead">{content.heroHighlight}</p>
@@ -67,6 +69,11 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
               >
                 <h3 className="service-benefit-title">{item.title}</h3>
                 <p className="service-benefit-description">{item.description}</p>
+                {item.link && (
+                  <Link href={item.link.href} className="service-benefit-link">
+                    {item.link.label} →
+                  </Link>
+                )}
               </Reveal>
             ))}
           </div>
@@ -274,6 +281,8 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
           padding: 24px;
           box-shadow: var(--shadow-card);
           height: fit-content;
+          display: flex;
+          flex-direction: column;
         }
 
         .service-benefit-title {
@@ -287,6 +296,24 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
           font-size: 0.95rem;
           line-height: 1.65;
           color: var(--color-on-surface-variant);
+          flex-grow: 1;
+        }
+
+        .service-benefit-link {
+          display: inline-flex;
+          margin-top: 14px;
+          color: var(--color-secondary);
+          font-weight: 700;
+          font-size: 0.8125rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          transition: opacity 0.2s;
+        }
+
+        .service-benefit-link:hover {
+          opacity: 0.8;
+          text-decoration: underline;
+          text-underline-offset: 3px;
         }
 
         .service-importance {

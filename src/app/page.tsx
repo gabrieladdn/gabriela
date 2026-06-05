@@ -5,6 +5,7 @@ import { PsychoanalysisSection } from "@/components/sections/PsychoanalysisSecti
 import { AboutSection } from "@/components/sections/AboutSection";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { InstagramSection } from "@/components/sections/InstagramSection";
 import { CTASection } from "@/components/sections/CTASection";
 
 export default function HomePage() {
@@ -17,6 +18,7 @@ export default function HomePage() {
       <AboutSection />
       <HowItWorksSection />
       <TestimonialsSection />
+      <InstagramSection />
       <CTASection />
     </>
   );

@@ -4,10 +4,10 @@ export const heroText = {
   titleParts: [
     "Psicoterapia online para pessoas que ",
     "não se sentem suficientes",
-    ", vivem em autocobrança, ansiedade e emoções intensas.",
+    ", convivem com emoções intensas, ansiedade e sofrimento na relação consigo mesmas.",
   ],
   description:
-    "Atendimento voltado para crises, dificuldades na forma de lidar consigo, com o outro e com as próprias emoções, questões relacionadas à autoestima, autoimagem, insatisfação corporal e transtornos alimentares.",
+    "Atendimento voltado para crises emocionais, dificuldades nos vínculos e na forma de lidar consigo e com as próprias emoções; questões relacionadas à insatisfação corporal, autoestima e autocobrança; além do acompanhamento de sofrimentos marcados por sensação de vazio, dificuldades de identidade e manifestações como transtornos alimentares.",
   actions: ["Agendar terapia", "Conheça meu trabalho"],
 };
 
@@ -24,24 +24,22 @@ export const aboutContent = [
 
 export const psychoText = {
   title:
-    "A psicoterapia pode ser um espaço para olhar para esses sofrimentos com cuidado.",
+    "A psicoterapia pode ser um espaço para olhar para os sofrimentos emocionais com cuidado e continuidade.",
   blockquote:
-    "Muitas vezes, aquilo que aparece como sofrimento emocional intenso,  ansiedade, dentre outros sintomas, não surgem do nada.",
+    "Muitas vezes, aquilo que aparece como ansiedade, angústia ou sofrimento emocional intenso não surge de forma isolada.",
   paragraphs: [
-    "A psicoterapia pode ser um espaço para compreender aquilo que, muitas vezes, se manifesta em forma de angústia, emoções intensas, conflitos nos vínculos ou sofrimento com o próprio corpo.",
-    "Ao longo do processo terapêutico, buscamos identificar padrões que se repetem, necessidades emocionais e experiências que, muitas vezes, permanecem difíceis de nomear. A partir dessa construção, podem surgir formas mais conscientes e autênticas de se relacionar consigo mesma, com as emoções, com os vínculos e com a própria história.",
-    "A terapia favorece o autoconhecimento e a elaboração de conflitos, possibilitando compreender melhor os próprios sintomas, reconhecer recursos internos e ampliar a capacidade de lidar com os desafios da vida.",
-    "Prezo por um processo singular, respeitando o tempo e a história de cada paciente, contribuindo para a construção de uma relação mais integrada consigo mesma, com os outros e com o mundo.",
+    "Os sintomas que são apresentados, podem estar relacionados a experiências, vínculos e formas de se perceber que foram se construindo ao longo da história de vida. Também pode se expressar através de emoções intensas, dificuldades nas relações e sofrimento na relação consigo mesmo e com o próprio corpo.",
+    "Ao longo do processo terapêutico, buscamos compreender os padrões que se repetem, as necessidades emocionais envolvidas e aquilo que, por vezes, ainda não encontrou palavras para ser nomeado. A partir dessa construção, podem surgir formas mais conscientes e autênticas de se relacionar consigo, com as emoções, com os vínculos e com a sua própria história.",
   ],
 };
 
 export const aboutHomepage = {
   blockquote:
-    "Psicóloga formada desde 2017, pós-graduanda em Psicoterapia Psicanalítica Contemporânea pela EPPM e especializada em Transtornos Alimentares e Comportamento Alimentar pelo Instituto de Pesquisa do Comportamento Alimentar de Curitiba (IPCAC).",
+    "Sou psicóloga formada desde 2017, pós-graduanda em Psicoterapia Psicanalítica Contemporânea pela EPPM e especializada em Transtornos Alimentares e Comportamento Alimentar pelo Instituto de Pesquisa do Comportamento Alimentar de Curitiba (IPCAC).",
   paragraphs: [
-    "Ao longo da minha trajetória, venho me dedicando ao estudo da vida psíquica, dos vínculos que construímos desde a infância e da forma como cada pessoa aprende a se perceber, a se relacionar consigo mesma, com os outros, com o próprio corpo e com a alimentação.",
-    "Tenho experiência no acompanhamento de pessoas que enfrentam dificuldades relacionadas à autoimagem, emoções intensas e sensações corporais difíceis de nomear; angústias persistentes, sensação de vazio, instabilidade nos relacionamentos, autocrítica e perfeccionismo. Também atuo no cuidado de questões associadas aos transtornos alimentares, transtornos do humor e ao transtorno de personalidade borderline.",
-    "Minha formação e experiência clínica contribuíram para a construção de uma prática pautada na escuta sensível, com respeito à singularidade de cada paciente.",
+    "Ao longo da minha trajetória, venho me dedicando ao estudo da vida psíquica, dos vínculos e das experiências emocionais que se constroem desde a infância, e que influenciam a forma como cada pessoa se percebe, se relaciona consigo mesma, com os outros, com o próprio corpo e com a alimentação.",
+    "Na prática clínica, acompanho pessoas que vivenciam dificuldades relacionadas à autoimagem, emoções intensas e experiências corporais difíceis de simbolizar; angústias persistentes, sensação de vazio, instabilidade nos relacionamentos, autocrítica e sofrimento na relação consigo mesmas. Também atuo no cuidado de questões associadas aos transtornos alimentares, transtornos do humor e ao transtorno de personalidade borderline.",
+    "Minha formação e experiência clínica sustentam uma prática pautada na escuta sensível, que considera a singularidade de cada história e os sentidos que o sofrimento pode assumir na vida de cada pessoa.",
   ],
   nichesTitle: "Um espaço para construir novos sentidos",
   niches: [
@@ -61,9 +59,9 @@ export const aboutHomepage = {
 };
 
 export const psychoBullets = [
-  "Um lugar seguro e sem julgamentos",
-  "Um espaço para olhar para esses sofrimentos com mais cuidado",
-  "Encontrar novas formas de existir e se relacionar com a vida",
+  "A psicoterapia favorece o autoconhecimento, a elaboração dos conflitos e o reconhecimento dos próprios recursos internos",
+  "Amplia a capacidade de lidar com os desafios da vida a partir de uma compreensão mais profunda de si",
+  "É um processo singular, que respeita o tempo e a história de cada pessoa, em um espaço seguro e sem julgamentos, permitindo olhar para cada sofrimento com o cuidado necessário.",
 ];
 
 export const ctaText = {
@@ -80,22 +78,22 @@ export const services = [
     icon: "♡",
     title: "Sofrimento Psíquico, Instabilidade Emocional e Vínculos",
     description:
-      "Sensação persistente de vazio, oscilações de humor, dificuldades em lidar com emoções intensas, relações dolorosas, além de possível medo de abandono.",
+      "Sensação persistente de vazio, oscilações de humor, dificuldades em lidar com emoções intensas, relações dolorosas, além do medo de abandono.",
     route: "/servicos/sofrimento-psiquico-instabilidade-emocional-e-vinculos",
   },
   {
     icon: "◌",
     title: "Imagem Corporal, Autoestima e Alimentação",
     description:
-      "Questões relacionadas à autoimagem, relação difícil com o corpo e o não reconhecimento do próprio valor; Sofrimentos que envolvem a alimentação, como compulsão alimentar, anorexia e bulimia; Avaliação e acompanhamento psicológico no preparo e pós-cirurgia bariátrica.",
+      "Questões relacionadas à autoimagem, relação difícil com o corpo e o não reconhecimento do próprio valor; Sofrimentos que envolvem a alimentação, como compulsão alimentar, anorexia e bulimia.",
     offset: true,
-    route: "/avaliacao-cirurgia-bariatrica/",
+    route: "/servicos/imagem-corporal-autoestima-e-alimentacao",
   },
   {
     icon: "∿",
     title: "Ansiedade e Psicossomática",
     description:
-      "Ansiedade, exaustão emocional, pensamentos excessivos, sensação de estar sempre em alerta, dificuldade em desacelerar, sensações físicas como tensão constante, aperto no peito, nó na garganta, dificuldade para respirar, entre outros sintomas difíceis de serem nomeados.",
+      "Ansiedade, exaustão emocional e pensamentos excessivos com sensação de constante estado de alerta, dificultando o descanso. Muitas vezes, esse tensionamento também se expressa no corpo, através de sensações como aperto no peito, nó na garganta, dores, dificuldade respiratória entre outros sintomas ou outras sensações difíceis de nomear.",
     route: "/servicos/ansiedade-e-psicossomatica",
   },
   {

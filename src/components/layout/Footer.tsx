@@ -32,7 +32,11 @@ export function Footer() {
 
           <div className="footer-socials">
             {[
-              { label: "Instagram", icon: "IG", href: "https://instagram.com/gabriela.psic" },
+              {
+                label: "Instagram",
+                icon: "IG",
+                href: "https://www.instagram.com/gabrielanunes_psi?igsh=MWFkc2dwNm84cjhmYg==",
+              },
               { label: "E-mail", icon: "✉", href: "mailto:contato@gabrielanunes.com.br" },
               { label: "WhatsApp", icon: "WA", href: WHATSAPP_URL },
             ].map(({ label, icon, href }) => (

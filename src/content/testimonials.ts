@@ -32,11 +32,12 @@ export const testimonialsList: Testimonial[] = [
     author: "V.M",
   },
   {
-    quote: "Excelente profissional! Muito atenciosa, empática e competente. As sessões me ajudaram bastante no meu autoconhecimento e no enfrentamento de dificuldades pessoais. Recomendo fortemente.",
+    quote:
+      "Excelente profissional! Muito atenciosa, empática e competente. As sessões me ajudaram bastante no meu autoconhecimento e no enfrentamento de dificuldades pessoais. Recomendo fortemente.",
     author: "J.L",
   },
   {
     quote: "Uma profissional muito carismática e me ajuda muito, sempre, em cada encontro!",
     author: "R.D",
-  }
+  },
 ];

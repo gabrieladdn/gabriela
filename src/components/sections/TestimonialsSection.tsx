@@ -8,7 +8,7 @@ export function TestimonialsSection() {
     <section className="testimonials-section">
       <div className="container">
         <Reveal className="testimonials-header">
-          <h2 className="testimonials-title">O que dizem as pacientes</h2>
+          <h2 className="testimonials-title">O que dizem os pacientes</h2>
         </Reveal>
 
         <DynamicTestimonials limit={3} variant="home" />
