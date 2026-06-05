@@ -55,28 +55,33 @@ export const servicePages: Record<string, ServicePageContent> = {
     },
     whyTitle: "Por que olhar para a instabilidade emocional e os vínculos?",
     whyDescription:
-      "O sofrimento psíquico intenso muitas vezes se manifesta em relações dolorosas, oscilações marcantes de humor e uma sensação persistente de vazio. Compreender essas dinâmicas é o primeiro passo para encontrar estabilidade.",
+      "O sofrimento psíquico intenso pode se manifestar por meio de oscilações emocionais marcantes, crises emocionais recorrentes, dificuldades nos relacionamentos, medo do abandono, sentimentos persistentes de vazio ou alterações de humor que impactam a vida cotidiana. Compreender essas experiências e seus sentidos é um passo importante para construir formas mais estáveis de se relacionar consigo mesmo e com os outros.",
     benefits: [
       {
-        title: "Compreender oscilações de humor",
+        title: "Compreender a intensidade das emoções",
         description:
-          "Aprender a identificar os gatilhos e a intensidade das emoções para lidar com elas de forma menos dolorosa.",
+          "Algumas pessoas vivenciam emoções de forma muito intensa, com mudanças bruscas de humor, impulsividade ou dificuldade para lidar com frustrações. A psicoterapia oferece um espaço para compreender essas experiências e os sentidos que elas podem carregar.",
       },
       {
-        title: "Reconstruir vínculos afetivos",
+        title: "Explorar os padrões que se repetem nos vínculos",
         description:
-          "Analisar a forma como você se relaciona para construir conexões mais seguras, superando o medo do abandono.",
+          "Medo do abandono, relações instáveis, conflitos frequentes ou dificuldade em confiar podem estar relacionados a experiências emocionais importantes da história de vida. O processo terapêutico busca compreender essas repetições e seus efeitos nas relações atuais.",
       },
       {
-        title: "Acolher o vazio interno",
+        title: "Elaborar sentimentos de vazio e desamparo",
         description:
-          "Dar novos sentidos aos sentimentos de solidão e incompreensão que afetam seu cotidiano.",
+          "Sensações de vazio, solidão, incompreensão ou falta de pertencimento podem gerar sofrimento significativo. A escuta terapêutica possibilita que essas experiências sejam acolhidas e gradualmente simbolizadas.",
+      },
+      {
+        title: "Atravessar momentos de crise",
+        description:
+          "Em períodos de intenso sofrimento emocional, as emoções podem parecer difíceis de suportar ou compreender. A psicoterapia oferece um espaço de acolhimento e elaboração, buscando compreender o que está em jogo nesses momentos e favorecer a construção de recursos emocionais para lidar com eles.",
       },
     ],
     importanceTitle: "A importância do cuidado emocional e da escuta psicanalítica",
     importanceParagraphs: [
-      "Viver com emoções que parecem transbordar ou com o medo constante de ser abandonada(o) gera um desgaste profundo. Na escuta analítica, buscamos entender as raízes desses sentimentos e os padrões de relacionamento estabelecidos ao longo da sua história de vida.",
-      "Dessa forma, a terapia se torna um ponto de apoio seguro para ressignificar traumas, fortalecer o self e desenvolver recursos internos para lidar com a dor emocional.",
+      "Viver com emoções intensas, crises emocionais recorrentes ou medos e dificuldade em relações afetivas, pode gerar um sofrimento profundo e impactar diferentes áreas da vida. Na psicoterapia psicanalítica, buscamos compreender os sentidos dessas experiências, sua relação com a história de vida e os modos de vínculo construídos ao longo do tempo.",
+      "Ao oferecer um espaço de escuta, acolhimento e reflexão, a terapia possibilita a elaboração de conflitos emocionais, a compreensão de padrões que se repetem e a construção de uma relação mais autêntica consigo mesmo e com os outros.",
     ],
     importanceImages: [
       {

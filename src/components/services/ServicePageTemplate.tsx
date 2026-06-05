@@ -263,7 +263,7 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
         .service-benefits-grid {
           margin-top: 34px;
           display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
+          grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: 20px;
         }
 
@@ -273,6 +273,7 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
           border-radius: 20px;
           padding: 24px;
           box-shadow: var(--shadow-card);
+          height: fit-content;
         }
 
         .service-benefit-title {
