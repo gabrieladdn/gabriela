@@ -7,20 +7,20 @@ export function IdentificationSection() {
     <section className="identification-section">
       <div className="container">
         <Reveal className="identification-header">
-          <h2 className="identification-title">Talvez, por fora, pareça que está tudo bem.</h2>
+          <h2 className="identification-title">Talvez por fora, pareça estar tudo bem.</h2>
         </Reveal>
 
         <div className="identification-content">
           <Reveal className="identification-description">
             <span className="identification-subtitle-text">
               Você estuda, trabalha, dá conta do que precisa, mas por dentro existe um cansaço
-              constante. Uma voz que cobra, crítica e nunca parece satisfeita.
+              constante. Uma voz que cobra, critica e nunca parece satisfeita.
             </span>
           </Reveal>
 
           <div className="identification-carousel">
             <Reveal className="carousel-wrap">
-              <p className="lead">E talvez você se reconheça em alguns desses sentimentos:</p>
+              <p className="lead">E talvez você se reconheça em alguma dessas situações:</p>
 
               <TextCarousel items={identification.listItems} className="site-text-carousel" />
 

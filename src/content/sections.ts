@@ -23,14 +23,42 @@ export const aboutContent = [
 ];
 
 export const psychoText = {
-  title: "A psicoterapia pode ser um espaço para olhar para esses sofrimentos com mais cuidado.",
+  title:
+    "A psicoterapia pode ser um espaço para compreender aquilo que, muitas vezes, se manifesta em forma de angústia, emoções intensas, conflitos nos vínculos ou sofrimento com o próprio corpo.",
   blockquote:
-    "Muitas vezes, aquilo que aparece como ansiedade, sofrimento emocional intenso, dentre outros sintomas, não surge do nada.",
+    "Muitas vezes, aquilo que aparece como sofrimento emocional intenso, ansiedade, dentre outros sintomas, não surgem do nada.",
   paragraphs: [
-    "Na psicoterapia, esses sentimentos podem começar a fazer sentido a partir da forma como você aprendeu a lidar com as emoções e com as vivências ao longo da vida, que atravessam suas escolhas, relações, comportamentos e formas de lidar com o sofrimento.",
-    "Ao longo do processo terapêutico, também buscamos identificar padrões que se repetem, necessidades emocionais e experiências que, muitas vezes, permanecem difíceis de nomear. A partir disso, podem ser construídas formas mais conscientes e autênticas de se relacionar consigo mesma(o), com os afetos e vínculos, com sua própria história e existência.",
+    "Ao longo do processo terapêutico, buscamos identificar padrões que se repetem, necessidades emocionais e experiências que, muitas vezes, permanecem difíceis de nomear. A partir dessa construção, podem surgir formas mais conscientes e autênticas de se relacionar consigo mesma, com as emoções, com os vínculos e com a própria história.",
+    "A terapia favorece o autoconhecimento e a elaboração de conflitos, possibilitando compreender melhor os próprios sintomas, reconhecer recursos internos e ampliar a capacidade de lidar com os desafios da vida.",
+    "Prezo por um processo singular, respeitando o tempo e a história de cada paciente, contribuindo para a construção de uma relação mais integrada consigo mesma, com os outros e com o mundo.",
   ],
 };
+
+export const aboutHomepage = {
+  blockquote:
+    "Psicóloga formada desde 2017, pós-graduanda em Psicoterapia Psicanalítica Contemporânea pela EPPM e especializada em Transtornos Alimentares e Comportamento Alimentar pelo Instituto de Pesquisa do Comportamento Alimentar de Curitiba (IPCAC).",
+  paragraphs: [
+    "Ao longo da minha trajetória, venho me dedicando ao estudo da vida psíquica, dos vínculos que construímos desde a infância e da forma como cada pessoa aprende a se perceber, a se relacionar consigo mesma, com os outros, com o próprio corpo e com a alimentação.",
+    "Tenho experiência no acompanhamento de pessoas que enfrentam dificuldades relacionadas à autoimagem, emoções intensas e sensações corporais difíceis de nomear; angústias persistentes, sensação de vazio, instabilidade nos relacionamentos, autocrítica e perfeccionismo. Também atuo no cuidado de questões associadas aos transtornos alimentares, transtornos do humor e ao transtorno de personalidade borderline.",
+    "Minha formação e experiência clínica contribuíram para a construção de uma prática pautada na escuta sensível, com respeito à singularidade de cada paciente.",
+  ],
+  nichesTitle: "Um espaço para construir novos sentidos",
+  niches: [
+    {
+      text: "Acredito que a confiança e a conexão construídas entre psicoterapeuta e paciente são fundamentais para que mudanças significativas possam acontecer.",
+      colorType: "terracotta",
+    },
+    {
+      text: "Caminharemos juntas para compreender emoções, elaborar e dar sentido/ nome para experiências dolorosas, e encontrar formas mais saudáveis de lidar com os desafios da vida.",
+      colorType: "sage",
+    },
+    {
+      text: "Ofereço um ambiente seguro, ético e respeitoso, onde você pode falar livremente sobre suas vivências, sentimentos e dúvidas, sem nenhum julgamento.",
+      colorType: "taupe",
+    },
+  ],
+};
+
 
 export const psychoBullets = [
   "Um lugar seguro e sem julgamentos",
