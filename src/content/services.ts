@@ -51,42 +51,42 @@ export const servicePages: Record<string, ServicePageContent> = {
     route: "/servicos/sofrimento-psiquico-instabilidade-emocional-e-vinculos/",
     title: "Quando as emoções parecem difíceis de sustentar",
     heroHighlight:
-      "Talvez você viva mudanças intensas de humor, crises emocionais frequentes ou uma sensação persistente de vazio. Em alguns momentos, as emoções parecem difíceis de compreender ou regular, gerando sofrimento e impacto nos relacionamentos, no trabalho e na forma como você se percebe.",
+      "Talvez você viva mudanças intensas de humor, crises emocionais frequentes ou uma sensação persistente de vazio. Em alguns momentos, as emoções parecem difíceis de compreender, nomear ou regular, gerando sofrimento e impactando diferentes áreas da vida.",
     heroCtaLabel: "Agendar agora",
     heroImage: {
       src: "/images/sofrimento 1.jpg",
       alt: "Retrato de Gabriela Nunes - Sofrimento Psíquico e Vínculos",
     },
-    whyTitle: "Quando emoções e relacionamentos se tornam fonte de sofrimento",
+    whyTitle: "Quando o sofrimento emocional ocupa espaço demais",
     whyDescription:
-      `Talvez você conviva com sentimentos intensos, sensação de vazio, insegurança ou dificuldades emocionais que parecem difíceis de compreender.
+      `Talvez você conviva com sentimentos intensos, sensação de vazio, insecurity ou dificuldades emocionais que parecem difíceis de compreender.
 O medo de rejeição, o receio de abandono ou a dificuldade em confiar podem tornar os relacionamentos fonte de sofrimento e instabilidade, mesmo quando existe um forte desejo de proximidade e conexão.`,
     benefits: [
       {
         title: "Vazio, solidão e desamparo",
         description:
-          "Talvez você conviva com uma sensação persistente de vazio, por vezes sentindo que a vida não tem sentido, como se algo estivesse faltando. Em alguns momentos, pode surgir a dificuldade de se sentir amparada, compreendida ou emocionalmente sustentada.",
+          "Talvez você conviva com uma sensação persistente de vazio, por vezes sentindo que a vida não tem sentido, como se algo estivesse faltando ou fosse difícil encontrar apoio emocional dentro de si.",
       },
       {
         title: "Emoções intensas",
         description:
-          "Em alguns momentos, as emoções podem parecer difíceis de sustentar ou compreender. Mudanças de humor, angústias intensas ou sentimentos que tomam conta da experiência podem gerar sofrimento e sensação de instabilidade.",
+          "Há momentos em que as emoções podem parecer difíceis de compreender, sustentar ou colocar em palavras. Crises emocionais, sentimentos intensos ou mudanças de humor podem gerar sofrimento e sensação de instabilidade.",
       },
       {
-        title: "Medo de rejeição e abandono",
+        title: "Angústias persistentes",
         description:
-          "O receio de ser esquecida, deixada de lado ou não ser importante para quem se ama pode gerar insegurança e sofrimento, mesmo em situações aparentemente pequenas.",
+          "Há sofrimentos que nem sempre são fáceis de explicar. Preocupações constantes, inquietação emocional ou sentimentos difíceis de nomear podem ocupar grande espaço na vida e tornar o cotidiano mais desgastante.",
       },
       {
-        title: "Padrões que se repetem",
+        title: "Algumas dores não ficam no passado",
         description:
-          "Mesmo desejando relações mais seguras e satisfatórias, talvez você perceba que algumas experiências continuam se repetindo. Certos vínculos despertam sofrimentos semelhantes, como medo de abandono, insegurança ou dificuldade em ocupar seu próprio lugar na relação.",
+          "Certas experiências continuam presentes na forma como sentimos, reagimos e nos percebemos, mesmo quando parecem pertencer a outro momento da vida. Às vezes, o sofrimento atual pode carregar marcas de histórias que ainda precisam ser compreendidas.",
       },
     ],
-    importanceTitle: "Uma escuta para a instabilidade emocional e os vínculos",
+    importanceTitle: "Uma escuta para o sofrimento emocional e a instabilidade",
     importanceParagraphs: [
-      "Emoções intensas, sensação de vazio, dificuldades nos relacionamentos, medo de rejeição ou conflitos que parecem se repetir podem gerar sofrimento e afetar a forma como nos relacionamos conosco e com os outros.",
-      "A psicoterapia oferece um espaço para compreender essas experiências para além dos sintomas. Muitas vezes, algumas dores não ficam no passado e continuam influenciando a forma como sentimos, reagimos e construímos nossos vínculos. Ao longo do processo terapêutico, torna-se possível reconhecer esses movimentos e construir novos sentidos para a própria história.",
+      "Emoções intensas, sensação de vazio, angústias persistentes, crises emocionais ou dificuldades para compreender o que se sente podem gerar sofrimento e impactar diferentes áreas da vida.",
+      "A psicoterapia oferece um espaço para compreender essas experiências para além dos sintomas. Muitas vezes, algumas dores não ficam no passado e continuam influenciando a forma como sentimos, reagimos e lidamos com nós mesmos. Ao longo do processo terapêutico, torna-se possível reconhecer esses movimentos, compreender seus sentidos e construir novos caminhos para a própria história.",
     ],
     importanceImages: [
       {
