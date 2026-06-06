@@ -256,7 +256,13 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
           margin-bottom: 14px;
         }
 
-        .service-section-copy,
+        .service-section-copy {
+          font-size: 1.03rem;
+          line-height: 1.75;
+          color: var(--color-on-surface-variant);
+          white-space: pre-line;
+        }
+
         .service-richtext p {
           font-size: 1.03rem;
           line-height: 1.75;

@@ -49,43 +49,44 @@ export const servicePages: Record<string, ServicePageContent> = {
   "sofrimento-psiquico-instabilidade-emocional-e-vinculos": {
     slug: "sofrimento-psiquico-instabilidade-emocional-e-vinculos",
     route: "/servicos/sofrimento-psiquico-instabilidade-emocional-e-vinculos/",
-    title: "Quando as emoções parecem difíceis de sustentar e compreender",
+    title: "Quando as emoções parecem difíceis de sustentar",
     heroHighlight:
-      "Em alguns momentos, as emoções podem parecer intensas e difíceis de sustentar, impactando os vínculos e a relação consigo mesma. A psicoterapia oferece um espaço para compreender esses movimentos com mais cuidado e profundidade.",
+      "Talvez você viva mudanças intensas de humor, crises emocionais frequentes ou uma sensação persistente de vazio. Em alguns momentos, as emoções parecem difíceis de compreender ou regular, gerando sofrimento e impacto nos relacionamentos, no trabalho e na forma como você se percebe.",
     heroCtaLabel: "Agendar agora",
     heroImage: {
       src: "/images/sofrimento 1.jpg",
       alt: "Retrato de Gabriela Nunes - Sofrimento Psíquico e Vínculos",
     },
-    whyTitle: "Por que olhar para a instabilidade emocional e os vínculos?",
+    whyTitle: "Quando emoções e relacionamentos se tornam fonte de sofrimento",
     whyDescription:
-      "O sofrimento emocional pode aparecer inibindo os vínculos em forma de oscilações de humor, crises recorrentes, dificuldades nos vínculos, medo de abandono e sensação de vazio. A compreensão desses movimentos pode abrir espaço para formas mais estáveis e cuidadosas de se relacionar consigo mesma e com a própria história.",
+      `Talvez você conviva com sentimentos intensos, sensação de vazio, insegurança ou dificuldades emocionais que parecem difíceis de compreender.
+O medo de rejeição, o receio de abandono ou a dificuldade em confiar podem tornar os relacionamentos fonte de sofrimento e instabilidade, mesmo quando existe um forte desejo de proximidade e conexão.`,
     benefits: [
+      {
+        title: "Vazio, solidão e desamparo",
+        description:
+          "Talvez você conviva com uma sensação persistente de vazio, por vezes sentindo que a vida não tem sentido, como se algo estivesse faltando. Em alguns momentos, pode surgir a dificuldade de se sentir amparada, compreendida ou emocionalmente sustentada.",
+      },
       {
         title: "Emoções intensas",
         description:
-          "Algumas pessoas vivenciam emoções de forma muito intensa, com mudanças bruscas de humor, impulsividade ou dificuldade para lidar com frustrações. A psicoterapia possibilita compreender esses movimentos e os sentidos que podem estar implicados em sua história.",
+          "Em alguns momentos, as emoções podem parecer difíceis de sustentar ou compreender. Mudanças de humor, angústias intensas ou sentimentos que tomam conta da experiência podem gerar sofrimento e sensação de instabilidade.",
       },
       {
-        title: "Vínculos e repetições",
+        title: "Medo de rejeição e abandono",
         description:
-          "Medo de abandono, relações instáveis, conflitos recorrentes ou dificuldade em confiar podem estar ligados a experiências emocionais significativas ao longo da vida. O processo terapêutico busca compreender essas repetições e seus efeitos nas relações atuais.",
+          "O receio de ser esquecida, deixada de lado ou não ser importante para quem se ama pode gerar insegurança e sofrimento, mesmo em situações aparentemente pequenas.",
       },
       {
-        title: "Vazio e desamparo",
+        title: "Padrões que se repetem",
         description:
-          "Sensações de vazio, solidão, incompreensão ou falta de pertencimento podem gerar sofrimento intenso. A escuta terapêutica possibilita que essas experiências sejam acolhidas e gradualmente elaboradas.",
-      },
-      {
-        title: "Crises emocionais",
-        description:
-          "Em momentos de crise, as emoções podem parecer difíceis de compreender ou sustentar. A psicoterapia oferece um espaço de acolhimento e elaboração, favorecendo a construção de recursos internos para lidar com o sofrimento.",
+          "Mesmo desejando relações mais seguras e satisfatórias, talvez você perceba que algumas experiências continuam se repetindo. Certos vínculos despertam sofrimentos semelhantes, como medo de abandono, insegurança ou dificuldade em ocupar seu próprio lugar na relação.",
       },
     ],
     importanceTitle: "Uma escuta para a instabilidade emocional e os vínculos",
     importanceParagraphs: [
-      "Viver com emoções intensas, crises emocionais recorrentes ou dificuldades nas relações afetivas pode gerar um sofrimento profundo e impactar diferentes áreas da vida. Na psicoterapia psicanalítica, buscamos compreender os sentidos dessas experiências, sua relação com a história de vida e os modos de vínculo construídos ao longo do tempo.",
-      "Ao oferecer um espaço de escuta, acolhimento e reflexão, a terapia possibilita a elaboração dos conflitos emocionais, a compreensão de padrões que se repetem e a construção de uma relação mais autêntica consigo mesmo e com os outros.",
+      "Emoções intensas, sensação de vazio, dificuldades nos relacionamentos, medo de rejeição ou conflitos que parecem se repetir podem gerar sofrimento e afetar a forma como nos relacionamos conosco e com os outros.",
+      "A psicoterapia oferece um espaço para compreender essas experiências para além dos sintomas. Muitas vezes, algumas dores não ficam no passado e continuam influenciando a forma como sentimos, reagimos e construímos nossos vínculos. Ao longo do processo terapêutico, torna-se possível reconhecer esses movimentos e construir novos sentidos para a própria história.",
     ],
     importanceImages: [
       {
@@ -99,8 +100,8 @@ export const servicePages: Record<string, ServicePageContent> = {
     ],
     processTitle: "Como funciona o acompanhamento?",
     processParagraphs: [
-      "As sessões ocorrem semanalmente de forma online, oferecendo um ambiente seguro e confidencial para falar livremente sobre suas vivências e angústias.",
-      "Ao longo do processo, trabalhamos na construção de novos caminhos para lidar com crises de instabilidade e na promoção do bem-estar emocional.",
+      "As sessões ocorrem semanalmente, de forma online, oferecendo um espaço de escuta seguro e confidencial para falar sobre suas vivências, dúvidas e sofrimentos.",
+      "A psicoterapia é um processo construído ao longo do tempo. Por meio da escuta e da reflexão, buscamos compreender aquilo que gera sofrimento, reconhecer padrões que se repetem e desenvolver novas formas de se relacionar consigo mesma e com os outros.",
     ],
     processCtaLabel: "Entre em contato",
     testimonialsTitle: "Opiniões de pacientes",
