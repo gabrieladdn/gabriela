@@ -164,29 +164,29 @@ export function AboutSection() {
           text-align: center;
         }
 
-        /* Distinct, soft color themes for niches */
+        /* Distinct, soft color themes for niches based on sage */
         .niche-card-terracotta {
-          background: rgba(143, 75, 66, 0.05);
-          border: 1px solid rgba(143, 75, 66, 0.12);
+          background: rgba(118, 126, 114, 0.04);
+          border: 1px solid rgba(118, 126, 114, 0.10);
         }
         .niche-card-terracotta .niche-text {
-          color: var(--color-secondary);
+          color: #000000;
         }
 
         .niche-card-sage {
-          background: rgba(118, 126, 114, 0.06);
-          border: 1px solid rgba(118, 126, 114, 0.14);
+          background: rgba(118, 126, 114, 0.08);
+          border: 1px solid rgba(118, 126, 114, 0.16);
         }
         .niche-card-sage .niche-text {
-          color: #555e51;
+          color: #000000;
         }
 
         .niche-card-taupe {
-          background: rgba(130, 118, 112, 0.05);
-          border: 1px solid rgba(130, 118, 112, 0.12);
+          background: rgba(118, 126, 114, 0.12);
+          border: 1px solid rgba(118, 126, 114, 0.22);
         }
         .niche-card-taupe .niche-text {
-          color: #685b54;
+          color: #000000;
         }
 
         .about-visual {

@@ -1,6 +1,5 @@
 import { identification } from "@/content/sections";
 import { Reveal } from "@/components/ui/Reveal";
-import TextCarousel from "@/components/ui/TextCarousel";
 
 export function IdentificationSection() {
   return (
@@ -18,11 +17,18 @@ export function IdentificationSection() {
             </span>
           </Reveal>
 
-          <div className="identification-carousel">
+          <div className="identification-cards-wrapper">
             <Reveal className="carousel-wrap">
-              <p className="lead">E talvez você se reconheça em alguma dessas situações:</p>
+              <p className="lead">Você se identifica com alguma destas situações?</p>
 
-              <TextCarousel items={identification.listItems} className="site-text-carousel" />
+              <div className="identification-grid-cards">
+                {identification.listItems.map((item, idx) => (
+                  <Reveal key={idx} delay={idx % 3} className="id-card">
+                    <span className="id-card-icon">✦</span>
+                    <p className="id-card-text">{item}</p>
+                  </Reveal>
+                ))}
+              </div>
 
               <div className="identification-conclusion">
                 <p className="conclusion">
@@ -62,29 +68,70 @@ export function IdentificationSection() {
           gap: 32px;
         }
 
-        .identification-carousel {
-          max-width: 600px;
+        .identification-cards-wrapper {
+          width: 100%;
+          max-width: 1000px;
           margin: 0 auto;
         }
 
-        .identification-carousel .lead {
+        .identification-cards-wrapper .lead {
           color: var(--color-on-surface-variant);
           font-size: 1.0625rem;
           text-align: center;
+          margin-bottom: 24px;
+        }
+
+        .identification-grid-cards {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 16px;
+          margin-bottom: 32px;
+          width: 100%;
+        }
+
+        .id-card {
+          background: rgba(255, 255, 255, 0.45);
+          border: 1px solid rgba(143, 75, 66, 0.08);
+          border-radius: 16px;
+          padding: 20px;
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease;
+        }
+
+        .id-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(143, 75, 66, 0.05);
+          background: rgba(255, 255, 255, 0.75);
+        }
+
+        .id-card-icon {
+          color: var(--color-secondary);
+          font-size: 0.75rem;
+          line-height: 1.5;
+          margin-top: 2px;
+        }
+
+        .id-card-text {
+          font-size: 0.94rem;
+          line-height: 1.5;
+          color: var(--color-on-surface-variant);
+          margin: 0;
         }
 
         .identification-conclusion .conclusion {
-            padding: 16px 18px;
-            border-radius: 12px;
-            font-size: 0.98rem;
-            line-height: 1.5;
-            color: var(--color-on-surface-variant);
-            margin-top: 12px;
-            text-align: center;
+          padding: 16px 18px;
+          border-radius: 12px;
+          font-size: 0.98rem;
+          line-height: 1.5;
+          color: var(--color-on-surface-variant);
+          margin-top: 12px;
+          text-align: center;
         }
 
         @media (max-width: 880px) {
-          .identification-grid {
+          .identification-grid-cards {
             grid-template-columns: 1fr;
           }
         }

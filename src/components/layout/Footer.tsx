@@ -54,7 +54,7 @@ export function Footer() {
           </div>
 
           <div className="footer-legal-shell">
-            <p className="footer-legal-copy">Gabriela Nunes | Psicóloga Clínica | CRP 06/XXXXX</p>
+            <p className="footer-legal-copy">Gabriela Nunes | Psicóloga Clínica | CRP 06/132479</p>
             <div className="footer-legal-links">
               <Link href="/privacidade">Privacidade</Link>
               <span>•</span>

@@ -2,12 +2,12 @@
 export const heroText = {
   kicker: "Psicoterapia Online",
   titleParts: [
-    "Psicoterapia online para pessoas que ",
-    "não se sentem suficientes",
-    ", convivem com emoções intensas, ansiedade e sofrimento na relação consigo mesmas.",
+    "Psicoterapia online para quem ",
+    "não se sente suficiente",
+    ", convive com emoções intensas, ansiedade e sofrimento na relação consigo mesmo.",
   ],
   description:
-    "Atendimento voltado para crises emocionais, dificuldades nos vínculos e na forma de lidar consigo e com as próprias emoções; questões relacionadas à insatisfação corporal, autoestima e autocobrança; além do acompanhamento de sofrimentos marcados por sensação de vazio, dificuldades de identidade e manifestações como transtornos alimentares.",
+    "Atendimento voltado para crises emocionais, dificuldades nos vínculos, na forma de lidar consigo e com as próprias emoções; questões relacionadas à insatisfação corporal, autoestima e autocobrança; além do acompanhamento de sofrimentos marcados por sensação de vazio, dificuldades de identidade e manifestações como transtornos alimentares.",
   actions: ["Agendar terapia", "Conheça meu trabalho"],
 };
 
@@ -24,7 +24,7 @@ export const aboutContent = [
 
 export const psychoText = {
   title:
-    "A psicoterapia pode ser um espaço para olhar para os sofrimentos emocionais com cuidado e continuidade.",
+    "A psicoterapia pode ser um espaço para olhar para o sofrimento emocional com cuidado e continuidade.",
   blockquote:
     "Muitas vezes, aquilo que aparece como ansiedade, angústia ou sofrimento emocional intenso não surge de forma isolada.",
   paragraphs: [
@@ -38,8 +38,8 @@ export const aboutHomepage = {
     "Sou psicóloga formada desde 2017, pós-graduanda em Psicoterapia Psicanalítica Contemporânea pela EPPM e especializada em Transtornos Alimentares e Comportamento Alimentar pelo Instituto de Pesquisa do Comportamento Alimentar de Curitiba (IPCAC).",
   paragraphs: [
     "Ao longo da minha trajetória, venho me dedicando ao estudo da vida psíquica, dos vínculos e das experiências emocionais que se constroem desde a infância, e que influenciam a forma como cada pessoa se percebe, se relaciona consigo mesma, com os outros, com o próprio corpo e com a alimentação.",
-    "Na prática clínica, acompanho pessoas que vivenciam dificuldades relacionadas à autoimagem, emoções intensas e experiências corporais difíceis de simbolizar; angústias persistentes, sensação de vazio, instabilidade nos relacionamentos, autocrítica e sofrimento na relação consigo mesmas. Também atuo no cuidado de questões associadas aos transtornos alimentares, transtornos do humor e ao transtorno de personalidade borderline.",
-    "Minha formação e experiência clínica sustentam uma prática pautada na escuta sensível, que considera a singularidade de cada história e os sentidos que o sofrimento pode assumir na vida de cada pessoa.",
+    "Na prática clínica, acompanho pessoas que enfrentam dificuldades relacionadas à autoimagem, à autocrítica, às emoções intensas e à relação consigo mesmas. Também acolho sofrimentos que podem se manifestar por meio de angústias persistentes, sensação de vazio, instabilidade nos relacionamentos e experiências corporais difíceis de simbolizar. Além disso, atuo no cuidado de questões associadas aos transtornos alimentares, transtornos do humor e transtorno de personalidade borderline.",
+    "Minha formação e experiência clínica sustentam uma prática baseada na escuta cuidadosa de cada história, buscando compreender como determinados sofrimentos foram se constituindo e de que forma se expressam na vida de cada pessoa.",
   ],
   nichesTitle: "Um espaço para construir novos sentidos",
   niches: [
@@ -67,8 +67,8 @@ export const psychoBullets = [
 export const ctaText = {
   title: "Entre em contato",
   descriptions: [
-    "Iniciar terapia nem sempre é simples e, muitas vezes, pedir ajuda acontece justamente depois de muito tempo tentando lidar com tudo sozinho(a).",
-    "Se você sente que esse pode ser o momento de começar esse processo, estou à disposição para acolher sua mensagem e conversarmos sobre o atendimento.",
+    "Alguns sofrimentos são difíceis de carregar sozinho(a). Quando determinadas questões passam a se repetir, gerar angústia ou afetar a forma como você se vê, sente e se relaciona, a terapia pode oferecer um espaço de escuta e compreensão.",
+    "Se você sente que este pode ser o momento de iniciar esse processo, será um prazer conversar com você sobre o atendimento.",
   ],
   button: "Agendar atendimento via WhatsApp",
 };
@@ -78,12 +78,12 @@ export const services = [
     icon: "♡",
     title: "Sofrimento Psíquico, Instabilidade Emocional e Vínculos",
     description:
-      "Sensação persistente de vazio, oscilações de humor, dificuldades em lidar com emoções intensas, relações dolorosas, além do medo de abandono.",
+      "Sensação persistente de vazio, feridas emocionais da infância, oscilações de humor, dificuldades em lidar com emoções intensas, relações dolorosas, além do medo de abandono.",
     route: "/servicos/sofrimento-psiquico-instabilidade-emocional-e-vinculos",
   },
   {
     icon: "◌",
-    title: "Imagem Corporal, Autoestima e Alimentação",
+    title: "Imagem Corporal, Autoestima e Transtornos Alimentares",
     description:
       "Questões relacionadas à autoimagem, relação difícil com o corpo e o não reconhecimento do próprio valor; Sofrimentos que envolvem a alimentação, como compulsão alimentar, anorexia e bulimia.",
     offset: true,
@@ -122,7 +122,7 @@ export const howSteps = [
   {
     icon: "✦",
     title: "Acolhimento Global",
-    description: "Atendimento para brasileiras residentes em qualquer lugar do mundo.",
+    description: "Atendimento para brasileiras(os) residentes em qualquer lugar do mundo.",
   },
 ];
 
@@ -155,23 +155,18 @@ export const identification = {
     },
   ],
   listItems: [
-    "Vive crises emocionais intensas e tem dificuldade em compreender ou sustentar o que sente",
+    "Vive crises emocionais intensas e tem dificuldade em compreender ou lidar com o que sente",
     "Tem dificuldade com sua identidade e em compreender a si mesma(o)",
-    "Sente que nunca é suficiente",
-    "Se sente desconectada(o), vazia ou emocionalmente exausta",
+    "Se compara constantemente com outras pessoas",
+    "Vive em guerra com o próprio corpo",
+    "Carrega culpa ao comer",
+    "Tem dificuldade em reconhecer suas qualidades",
+    "Sente que precisa ser perfeita(o) para merecer amor",
+    "Sente que, por mais que se esforce, nunca é suficiente",
+    "Se sente desconectada(o), vazia ou emocionalmente exausta(o)",
     "Sente que certas experiências do passado ainda causam dor, mesmo depois de tanto tempo",
     "Vive relações intensas, dolorosas ou instáveis",
-    "Tem dificuldade em expressar o que sente",
-    "Se sente inadequada(o), mesmo se esforçando tanto",
-    "Vive em constante autocrítica e perfeccionismo",
     "Se preocupa excessivamente com o olhar e julgamento do outro",
-    "Vive em constante conflito com a própria imagem e autoestima",
-    "Se sente insatisfeita(o) com o próprio corpo, mesmo quando tenta mudá-lo",
-    "Sente vergonha, inadequação ou desconforto ao se olhar",
-    "Vive uma relação difícil com a comida, marcada por descontrole ou controle excessivo",
-    "Carrega uma sensação persistente de fracasso pessoal",
-    "Percebe que o sofrimento também aparece no corpo",
-    "Sente ansiedade, angústia ou dores que não consegue explicar completamente",
-    "Vive tentando dar conta de tudo sem conseguir descansar de verdade",
+    "Sente que a ansiedade, a angústia ou a dor física também se manifestam no corpo",
   ],
 };

@@ -17,7 +17,7 @@ export default function ImagemCorporalAutoestimaAlimentacaoPage() {
 
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: "Home", url: buildCanonicalUrl("/") },
-    { name: "Imagem Corporal, Autoestima e Alimentação", url: canonical },
+    { name: "Imagem Corporal, Autoestima e Transtornos Alimentares", url: canonical },
   ]);
 
   const serviceSchema = {

@@ -295,7 +295,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     heroCtaLabel: "Agendar agora",
     heroImage: {
       src: "/images/corpo1.jpg",
-      alt: "Imagem Corporal, Autoestima e Alimentação",
+      alt: "Imagem Corporal, Autoestima e Transtornos Alimentares",
     },
     whyTitle: "Por que olhar para a relação com o corpo, a autoestima e a comida?",
     whyDescription:
@@ -364,7 +364,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       "Se você deseja construir uma relação mais integrada e leve com seu próprio corpo e alimentação, fale comigo.",
     footerCtaLabel: "Agendar atendimento",
     seo: {
-      title: "Imagem Corporal, Autoestima e Alimentação | Gabriela Nunes",
+      title: "Imagem Corporal, Autoestima e Transtornos Alimentares | Gabriela Nunes",
       description:
         "Apoio terapêutico online voltado a transtornos alimentares, compulsão, autoestima corporal e insatisfação com a imagem.",
       image: "/images/corpo1.jpg",
