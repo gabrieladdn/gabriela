@@ -4,7 +4,7 @@ export const heroText = {
   titleParts: [
     "Psicoterapia online para quem ",
     "não se sente suficiente",
-    ", convive com emoções intensas, ansiedade e sofrimento na relação consigo mesmo.",
+    ", convive com autocrítica, emoções intensas e dificuldades na relação consigo mesmo(a).",
   ],
   description:
     "Atendimento voltado para crises emocionais, dificuldades nos vínculos, na forma de lidar consigo e com as próprias emoções; questões relacionadas à insatisfação corporal, autoestima e autocobrança; além do acompanhamento de sofrimentos marcados por sensação de vazio, dificuldades de identidade e manifestações como transtornos alimentares.",
@@ -48,7 +48,7 @@ export const aboutHomepage = {
       colorType: "terracotta",
     },
     {
-      text: "Caminharemos juntas para compreender emoções, elaborar e dar sentido/ nome para experiências dolorosas, e encontrar formas mais saudáveis de lidar com os desafios da vida.",
+      text: "Caminharemos juntas(os) para compreender emoções, elaborar e dar sentido para experiências dolorosas, e encontrar formas mais saudáveis de lidar com os desafios da vida.",
       colorType: "sage",
     },
     {
@@ -67,7 +67,7 @@ export const psychoBullets = [
 export const ctaText = {
   title: "Entre em contato",
   descriptions: [
-    "Alguns sofrimentos são difíceis de carregar sozinho(a). Quando determinadas questões passam a se repetir, gerar angústia ou afetar a forma como você se vê, sente e se relaciona, a terapia pode oferecer um espaço de escuta e compreensão.",
+    "Alguns sofrimentos são difíceis de carregar sozinho. Quando determinadas questões passam a se repetir, gerar angústia ou afetar a forma como você se vê, sente e se relaciona, a terapia pode oferecer um espaço de escuta e compreensão.",
     "Se você sente que este pode ser o momento de iniciar esse processo, será um prazer conversar com você sobre o atendimento.",
   ],
   button: "Agendar atendimento via WhatsApp",
@@ -158,15 +158,14 @@ export const identification = {
     "Vive crises emocionais intensas e tem dificuldade em compreender ou lidar com o que sente",
     "Tem dificuldade com sua identidade e em compreender a si mesma(o)",
     "Se compara constantemente com outras pessoas",
-    "Vive em guerra com o próprio corpo",
-    "Carrega culpa ao comer",
-    "Tem dificuldade em reconhecer suas qualidades",
-    "Sente que precisa ser perfeita(o) para merecer amor",
-    "Sente que, por mais que se esforce, nunca é suficiente",
+    "Vive em guerra com o próprio corpo e não consegue reconhecer valor próprio",
+    "Carrega culpa ao comer e sensação de controle ou descontrole",
+    "Tem dificuldade em reconhecer suas qualidades e se critica constantemente",
+    "Sente que, por mais que se esforce ou tente ser perfeita(o), nunca é suficiente",
     "Se sente desconectada(o), vazia ou emocionalmente exausta(o)",
-    "Sente que certas experiências do passado ainda causam dor, mesmo depois de tanto tempo",
+    "Sente que certas experiências e feridas do passado ainda causam dor, mesmo depois de tanto tempo",
     "Vive relações intensas, dolorosas ou instáveis",
     "Se preocupa excessivamente com o olhar e julgamento do outro",
-    "Sente que a ansiedade, a angústia ou a dor física também se manifestam no corpo",
+    "Sente que a ansiedade e a angústia por vezes se manifestam no corpo, com sintomas físicos como estresse, taquicardia, cansaço.",
   ],
 };
