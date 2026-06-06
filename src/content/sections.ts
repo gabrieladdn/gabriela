@@ -166,6 +166,6 @@ export const identification = {
     "Sente que certas experiências e feridas do passado ainda causam dor, mesmo depois de tanto tempo",
     "Vive relações intensas, dolorosas ou instáveis",
     "Se preocupa excessivamente com o olhar e julgamento do outro",
-    "Sente que a ansiedade e a angústia por vezes se manifestam no corpo, com sintomas físicos como estresse, taquicardia, cansaço.",
+    "Sente que a ansiedade e a angústia por vezes se manifestam no corpo, com sintomas físicos difíceis de nomear",
   ],
 };
