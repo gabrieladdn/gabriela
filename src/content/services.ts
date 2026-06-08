@@ -210,7 +210,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     route: "/servicos/autocritica-perfeccionismo/",
     title: "Quando nada parece ser suficiente",
     heroHighlight:
-      "Talvez você se cobre com frequência, tenha dificuldade em reconhecer suas conquistas ou sinta que precisa fazer mais, ser melhor ou corresponder a expectativas muito altas. Mesmo diante de resultados positivos, pode permanecer a sensação de que ainda falta algo ou de que nunca é o bastante. Com o tempo, a autocrítica intensa e o perfeccionismo podem gerar sofrimento emocional, insegurança, ansiedade e dificuldade em se sentir em paz consigo mesma(o).",
+      "Talvez você se cobre com frequência, tenha dificuldade em reconhecer suas conquistas ou sinta que precisa fazer mais, ser melhor ou corresponder a expectativas muito altas  Mesmo diante de resultados positivos, pode permanecer a sensação de que ainda falta algo ou de que nunca é o bastante. Com o tempo, a autocrítica intensa e o perfeccionismo podem gerar sofrimento emocional, insegurança, ansiedade e dificuldade em reconhecer o próprio valor.",
     heroCtaLabel: "Agendar agora",
     heroImage: {
       src: "/images/autoestima1.jpg",
@@ -288,7 +288,7 @@ export const servicePages: Record<string, ServicePageContent> = {
   "imagem-corporal-autoestima-e-alimentacao": {
     slug: "imagem-corporal-autoestima-e-alimentacao",
     route: "/servicos/imagem-corporal-autoestima-e-alimentacao/",
-    title: "Quando o corpo, a imagem e a alimentação se tornam fonte de sofrimento",
+    title: "Quando o corpo, autoestima e a alimentação se tornam fonte de sofrimento",
     heroHighlight:
       "A relação com o corpo, a aparência e a alimentação pode carregar angústias que vão muito além da estética ou da comida. Insatisfação constante, autocrítica, culpa ao comer ou preocupação excessiva com o corpo podem impactar o bem-estar e a autoestima. Em muitos casos, essas vivências também estão relacionadas à história emocional de cada pessoa e à maneira como ela construiu sua relação consigo mesma.",
     heroCtaLabel: "Agendar agora",
@@ -298,12 +298,12 @@ export const servicePages: Record<string, ServicePageContent> = {
     },
     whyTitle: "Quando a forma de se enxergar passa a gerar sofrimento",
     whyDescription:
-      "Em alguns momentos, a relação consigo mesma(o) pode ser marcada por inseguranças, comparações e dificuldade em reconhecer o próprio valor e qualidades. Questões relacionadas à autoestima podem se expressar na forma como a pessoa percebe aspectos de si mesma, na insatisfação corporal, na preocupação excessiva com a aparência ou em uma relação difícil com a alimentação. Com o tempo, essas vivências podem afetar a confiança, os relacionamentos e a qualidade de vida.",
+      "Em alguns momentos, a relação consigo mesma(o) pode ser marcada por inseguranças, comparações e dificuldade em reconhecer o próprio valor e qualidades. Questões relacionadas à autoestima podem se expressar na forma como a pessoa percebe aspectos próprios, na insatisfação corporal, na preocupação excessiva com a aparência ou em uma relação difícil com a alimentação. Com o tempo, essas vivências podem afetar a confiança, os relacionamentos e a qualidade de vida.",
     benefits: [
       {
         title: "Insatisfação com a própria imagem",
         description:
-          "Talvez você tenha dificuldade em se sentir confortável com a própria aparência, percebendo mais facilmente aquilo que considera defeitos em si mesma(o). Em alguns momentos, pode surgir a sensação de que seria preciso alcançar um determinado corpo para finalmente se sentir bem.",
+          "Talvez você tenha dificuldade em se sentir confortável com sua aparência, percebendo mais facilmente aquilo que considera defeitos próprios. Em alguns momentos, pode surgir a sensação de que seria preciso alcançar um determinado corpo para finalmente se sentir bem.",
       },
       {
         title: "Quando o corpo nunca parece ser suficiente",
@@ -325,10 +325,10 @@ export const servicePages: Record<string, ServicePageContent> = {
         },
       },
     ],
-    importanceTitle: "Construindo uma relação mais saudável consigo mesma e com a alimentação",
+    importanceTitle: "Construindo uma relação mais saudável consigo mesma(o) e com a alimentação",
     importanceParagraphs: [
       "As dificuldades relacionadas ao corpo, à autoestima e à alimentação nem sempre dizem respeito apenas ao peso, à aparência ou à comida. Muitas vezes, elas carregam sentimentos de inadequação, vergonha, autocrítica e sofrimentos que podem estar ligados a experiências emocionais mais profundas.",
-      "A psicoterapia oferece um espaço para compreender essas vivências com mais cuidado, acolher os conflitos envolvidos e construir uma relação mais gentil consigo mesma, com o próprio corpo e com a alimentação.",
+      "A psicoterapia oferece um espaço para compreender essas vivências com mais cuidado, acolher os conflitos envolvidos e construir uma relação mais gentil com sua autoimagem, autoestima e com a alimentação.",
     ],
     importanceImages: [
       {
