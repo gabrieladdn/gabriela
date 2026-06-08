@@ -122,7 +122,7 @@ export const howSteps = [
   {
     icon: "✦",
     title: "Acolhimento Global",
-    description: "Atendimento para brasileiras(os) residentes em qualquer lugar do mundo.",
+    description: "Atendimento para adolescentes, adultos e idosos, brasileiros residentes em qualquer lugar do mundo.",
   },
 ];
 
