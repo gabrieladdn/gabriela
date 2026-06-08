@@ -3,7 +3,7 @@ import { ServicePageTemplate } from "@/components/services/ServicePageTemplate";
 import { servicePages } from "@/content/services";
 import { buildBreadcrumbSchema, buildCanonicalUrl, buildServiceMetadata } from "@/lib/seo";
 
-const service = servicePages["autoestima-autoimagem-e-autocritica"];
+const service = servicePages["relacionamentos-vinculos-e-sofrimento-emocional"];
 
 export const metadata: Metadata = buildServiceMetadata({
   title: service.seo.title,
@@ -12,12 +12,12 @@ export const metadata: Metadata = buildServiceMetadata({
   image: service.seo.image,
 });
 
-export default function AutoestimaAutoimageAutocriticaPage() {
+export default function RelacionamentosVinculosPage() {
   const canonical = buildCanonicalUrl(service.route);
 
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: "Home", url: buildCanonicalUrl("/") },
-    { name: "Autoestima, Autoimagem e Autocrítica", url: canonical },
+    { name: "Relacionamentos, vínculos e sofrimento emocional", url: canonical },
   ]);
 
   const serviceSchema = {

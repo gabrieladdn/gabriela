@@ -51,7 +51,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     route: "/servicos/sofrimento-psiquico-instabilidade-emocional-e-vinculos/",
     title: "Quando as emoções parecem difíceis de sustentar",
     heroHighlight:
-      "Talvez você viva mudanças intensas de humor, crises emocionais frequentes ou uma sensação persistente de vazio. Em alguns momentos, as emoções parecem difíceis de compreender, nomear ou regular, gerando sofrimento e impactando diferentes áreas da vida.",
+      "Há momentos em que as emoções podem parecer difíceis de compreender, sustentar ou colocar em palavras. Crises emocionais, sentimentos intensos ou mudanças de humor podem gerar grande sofrimento e sensação de instabilidade.",
     heroCtaLabel: "Agendar agora",
     heroImage: {
       src: "/images/sofrimento 1.jpg",
@@ -59,8 +59,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     },
     whyTitle: "Quando o sofrimento emocional ocupa espaço demais",
     whyDescription:
-      `Talvez você conviva com sentimentos intensos, sensação de vazio, insecurity ou dificuldades emocionais que parecem difíceis de compreender.
-O medo de rejeição, o receio de abandono ou a dificuldade em confiar podem tornar os relacionamentos fonte de sofrimento e instabilidade, mesmo quando existe um forte desejo de proximidade e conexão.`,
+      "Existem momentos em que o sofrimento deixa de ser algo passageiro e passa a acompanhar o cotidiano. Sentimentos difíceis de compreender, angústias persistentes ou uma sensação constante de mal-estar podem tornar mais difícil lidar consigo mesma e com a própria experiência emocional.",
     benefits: [
       {
         title: "Vazio, solidão e desamparo",
@@ -70,7 +69,7 @@ O medo de rejeição, o receio de abandono ou a dificuldade em confiar podem tor
       {
         title: "Emoções intensas",
         description:
-          "Há momentos em que as emoções podem parecer difíceis de compreender, sustentar ou colocar em palavras. Crises emocionais, sentimentos intensos ou mudanças de humor podem gerar sofrimento e sensação de instabilidade.",
+          "Há momentos em que as emoções podem parecer difíceis de compreender, acolher ou colocar em palavras. Crises emocionais, sentimentos intensos e oscilações de humor podem gerar grande sofrimento. Talvez você também conviva com o medo da rejeição, do abandono ou da perda de vínculos importantes.",
       },
       {
         title: "Angústias persistentes",
@@ -86,7 +85,7 @@ O medo de rejeição, o receio de abandono ou a dificuldade em confiar podem tor
     importanceTitle: "Uma escuta para o sofrimento emocional e a instabilidade",
     importanceParagraphs: [
       "Emoções intensas, sensação de vazio, angústias persistentes, crises emocionais ou dificuldades para compreender o que se sente podem gerar sofrimento e impactar diferentes áreas da vida.",
-      "A psicoterapia oferece um espaço para compreender essas experiências para além dos sintomas. Muitas vezes, algumas dores não ficam no passado e continuam influenciando a forma como sentimos, reagimos e lidamos com nós mesmos. Ao longo do processo terapêutico, torna-se possível reconhecer esses movimentos, compreender seus sentidos e construir novos caminhos para a própria história.",
+      "A psicoterapia oferece um espaço para olhar para essas experiências com mais cuidado e profundidade. Ao longo do processo, buscamos compreender os sentidos envolvidos nesse sofrimento, reconhecer aquilo que se repete e desenvolver formas mais conscientes e acolhedoras de lidar com as próprias emoções.",
     ],
     importanceImages: [
       {
@@ -132,41 +131,41 @@ O medo de rejeição, o receio de abandono ou a dificuldade em confiar podem tor
     route: "/servicos/ansiedade-e-psicossomatica/",
     title: "Ansiedade e o corpo como expressão do sofrimento emocional",
     heroHighlight:
-      "A ansiedade e as manifestações corporais podem expressar experiências emocionais que nem sempre encontram palavras com facilidade. O sofrimento emocional que se manifesta por meio da ansiedade e, muitas vezes, através de sintomas físicos geram, muitas vezes, angústia, desconforto e impactos no dia a dia.",
+      "Nem sempre o sofrimento emocional se manifesta apenas por pensamentos ou sentimentos. Em alguns momentos, ele também pode aparecer no corpo, por meio da ansiedade, de tensões, desconfortos físicos ou uma sensação constante de alerta. Essas experiências podem gerar angústia e tornar o cotidiano mais difícil de sustentar.",
     heroCtaLabel: "Agendar agora",
     heroImage: {
       src: "/images/ansiedade1.jpg",
       alt: "Retrato de Gabriela Nunes - Ansiedade e Psicossomática",
     },
-    whyTitle: "Como a ansiedade e o corpo se conectam?",
+    whyTitle: "Quando o corpo também expressa o sofrimento",
     whyDescription:
-      "O sofrimento emocional nem sempre se expressa apenas em pensamentos e sentimentos. Muitas vezes, ele também aparece através do corpo, em forma de tensões, dores, cansaço ou outros sintomas físicos.",
+      "A ansiedade e o sofrimento emocional nem sempre encontram palavras com facilidade. Muitas vezes, eles podem se manifestar por meio de tensões, dores, cansaço, desconfortos físicos ou outras reações corporais que impactam o bem-estar e o cotidiano.",
     benefits: [
       {
-        title: "Compreender a ansiedade",
+        title: "Preocupação constante e sensação de alerta",
         description:
-          "A ansiedade nem sempre está relacionada apenas ao momento presente. Muitas vezes, ela pode expressar conflitos emocionais, medos e experiências que ainda não encontraram formas de elaboração. A psicoterapia oferece um espaço para compreender os sentidos desse sofrimento em sua história singular.",
+          "Talvez exista uma sensação constante de preocupação, como se fosse difícil desligar a mente ou relaxar completamente. Mesmo quando não há um motivo claro, o corpo e os pensamentos podem permanecer em estado de alerta, gerando desgaste e inquietação.",
       },
       {
-        title: "Escutar as manifestações do corpo",
+        title: "Quando a ansiedade se manifesta",
         description:
-          "Nem todo sofrimento encontra palavras com facilidade. Em alguns momentos, tensões, dores, sintomas crônicos, alterações no sono ou outros sintomas físicos podem expressar experiências emocionais que buscam ser compreendidas. A terapia oferece um espaço para escutar e elaborar essas vivências.",
+          "A ansiedade pode aparecer de diferentes formas: pensamentos acelerados, dificuldade para relaxar, tensão muscular, aperto no peito, sensação de falta de ar, alterações no sono, irritabilidade ou preocupação excessiva. Cada pessoa a vivencia de maneira singular.",
       },
       {
-        title: "Elaborar experiências de sobrecarga emocional",
+        title: "Quando o corpo expressa o sofrimento",
         description:
-          "A sensação de estar sempre em alerta, a dificuldade de descansar e o esgotamento emocional podem refletir exigências internas, conflitos e formas de funcionamento construídas ao longo da vida. A psicoterapia favorece a compreensão dessas experiências e de seus impactos no cotidiano, podendo construir novos sentidos.",
+          "Nem sempre é possível colocar em palavras tudo aquilo que se sente. Em alguns momentos, o sofrimento emocional pode encontrar outras formas de expressão, surgindo através de sintomas físicos, desconfortos corporais ou sensações difíceis de compreender.",
       },
       {
-        title: "Compreender os pensamentos acelerados e a preocupação excessiva",
+        title: "O que a ansiedade pode estar tentando comunicar",
         description:
-          "Quando a mente parece não encontrar descanso, preocupações e antecipações constantes podem ocupar grande parte da vida psíquica. O processo terapêutico possibilita explorar o que sustenta esse movimento e os significados que ele pode assumir para cada pessoa.",
+          "A ansiedade pode se manifestar como preocupação constante, tensão, aceleração dos pensamentos, dificuldade de relaxar ou sensação de que algo ruim pode acontecer. Na perspectiva psicanalítica, ela não é vista apenas como um sintoma isolado, mas também como uma manifestação de experiências emocionais que podem estar presentes na vida psíquica da pessoa.",
       },
     ],
-    importanceTitle: "Por que olhar para a ansiedade para além dos sintomas?",
+    importanceTitle: "Ansiedade e o que ela pode estar tentando comunicar?",
     importanceParagraphs: [
-      "A ansiedade e os sintomas psicossomáticos podem expressar conflitos emocionais, angústias e experiências que nem sempre encontram palavras com facilidade. Compreendê-los envolve olhar para a sua história e para os sentidos que esse sofrimento pode assumir.",
-      "Na psicoterapia psicanalítica, criamos um espaço de escuta e reflexão que possibilita compreender essas experiências com mais profundidade, possibilitar a elaboração e nomear o sofrimento, favorecendo, aos poucos, uma relação menos sofrida com as próprias emoções e com o corpo.",
+      "A ansiedade e as manifestações do corpo podem expressar angústias, conflitos emocionais e experiências que nem sempre encontram palavras com facilidade. Compreendê-las envolve olhar para a história de cada pessoa e para os sentidos que esse sofrimento pode assumir ao longo da vida.",
+      "Na psicoterapia psicanalítica, construímos um espaço de escuta e reflexão que favorece a compreensão dessas experiências com mais profundidade. Ao longo do processo, muitas pessoas passam a reconhecer melhor os próprios estados internos, identificar o que desperta a ansiedade e, pouco a pouco, encontram formas mais leves de lidar com esses sentimentos. Isso pode trazer alívio, reduzir a intensidade dos sintomas e possibilitar uma relação mais estável com as próprias emoções e com o corpo.",
     ],
     importanceImages: [
       {
@@ -178,10 +177,10 @@ O medo de rejeição, o receio de abandono ou a dificuldade em confiar podem tor
         alt: "Ambiente tranquilo e acolhedor para acalmar a mente e o corpo",
       },
     ],
-    processTitle: "Como funciona o atendimento?",
+    processTitle: "Como funciona o acompanhamento?",
     processParagraphs: [
-      "O atendimento é realizado em sessões semanais e online. Focamos em criar um espaço de acolhimento para que você possa colocar suas angústias em palavras.",
-      "Aos poucos, buscamos desatar os nós que geram a exaustão, proporcionando alívio tanto para a mente quanto para o corpo.",
+      "As sessões ocorrem semanalmente, de forma online, oferecendo um espaço de escuta seguro e confidencial para falar sobre suas vivências, dúvidas e sofrimentos.",
+      "A psicoterapia é um processo construído ao longo do tempo. Por meio da escuta e da reflexão, buscamos compreender aquilo que gera sofrimento, reconhecer padrões que se repetem e desenvolver novas formas de se relacionar consigo mesma e com os outros.",
     ],
     processCtaLabel: "Entre em contato",
     testimonialsTitle: "Opiniões de pacientes",
@@ -206,47 +205,46 @@ O medo de rejeição, o receio de abandono ou a dificuldade em confiar podem tor
       image: "/images/ansiedade1.jpg",
     },
   },
-  "autoestima-autoimagem-e-autocritica": {
-    slug: "autoestima-autoimagem-e-autocritica",
-    route: "/servicos/autoestima-autoimagem-e-autocritica/",
-    title: "O que sustenta a autocrítica constante e a sensação de nunca ser suficiente?",
+  "autocritica-perfeccionismo": {
+    slug: "autocritica-perfeccionismo",
+    route: "/servicos/autocritica-perfeccionismo/",
+    title: "Quando nada parece ser suficiente",
     heroHighlight:
-      "Ao compreendermos padrões de autocrítica, autocobrança e perfeccionismo, percebemos o impacto na autoestima, no bem-estar emocional e na forma de se relacionar consigo.",
+      "Talvez você se cobre com frequência, tenha dificuldade em reconhecer suas conquistas ou sinta que precisa fazer mais, ser melhor ou corresponder a expectativas muito altas. Mesmo diante de resultados positivos, pode permanecer a sensação de que ainda falta algo ou de que nunca é o bastante. Com o tempo, a autocrítica intensa e o perfeccionismo podem gerar sofrimento emocional, insegurança, ansiedade e dificuldade em se sentir em paz consigo mesma(o).",
     heroCtaLabel: "Agendar agora",
     heroImage: {
       src: "/images/autoestima1.jpg",
       alt: "Retrato de Gabriela Nunes - Autoestima, Autoimagem e Autocrítica",
     },
-    whyTitle:
-      "Ideais internos muito exigentes e seus efeitos na autoestima, na autopercepção e no sofrimento psíquico.",
+    whyTitle: "Por que é tão difícil reconhecer o próprio valor?",
     whyDescription:
-      "A autocrítica e o perfeccionismo costumam se organizar a partir de ideais internos muito exigentes, gerando medo e a sensação de nunca ser suficiente e impactando a autoestima. Na psicoterapia, esses padrões podem ser compreendidos e elaborados, favorecendo uma relação mais acolhedora consigo mesma.",
+      "Em alguns momentos, o olhar sobre si mesma(o) parece estar sempre voltado para o que ainda falta, para o que poderia ter sido melhor ou para o que não saiu como esperado. As conquistas acabam perdendo espaço diante do que não foi alcançado, e o reconhecimento de si pode se tornar difícil mesmo em situações positivas. Com o tempo, isso pode afetar a autoestima e a forma como a pessoa se relaciona consigo mesma.",
     benefits: [
       {
-        title: "Autocrítica e exigência interna",
+        title: "O peso da autocrítica",
         description:
-          "A autocrítica constante pode se manifestar como um olhar rígido sobre si mesma, com dificuldade em reconhecer conquistas e qualidades pessoais. A psicoterapia busca compreender a origem dessa exigência interna e seus efeitos na vida emocional.",
+          "Talvez você perceba com facilidade seus erros, falhas ou limitações, mas tenha dificuldade em reconhecer suas qualidades, conquistas e esforços.",
       },
       {
-        title: "Perfeccionismo e medo de errar",
+        title: "A sensação de nunca ser suficiente",
         description:
-          "O perfeccionismo pode estar associado ao medo de errar, de decepcionar ou de não corresponder às expectativas internas e externas. Esse padrão pode gerar tensão constante e sofrimento emocional significativo.",
+          "Mesmo quando alcança objetivos importantes, pode surgir a impressão de que ainda deveria fazer mais, saber mais ou ser melhor, tornando difícil sentir satisfação com aquilo que já conquistou.",
       },
       {
-        title: "Sensação de insuficiência",
+        title: "O medo de errar",
         description:
-          "A sensação de nunca ser suficiente pode afetar a autoestima e a forma como a pessoa se percebe nas relações e nas próprias conquistas. A escuta terapêutica possibilita compreender os sentidos dessa vivência em sua história. E, aos poucos, construir um olhar interno mais compassivo.",
+          "Erros, críticas ou imperfeições podem ser vividos com grande intensidade, gerando ansiedade, vergonha ou a sensação de fracasso.",
       },
       {
-        title: "Impactos na autoestima e nas relações",
+        title: "Quando descansar também gera culpa",
         description:
-          "Muitas vezes, a busca por corresponder a ideais muito exigentes gera desgaste emocional, dificuldade em reconhecer limites e um sentimento persistente de insuficiência. Na psicoterapia, esses movimentos podem ser compreendidos em sua história e elaborados ao longo do processo.",
+          "Em alguns momentos, pode ser difícil desacelerar ou simplesmente aproveitar conquistas sem sentir que deveria estar produzindo, resolvendo algo ou fazendo mais.",
       },
     ],
     importanceTitle: "Novos olhares possíveis no processo terapêutico",
     importanceParagraphs: [
-      "A autocrítica intensa, o perfeccionismo e a sensação de nunca ser suficiente podem gerar um sofrimento persistente e impactar a forma como a pessoa se relaciona consigo mesma e com os outros. Na psicoterapia psicanalítica, buscamos compreender os sentidos desses padrões e sua relação com a história de vida e com os modos de funcionamento psíquico que se construíram ao longo do tempo.",
-      "Ao oferecer um espaço de escuta e elaboração, a terapia possibilita a compreensão desses movimentos internos, favorecendo a construção de uma relação mais acolhedora, realista e menos punitiva consigo mesma.",
+      "A autocrítica excessiva e o perfeccionismo não se expressam apenas como uma forma de ser, mas também podem estar ligados a experiências emocionais, expectativas internas e modos de lidar com erros, exigências e sentimentos de inadequação.",
+      "A psicoterapia oferece um espaço de escuta e reflexão sobre essas experiências. Ao longo do processo, é possível reconhecer com mais clareza esses padrões e a construir uma relação mais gentil consigo mesma(o), em que o valor pessoal não dependa apenas do desempenho ou da perfeição",
     ],
     importanceImages: [
       {
@@ -258,10 +256,10 @@ O medo de rejeição, o receio de abandono ou a dificuldade em confiar podem tor
         alt: "Ambiente do consultório promovendo bem-estar e autoconhecimento",
       },
     ],
-    processTitle: "Como funciona o processo?",
+    processTitle: "Como funciona o acompanhamento?",
     processParagraphs: [
-      "Por meio de sessões online semanais, você terá um espaço reservado e seguro para explorar suas inseguranças e vulnerabilidades.",
-      "Trabalhamos de forma sensível para desconstruir a necessidade constante de validação e fortalecer a autoconfiança no seu próprio ritmo.",
+      "As sessões ocorrem semanalmente, de forma online, oferecendo um espaço de escuta seguro e confidencial para falar sobre suas vivências, dúvidas e sofrimentos.",
+      "A psicoterapia é um processo construído ao longo do tempo. Por meio da escuta e da reflexão, buscamos compreender aquilo que gera sofrimento, reconhecer padrões que se repetem e desenvolver novas formas de se relacionar consigo mesma e com os outros.",
     ],
     processCtaLabel: "Entre em contato",
     testimonialsTitle: "Opiniões de pacientes",
@@ -290,47 +288,47 @@ O medo de rejeição, o receio de abandono ou a dificuldade em confiar podem tor
   "imagem-corporal-autoestima-e-alimentacao": {
     slug: "imagem-corporal-autoestima-e-alimentacao",
     route: "/servicos/imagem-corporal-autoestima-e-alimentacao/",
-    title: "Como a relação com o corpo e a alimentação pode refletir o sofrimento emocional?",
+    title: "Quando o corpo, a imagem e a alimentação se tornam fonte de sofrimento",
     heroHighlight:
-      "A forma como nos relacionamos com o corpo e a comida pode impactar diferentes áreas da vida. Compreender essas experiências é um passo importante para construir uma relação menos sofrida consigo e com a alimentação.",
+      "A relação com o corpo, a aparência e a alimentação pode carregar angústias que vão muito além da estética ou da comida. Insatisfação constante, autocrítica, culpa ao comer ou preocupação excessiva com o corpo podem impactar o bem-estar e a autoestima. Em muitos casos, essas vivências também estão relacionadas à história emocional de cada pessoa e à maneira como ela construiu sua relação consigo mesma.",
     heroCtaLabel: "Agendar agora",
     heroImage: {
       src: "/images/corpo1.jpg",
       alt: "Imagem Corporal, Autoestima e Transtornos Alimentares",
     },
-    whyTitle: "Por que olhar para a relação com o corpo, a autoestima e a comida?",
+    whyTitle: "Quando a forma de se enxergar passa a gerar sofrimento",
     whyDescription:
-      "As dificuldades com o corpo, autoestima ou alimentação nem sempre dizem respeito apenas à aparência ou comida. Muitas vezes, estão relacionadas à forma como fomos vistos, nos percebemos, nos valorizamos e lidamos com nossas experiências emocionais.",
+      "Em alguns momentos, a relação consigo mesma(o) pode ser marcada por inseguranças, comparações e dificuldade em reconhecer o próprio valor e qualidades. Questões relacionadas à autoestima podem se expressar na forma como a pessoa percebe aspectos de si mesma, na insatisfação corporal, na preocupação excessiva com a aparência ou em uma relação difícil com a alimentação. Com o tempo, essas vivências podem afetar a confiança, os relacionamentos e a qualidade de vida.",
     benefits: [
       {
-        title: "Compreender a insatisfação com a própria imagem",
+        title: "Insatisfação com a própria imagem",
         description:
-          "A dificuldade em aceitar o próprio corpo, a comparação constante e a sensação de inadequação podem impactar a autoestima e gerar sofrimento emocional. A psicoterapia oferece um espaço para compreender essas experiências e os sentidos que elas podem assumir na história de cada pessoa.",
+          "Talvez você tenha dificuldade em se sentir confortável com a própria aparência, percebendo mais facilmente aquilo que considera defeitos em si mesma(o). Em alguns momentos, pode surgir a sensação de que seria preciso alcançar um determinado corpo para finalmente se sentir bem.",
       },
       {
-        title: "As dificuldades na relação com a alimentação",
+        title: "Quando o corpo nunca parece ser suficiente",
         description:
-          "Restrições excessivas, episódios de perda de controle ou preocupações intensas com a comida, podem estar relacionados a questões emocionais que merecem ser compreendidas. Essas experiências também podem fazer parte de transtornos alimentares, como compulsão alimentar, anorexia e bulimia, condições que requerem avaliação especializada e acompanhamento adequado.",
+          "Talvez você conviva com a sensação de que seu corpo deveria ser diferente. A busca constante por um ideal pode gerar comparações, inseguranças e dificuldade em se sentir verdadeiramente confortável consigo mesma. Por trás da insatisfação corporal, muitas vezes também existem questionamentos sobre sua autoestima e próprio valor.",
       },
       {
-        title: "Fortalecer a autoestima, a autoimagem e o autoconceito",
+        title: "Quando a alimentação se torna fonte de sofrimento",
         description:
-          "A forma como nos valorizamos (autoestima), percebemos nosso corpo e características (autoimagem) e construímos a percepção de quem somos, podendo nos levar a comparações com ideais (autoconceito), influencia diretamente nosso bem-estar emocional e a relação com nós mesmos.",
+          "Culpa ao comer, preocupação excessiva com a comida, medo de engordar ou pensamentos constantes sobre alimentação podem tornar essa relação mais difícil e desgastante. Com o tempo, a alimentação pode deixar de ser uma experiência simples e passar a gerar angústia, preocupação e sofrimento emocional.",
       },
       {
-        title: "Acompanhar o processo da cirurgia bariátrica",
+        title: "O olhar para si mesma e mudanças corporais",
         description:
-          "A avaliação psicológica, o preparo para a cirurgia e/ ou acompanhamento no pós-operatório auxiliam na compreensão das expectativas, mudanças emocionais e adaptações envolvidas nesse processo, favorecendo um cuidado mais amplo durante essa etapa.",
+          "Comparações frequentes, autocrítica intensa ou uma percepção muito rígida sobre o próprio corpo podem impactar a autoestima e a forma como você se relaciona consigo mesma. Mudanças corporais importantes, emagrecimento significativo ou transformações após procedimentos como a cirurgia bariátrica também podem trazer desafios emocionais relacionados à identidade, autoestima e forma de se perceber.",
         link: {
-          label: "Saiba mais sobre a avaliação",
+          label: "Saiba mais",
           href: "/avaliacao-cirurgia-bariatrica/",
         },
       },
     ],
-    importanceTitle: "Construindo uma relação mais saudável consigo mesmo ou com a comida",
+    importanceTitle: "Construindo uma relação mais saudável consigo mesma e com a alimentação",
     importanceParagraphs: [
-      "As dificuldades relacionadas ao corpo, à autoestima e à alimentação nem sempre estão ligadas apenas ao peso, à aparência ou aos hábitos alimentares. Muitas vezes, elas envolvem sentimentos de inadequação, vergonha, comparação, sofrimento emocional e formas de se relacionar consigo construídas ao longo da vida. Estando relacionadas a questões multifatoriais que merecem ser compreendidas com cuidado.",
-      "A psicoterapia oferece um espaço para compreender essas experiências, acolher os conflitos envolvidos e construir uma relação mais integrada com o próprio corpo, comida e sua história. São questões que demandam uma escuta especializada e um acompanhamento atento às necessidades de cada paciente.",
+      "As dificuldades relacionadas ao corpo, à autoestima e à alimentação nem sempre dizem respeito apenas ao peso, à aparência ou à comida. Muitas vezes, elas carregam sentimentos de inadequação, vergonha, autocrítica e sofrimentos que podem estar ligados a experiências emocionais mais profundas.",
+      "A psicoterapia oferece um espaço para compreender essas vivências com mais cuidado, acolher os conflitos envolvidos e construir uma relação mais gentil consigo mesma, com o próprio corpo e com a alimentação.",
     ],
     importanceImages: [
       {
@@ -344,8 +342,8 @@ O medo de rejeição, o receio de abandono ou a dificuldade em confiar podem tor
     ],
     processTitle: "Como funciona o acompanhamento?",
     processParagraphs: [
-      "O acompanhamento é feito em sessões semanais online, com sigilo ético e total respeito à sua história.",
-      "Focamos em investigar e ressignificar os conflitos que atravessam seu corpo e comportamento alimentar no seu próprio ritmo.",
+      "As sessões ocorrem semanalmente, de forma online, oferecendo um espaço de escuta seguro e confidencial para falar sobre suas vivências, dúvidas e sofrimentos.",
+      "A psicoterapia é um processo construído ao longo do tempo. Por meio da escuta e da reflexão, buscamos compreender aquilo que gera sofrimento, reconhecer padrões que se repetem e desenvolver novas formas de se relacionar consigo mesma e com os outros.",
     ],
     processCtaLabel: "Entre em contato",
     testimonialsTitle: "Opiniões de pacientes",
@@ -446,6 +444,85 @@ O medo de rejeição, o receio de abandono ou a dificuldade em confiar podem tor
       description:
         "Avaliação psicológica e preparo emocional para cirurgia bariátrica com atendimento online. Processo com escuta qualificada, orientação e segurança.",
       image: "/images/corpo1.jpg",
+    },
+  },
+  "relacionamentos-vinculos-e-sofrimento-emocional": {
+    slug: "relacionamentos-vinculos-e-sofrimento-emocional",
+    route: "/servicos/relacionamentos-vinculos-e-sofrimento-emocional/",
+    title: "Quando os relacionamentos se tornam fonte de sofrimento",
+    heroHighlight:
+      "Talvez você perceba que, em alguns momentos da vida, os relacionamentos podem gerar sofrimento, insegurança ou instabilidade emocional. Pode existir o receio de ser rejeitada, de não ser importante para o outro ou de se machucar nas relações, mesmo quando há um desejo genuíno de proximidade. Essas experiências podem impactar a forma como você se relaciona consigo mesma e com os outros.",
+    heroCtaLabel: "Agendar agora",
+    heroImage: {
+      src: "/images/extra1.jpg",
+      alt: "Relacionamentos, vínculos e sofrimento emocional",
+    },
+    whyTitle: "Por que algumas relações parecem tão difíceis?",
+    whyDescription:
+      "Os vínculos que construímos ao longo da vida não são marcados apenas pelas experiências atuais. Muitas vezes, eles também são atravessados por histórias anteriores, formas de se proteger emocionalmente e maneiras aprendidas de se relacionar. Com o tempo, certos padrões podem se repetir, gerando sofrimento mesmo quando existe o desejo de viver relações diferentes.",
+    benefits: [
+      {
+        title: "Medo de rejeição e abandono",
+        description:
+          "Talvez exista um receio constante de não ser importante, de ser deixada de lado ou de não ser escolhida nas relações.",
+      },
+      {
+        title: "Entre proximidade e afastamento",
+        description:
+          "Pode existir um movimento interno entre o desejo de se aproximar e o medo de se machucar emocionalmente.",
+      },
+      {
+        title: "Como você se vê nas relações",
+        description:
+          "A forma como você se relaciona com os outros também pode refletir a forma como você se percebe, se valoriza e lida com suas próprias emoções.",
+      },
+      {
+        title: "Relações que se repetem",
+        description:
+          "Em alguns momentos, pode parecer que você se envolve em situações semelhantes, mesmo quando deseja que as coisas sejam diferentes.",
+      },
+    ],
+    importanceTitle: "Um espaço para compreender e elaborar suas experiências",
+    importanceParagraphs: [
+      "A psicoterapia oferece um espaço para compreender os sentidos dos vínculos e dos padrões que se repetem ao longo da vida. Ao olhar para essas experiências com mais cuidado, torna-se possível reconhecer movimentos emocionais, elaborar conflitos e construir formas mais conscientes e menos sofridas de se relacionar consigo mesma e com os outros.",
+    ],
+    importanceImages: [
+      {
+        src: "/images/extra2.jpg",
+        alt: "Elementos representando diálogo e construção de vínculos saudáveis",
+      },
+      {
+        src: "/images/extra3.jpg",
+        alt: "Consultório acolhedor para psicoterapia de relacionamentos e vínculos",
+      },
+    ],
+    processTitle: "Como funciona o acompanhamento?",
+    processParagraphs: [
+      "As sessões ocorrem semanalmente, de forma online, oferecendo um espaço de escuta seguro e confidencial para falar sobre suas vivências, dúvidas e sofrimentos.",
+      "A psicoterapia é um processo construído ao longo do tempo. Por meio da escuta e da reflexão, buscamos compreender aquilo que gera sofrimento, reconhecer padrões que se repetem e desenvolver novas formas de se relacionar consigo mesma e com os outros.",
+    ],
+    processCtaLabel: "Entre em contato",
+    testimonialsTitle: "Opiniões de pacientes",
+    testimonials: [
+      {
+        quote:
+          "Com a terapia da Gabriela, compreendi por que repetia certos padrões e como construir limites mais saudáveis nas minhas relações.",
+        author: "Mariana",
+      },
+      {
+        quote:
+          "Consegui falar abertamente sobre a insegurança que sentia nos meus relacionamentos em um espaço muito acolhedor.",
+        author: "Patrícia",
+      },
+    ],
+    footerCtaText:
+      "Se você sente que seus relacionamentos têm sido fonte de angústia e sofrimento, agende uma consulta.",
+    footerCtaLabel: "Agendar agora",
+    seo: {
+      title: "Relacionamentos, Vínculos e Sofrimento Emocional | Gabriela Nunes",
+      description:
+        "Psicoterapia online para lidar com conflitos de relacionamento, medo de abandono, insegurança e padrões repetitivos nos vínculos.",
+      image: "/images/extra1.jpg",
     },
   },
 };

@@ -28,7 +28,7 @@ export const psychoText = {
   blockquote:
     "Muitas vezes, aquilo que aparece como ansiedade, angústia ou sofrimento emocional intenso não surge de forma isolada.",
   paragraphs: [
-    "Os sintomas que são apresentados, podem estar relacionados a experiências, vínculos e formas de se perceber que foram se construindo ao longo da história de vida. Também pode se expressar através de emoções intensas, dificuldades nas relações e sofrimento na relação consigo mesmo e com o próprio corpo.",
+    "Os sintomas que são apresentados, podem estar relacionados a experiências, vínculos e formas de se perceber que foram se construindo ao longo da sua história de vida. Também pode se expressar através de emoções intensas, dificuldades nas relações e sofrimento na relação consigo mesmo e com o próprio corpo.",
     "Ao longo do processo terapêutico, buscamos compreender os padrões que se repetem, as necessidades emocionais envolvidas e aquilo que, por vezes, ainda não encontrou palavras para ser nomeado. A partir dessa construção, podem surgir formas mais conscientes e autênticas de se relacionar consigo, com as emoções, com os vínculos e com a sua própria história.",
   ],
 };
@@ -59,9 +59,9 @@ export const aboutHomepage = {
 };
 
 export const psychoBullets = [
-  "A psicoterapia favorece o autoconhecimento, a elaboração dos conflitos e o reconhecimento dos próprios recursos internos",
+  "A psicoterapia favorece o autoconhecimento, a elaboração de conflitos inconscientes e o reconhecimento dos próprios recursos internos",
   "Amplia a capacidade de lidar com os desafios da vida a partir de uma compreensão mais profunda de si",
-  "É um processo singular, que respeita o tempo e a história de cada pessoa, em um espaço seguro e sem julgamentos, permitindo olhar para cada sofrimento com o cuidado necessário.",
+  "É um processo singular, que respeita o tempo e a história de cada pessoa, em um espaço seguro e sem julgamentos, permitindo olhar para cada sofrimento com o cuidado necessário",
 ];
 
 export const ctaText = {
@@ -102,7 +102,7 @@ export const services = [
     description:
       "Autocrítica e autocobrança intensa, perfeccionismo, sensação de nunca ser suficiente, dificuldade em reconhecer conquistas e qualidades pessoais, além de um olhar severo para si mesma(o).",
     offset: true,
-    route: "/servicos/autoestima-autoimagem-e-autocritica",
+    route: "/servicos/autocritica-perfeccionismo",
   },
 ];
 
@@ -164,7 +164,7 @@ export const identification = {
     "Sente que, por mais que se esforce ou tente ser perfeita(o), nunca é suficiente",
     "Se sente desconectada(o), vazia ou emocionalmente exausta(o)",
     "Sente que certas experiências e feridas do passado ainda causam dor, mesmo depois de tanto tempo",
-    "Vive relações intensas, dolorosas ou instáveis",
+    "Vive relações intensas, dolorosas ou instáveis, além de possível medo de abandono ou rejeições",
     "Se preocupa excessivamente com o olhar e julgamento do outro",
     "Sente que a ansiedade e a angústia por vezes se manifestam no corpo, com sintomas físicos difíceis de nomear",
   ],

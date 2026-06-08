@@ -19,12 +19,14 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
               {content.slug === "avaliacao-cirurgia-bariatrica"
                 ? "Avaliação Bariátrica"
                 : content.slug === "sofrimento-psiquico-instabilidade-emocional-e-vinculos"
-                  ? "Sofrimento Psíquico e Vínculos"
+                  ? "sofrimento psíquico"
                   : content.slug === "ansiedade-e-psicossomatica"
                     ? "Ansiedade e Psicossomática"
                     : content.slug === "imagem-corporal-autoestima-e-alimentacao"
                       ? "Imagem Corporal e Alimentação"
-                      : "Autoestima e Autoimagem"}
+                      : content.slug === "relacionamentos-vinculos-e-sofrimento-emocional"
+                        ? "Relacionamentos e Vínculos"
+                        : "Autocrítica e Perfeccionismo"}
             </p>
             <h1 className="service-title">{content.title}</h1>
             <p className="service-lead">{content.heroHighlight}</p>
