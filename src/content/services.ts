@@ -159,13 +159,13 @@ export const servicePages: Record<string, ServicePageContent> = {
       {
         title: "O que a ansiedade pode estar tentando comunicar",
         description:
-          "A ansiedade pode se manifestar como preocupação constante, tensão, aceleração dos pensamentos, dificuldade de relaxar ou sensação de que algo ruim pode acontecer. Na perspectiva psicanalítica, ela não é vista apenas como um sintoma isolado, mas também como uma manifestação de experiências emocionais que podem estar presentes na vida psíquica da pessoa.",
+          "A ansiedade pode se manifestar como preocupação constante, tensão, aceleração dos pensamentos, dificuldade de relaxar ou sensação de que algo ruim pode acontecer. Na perspectiva psicanalítica, ela não é vista apenas como um sintoma isolado, mas também como uma manifestação de conflitos e experiências emocionais que podem estar presentes na vida psíquica da pessoa.",
       },
     ],
-    importanceTitle: "Ansiedade e o que ela pode estar tentando comunicar?",
+    importanceTitle: "Ansiedade e o que ela pode comunicar no processo terapêutico?",
     importanceParagraphs: [
       "A ansiedade e as manifestações do corpo podem expressar angústias, conflitos emocionais e experiências que nem sempre encontram palavras com facilidade. Compreendê-las envolve olhar para a história de cada pessoa e para os sentidos que esse sofrimento pode assumir ao longo da vida.",
-      "Na psicoterapia psicanalítica, construímos um espaço de escuta e reflexão que favorece a compreensão dessas experiências com mais profundidade. Ao longo do processo, muitas pessoas passam a reconhecer melhor os próprios estados internos, identificar o que desperta a ansiedade e, pouco a pouco, encontram formas mais leves de lidar com esses sentimentos. Isso pode trazer alívio, reduzir a intensidade dos sintomas e possibilitar uma relação mais estável com as próprias emoções e com o corpo.",
+      "Na psicoterapia psicanalítica, construímos um espaço de escuta e reflexão que favorece a compreensão dessas experiências com mais profundidade. Ao longo do processo, busca-se um melhor reconhecimento dos próprios estados internos, identificar o que desperta a ansiedade e, pouco a pouco, encontram formas mais leves de lidar com esses sentimentos e conflitos. Isso pode trazer alívio, reduzir a intensidade dos sintomas e possibilitar uma relação mais estável com as próprias emoções e com o corpo.",
     ],
     importanceImages: [
       {
@@ -196,7 +196,7 @@ export const servicePages: Record<string, ServicePageContent> = {
         author: "Ricardo",
       },
     ],
-    footerCtaText: "Dê o primeiro passo para aliviar o peso da ansiedade e cuidar do seu corpo.",
+    footerCtaText: "Dê o primeiro passo para compreender melhor a sua ansiedade e iniciar um processo de cuidado com você mesma(o).",
     footerCtaLabel: "Agende agora",
     seo: {
       title: "Ansiedade e Psicossomática | Gabriela Nunes",
@@ -276,7 +276,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       },
     ],
     footerCtaText:
-      "Se você deseja construir uma relação mais harmoniosa e acolhedora consigo mesma(o), agende uma consulta.",
+      "Dê o primeiro passo para olhar com mais cuidado para sua autocrítica e iniciar um processo de maior acolhimento consigo mesma(o).",
     footerCtaLabel: "Agende agora",
     seo: {
       title: "Autoestima, Autoimagem e Autocrítica | Gabriela Nunes",
@@ -374,35 +374,35 @@ export const servicePages: Record<string, ServicePageContent> = {
     route: "/avaliacao-cirurgia-bariatrica/",
     title: "Avaliação e Preparo para Cirurgia Bariátrica",
     heroHighlight:
-      "Nessa nova fase de sua vida, uma avaliação com profissionalismo e segurança é essencial para o processo.",
+      "A decisão pela cirurgia bariátrica marca uma etapa importante e envolve mudanças físicas e emocionais significativas. A avaliação psicológica oferece também um espaço de escuta e acolhimento, incluindo um preparo mais consciente e cuidadoso para essa nova fase.",
     heroCtaLabel: "Agende agora",
     heroImage: {
       src: "/images/corpo1.jpg",
       alt: "Retrato de Gabriela Nunes para a página de avaliação bariátrica",
     },
-    whyTitle: "Por que a avaliação é tão importante?",
+    whyTitle: "Avaliação psicológica e preparo para cirurgia bariátrica",
     whyDescription:
-      "Como psicóloga que atua com transtornos e comportamento alimentar, com empatia e comprometimento, proporciono uma avaliação completa, para melhor autoconhecimento em conjunto com manejos para que você esteja melhor preparada(o) para esse novo ciclo.",
+      "A avaliação psicológica e o preparo para a cirurgia bariátrica são etapas importantes do processo, que ajudam a compreender a relação com a alimentação, o corpo e as mudanças que essa nova fase envolve. Além do espaço de escuta e reflexão, também são abordadas questões práticas e orientações sobre o processo cirúrgico e as mudanças no dia a dia, ajudando a trazer mais clareza e segurança para esse momento. Como psicóloga com experiência em transtornos e comportamento alimentar, ofereço um acompanhamento voltado ao autoconhecimento e ao preparo emocional para as transformações que podem ocorrer ao longo desse processo.",
     benefits: [
       {
-        title: "Identificar questões emocionais",
+        title: "Relação com a alimentação e aspectos emocionais",
         description:
-          "Reconhecer fatores emocionais que podem influenciar no comportamento alimentar é essencial para o sucesso do processo.",
+          "Compreender a relação com a alimentação e identificar como emoções, ansiedade e padrões de comportamento podem influenciar esse processo. Esse olhar ajuda a ampliar o autoconhecimento e a reconhecer fatores que podem impactar o período pré e pós-operatório.",
       },
       {
-        title: "Expectativas realistas e fatores de sucesso",
+        title: "Expectativas e adaptação ao processo",
         description:
-          "Estabelecer metas realistas e identificar fatores que podem impactar no sucesso após a cirurgia são passos importantes.",
+          "Refletir sobre expectativas em relação à cirurgia e às mudanças no corpo e na rotina. Esse trabalho contribui para uma compreensão mais realista do processo e dos desafios envolvidos ao longo das transformações.",
       },
       {
-        title: "Preparo emocional",
-        description: "Garantir um melhor preparo emocional para enfrentar as mudanças dessa etapa.",
+        title: "Preparo emocional e suporte ao longo do processo",
+        description: "Favorecer o preparo emocional para lidar com as mudanças que a cirurgia pode trazer, incluindo adaptações na rotina, na alimentação e na forma de se perceber. O objetivo é promover maior segurança e estabilidade emocional nesse novo ciclo.",
       },
     ],
-    importanceTitle: "A importância da avaliação",
+    importanceTitle: "Mais do que uma avaliação: preparo psicológico para a cirurgia bariátrica",
     importanceParagraphs: [
-      "A avaliação para a cirurgia vai muito além de um laudo. Além de uma etapa obrigatória, é uma oportunidade de autoconhecimento e preparo para os desafios que podem surgir posteriormente. Você terá uma melhor compreensão de como lida com as emoções, como ansiedade e compulsão alimentar, aspectos de sua personalidade, questões inconscientes que influenciam a forma que você lida consigo mesmo(a) e com o mundo, bem como alinhar expectativas para o procedimento.",
-      "A avaliação, portanto, ajudará em possíveis desafios, com adjustments de comportamento para um novo estilo de vida com maior sucesso.",
+      "A avaliação para a cirurgia bariátrica vai além de um laudo e é uma etapa importante de preparação para o processo. Ela ajuda a compreender como você lida com emoções, com a ansiedade e alimentação, além de favorecer o alinhamento de expectativas em relação à cirurgia. Também é um espaço para refletir sobre mudanças importantes que fazem parte dessa nova fase.",
+      "Esse acompanhamento especializado contribui para um preparo mais seguro e consciente para as transformações que a cirurgia pode trazer.",
     ],
     importanceImages: [
       {
@@ -416,9 +416,9 @@ export const servicePages: Record<string, ServicePageContent> = {
     ],
     processTitle: "Como funciona a avaliação?",
     processParagraphs: [
-      "O processo de avaliação inclui entrevista clínica, escalas para entendimento de perfil emocional e identificação de possíveis transtornos como depressão e ansiedade, para garantir melhor preparo emocional.",
-      "Durante o processo, você também recebe orientações sobre as mudanças de estilo de vida e no comportamento alimentar que serão necessárias após a cirurgia.",
-      "A avaliação e o preparo são feitos de forma online, via Google Meet, garantindo segurança e rapidez no processo.",
+      "A avaliação é realizada por meio de entrevistas e, quando necessário, instrumentos que ajudam a compreender aspectos emocionais, a relação com a alimentação e com o próprio corpo.",
+      "Nesse processo, também são feitas orientações sobre as mudanças que fazem parte da cirurgia bariátrica e do período de adaptação, favorecendo maior clareza e preparo para essa nova fase.",
+      "Os atendimentos são realizados de forma online, pelo Google Meet, com praticidade e acolhimento.",
     ],
     processCtaLabel: "Entre em contato",
     testimonialsTitle: "Opiniões de pacientes",
