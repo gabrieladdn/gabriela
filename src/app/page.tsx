@@ -12,9 +12,9 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <IdentificationSection />
-      <PsychoanalysisSection />
       <ServicesSection />
+      <PsychoanalysisSection />
+      <IdentificationSection />
       <AboutSection />
       <HowItWorksSection />
       <TestimonialsSection />

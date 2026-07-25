@@ -44,7 +44,7 @@ export function IdentificationSection() {
       <style>{`
         .identification-section {
           padding-block: clamp(64px, 10vh, var(--section-gap-desktop));
-          background: rgba(255,241,231,0.4);
+          background: var(--color-background);
         }
 
         .identification-title {

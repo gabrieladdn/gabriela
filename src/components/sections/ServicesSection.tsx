@@ -39,7 +39,7 @@ export function ServicesSection() {
       <style>{`
         .services-section {
           padding-block: clamp(64px, 10vh, var(--section-gap-desktop));
-          background: var(--color-background);
+          background: rgba(255,241,231,0.4);
         }
 
         .services-header {
