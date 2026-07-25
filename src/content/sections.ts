@@ -2,9 +2,9 @@
 export const heroText = {
   kicker: "Psicoterapia Online",
   titleParts: [
-    "Psicoterapia online para adultos e adolescentes ",
-    "que convivem com emoções intensas e angústias",
-    ", que criticam a si mesmos e não se sentem suficientes.",
+    "Psicoterapia online para adultos e adolescentes que convivem com ",
+    "emoções intensas e angústias",
+    ", criticam a si mesmos e não se sentem suficientes.",
   ],
   description:
     "A terapia é um espaço acolhedor para quem busca compreender e lidar com suas emoções, atravessar momentos de crise e fortalecer a autoestima. Também pode ser um espaço para cuidar de questões relacionadas à insatisfação corporal,  à autocobrança e perfeccionismo, conflitos nos vínculos, assim como de sofrimentos marcados pela sensação de vazio, dificuldades relacionadas à identidade, e manifestações como os transtornos alimentares.",
