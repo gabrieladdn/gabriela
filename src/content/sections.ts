@@ -2,13 +2,13 @@
 export const heroText = {
   kicker: "Psicoterapia Online",
   titleParts: [
-    "Psicoterapia online para quem ",
-    "não se sente suficiente",
-    ", convive com autocrítica, emoções intensas e dificuldades na relação consigo mesmo(a).",
+    "Psicoterapia online para adultos e adolescentes ",
+    "que convivem com emoções intensas e angústias",
+    ", que criticam a si mesmos e não se sentem suficientes.",
   ],
   description:
-    "Atendimento voltado para crises emocionais, dificuldades nos vínculos, na forma de lidar consigo e com as próprias emoções; questões relacionadas à insatisfação corporal, autoestima e autocobrança; além do acompanhamento de sofrimentos marcados por sensação de vazio, dificuldades de identidade e manifestações como transtornos alimentares.",
-  actions: ["Agendar terapia", "Conheça meu trabalho"],
+    "A terapia é um espaço acolhedor para quem busca compreender e lidar com suas emoções, atravessar momentos de crise e fortalecer a autoestima. Também pode ser um espaço para cuidar de questões relacionadas à insatisfação corporal,  à autocobrança e perfeccionismo, conflitos nos vínculos, assim como de sofrimentos marcados pela sensação de vazio, dificuldades relacionadas à identidade, e manifestações como os transtornos alimentares.",
+  actions: ["Entre em contato", "Conheça meu trabalho"],
 };
 
 export const aboutContent = [
@@ -24,12 +24,11 @@ export const aboutContent = [
 
 export const psychoText = {
   title:
-    "A psicoterapia pode ser um espaço para olhar para o sofrimento emocional com cuidado e continuidade.",
+    "A psicoterapia psicanalítica pode ser um espaço para olhar para o sofrimento emocional com cuidado e profundidade.",
   blockquote:
     "Muitas vezes, aquilo que aparece como ansiedade, angústia ou sofrimento emocional intenso não surge de forma isolada.",
   paragraphs: [
-    "Os sintomas que são apresentados, podem estar relacionados a experiências, vínculos e formas de se perceber que foram se construindo ao longo da sua história de vida. Também pode se expressar através de emoções intensas, dificuldades nas relações e sofrimento na relação consigo mesmo e com o próprio corpo.",
-    "Ao longo do processo terapêutico, buscamos compreender os padrões que se repetem, as necessidades emocionais envolvidas e aquilo que, por vezes, ainda não encontrou palavras para ser nomeado. A partir dessa construção, podem surgir formas mais conscientes e autênticas de se relacionar consigo, com as emoções, com os vínculos e com a sua própria história.",
+    "Ao longo do processo da psicoterapia, buscaremos a identificação do sofrimento, afetos e expressão de emoções; compreender os padrões que se repetem em suas ações, em seus sentimentos, pensamentos, experiências e nas próprias relações;  entender as necessidades emocionais envolvidas e aquilo que, por vezes, ainda não encontrou palavras para ser nomeado. A partir dessa construção, podem surgir formas mais conscientes e autênticas de se relacionar consigo, com as emoções, os vínculos e com a sua própria história, possibilitando um viver com mais leveza e confiança em quem você é e deseja ser.",
   ],
 };
 
@@ -38,8 +37,8 @@ export const aboutHomepage = {
     "Sou psicóloga formada desde 2017, pós-graduanda em Psicoterapia Psicanalítica Contemporânea pela EPPM e especializada em Transtornos Alimentares e Comportamento Alimentar pelo Instituto de Pesquisa do Comportamento Alimentar de Curitiba (IPCAC).",
   paragraphs: [
     "Ao longo da minha trajetória, venho me dedicando ao estudo da vida psíquica, dos vínculos e das experiências emocionais que se constroem desde a infância, e que influenciam a forma como cada pessoa se percebe, se relaciona consigo mesma, com os outros, com o próprio corpo e com a alimentação.",
-    "Na prática clínica, acompanho pessoas que enfrentam dificuldades relacionadas à autoimagem, à autocrítica, às emoções intensas e à relação consigo mesmas. Também acolho sofrimentos que podem se manifestar por meio de angústias persistentes, sensação de vazio, instabilidade nos relacionamentos e experiências corporais difíceis de simbolizar. Além disso, atuo no cuidado de questões associadas aos transtornos alimentares, transtornos do humor e transtorno de personalidade borderline.",
-    "Minha formação e experiência clínica sustentam uma prática baseada na escuta cuidadosa de cada história, buscando compreender como determinados sofrimentos foram se constituindo e de que forma se expressam na vida de cada pessoa.",
+    "Na prática clínica, acolho diferentes formas de sofrimento psíquico e acompanho pessoas que vivenciam dores emocionais que afetam seu modo de ser e existir, incluindo questões relacionadas aos transtornos do humor, ao transtorno de personalidade boderline, além dos transtornos alimentares.",
+    "Minha formação e experiência clínica sustentam uma prática baseada na escuta cuidadosa de cada história, buscando compreender como determinados sofrimentos foram se constituindo e de que forma se expressam na vida de cada pessoa, com o propósito de auxiliar em novos sentidos à sua história.",
   ],
   nichesTitle: "Um espaço para construir novos sentidos",
   niches: [
