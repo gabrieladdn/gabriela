@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { testimonialsList, Testimonial } from "@/content/testimonials";
+import { testimonialsList } from "@/content/testimonials";
 
 interface DynamicTestimonialsProps {
   limit?: number; // Number of testimonials shown at once (default: 3)
@@ -9,13 +9,29 @@ interface DynamicTestimonialsProps {
 }
 
 export function DynamicTestimonials({ limit = 3, variant = "home" }: DynamicTestimonialsProps) {
-  const [displayed, setDisplayed] = useState<Testimonial[]>([]);
+  const [displayed, setDisplayed] = useState(() => testimonialsList.slice(0, limit));
 
-  // Pick random unique items once on client mount to avoid hydration mismatches
   useEffect(() => {
-    const shuffled = [...testimonialsList].sort(() => 0.5 - Math.random());
-    setDisplayed(shuffled.slice(0, limit));
-  }, [limit]);
+    // If variant is home and limit is 3 or less, the first 3 items are fixed and already initialized
+    if (variant === "home" && limit <= 3) {
+      return;
+    }
+
+    const frame = requestAnimationFrame(() => {
+      if (variant === "home") {
+        const fixedCount = 3;
+        const fixed = testimonialsList.slice(0, fixedCount);
+        const pool = testimonialsList.slice(fixedCount);
+        const shuffledPool = [...pool].sort(() => 0.5 - Math.random());
+        setDisplayed([...fixed, ...shuffledPool.slice(0, limit - fixedCount)]);
+      } else {
+        const shuffled = [...testimonialsList].sort(() => 0.5 - Math.random());
+        setDisplayed(shuffled.slice(0, limit));
+      }
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [variant, limit]);
 
   if (displayed.length === 0) {
     return <div className="testimonials-skeleton" style={{ minHeight: "200px" }} />;

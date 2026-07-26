@@ -1,5 +1,15 @@
 import { NextResponse } from "next/server";
 
+interface InstagramGraphItem {
+  id: string;
+  media_type: string;
+  media_url?: string;
+  permalink: string;
+  caption?: string;
+  thumbnail_url?: string;
+  timestamp?: string;
+}
+
 export async function GET() {
   const token = process.env.INSTAGRAM_ACCESS_TOKEN;
 
@@ -11,30 +21,24 @@ export async function GET() {
       data: [
         {
           id: "mock1",
-          media_type: "VIDEO",
-          media_url: "/images/ansiedade1.jpg",
+          media_type: "POST",
+          media_url: "/images/insta/insta1.jpeg",
           permalink: "https://www.instagram.com/gabrielanunes_psi",
-          caption:
-            "Ansiedade e os sinais do corpo\nComo o sofrimento emocional se expressa fisicamente em nós.",
-          duration: "Reels",
+          duration: "Post",
         },
         {
           id: "mock2",
-          media_type: "VIDEO",
-          media_url: "/images/autoestima2.jpg",
+          media_type: "POST",
+          media_url: "/images/insta/insta2.jpeg",
           permalink: "https://www.instagram.com/gabrielanunes_psi",
-          caption:
-            "Autocrítica e Perfeccionismo\nA busca por ideais muito exigentes e seus impactos na autoestima.",
-          duration: "Reels",
+          duration: "Post",
         },
         {
           id: "mock3",
-          media_type: "VIDEO",
-          media_url: "/images/corpo3.jpg",
+          media_type: "POST",
+          media_url: "/images/insta/insta3.jpeg",
           permalink: "https://www.instagram.com/gabrielanunes_psi",
-          caption:
-            "O espaço da psicoterapia\nCompreender padrões repetitivos e construir novas formas de se relacionar.",
-          duration: "Reels",
+          duration: "Post",
         },
       ],
     });
@@ -53,17 +57,17 @@ export async function GET() {
 
     const json = await res.json();
 
-    const items = (json.data || [])
-      .filter((item: any) => item.media_url)
+    const items = ((json.data as InstagramGraphItem[]) || [])
+      .filter((item: InstagramGraphItem) => item.media_url)
       .slice(0, 3)
-      .map((item: any) => ({
+      .map((item: InstagramGraphItem) => ({
         id: item.id,
         media_type: item.media_type,
         // Para posts em vídeo, o Instagram Basic Display API fornece a thumbnail_url para a capa do vídeo
         media_url:
           item.media_type === "VIDEO" ? item.thumbnail_url || item.media_url : item.media_url,
         permalink: item.permalink,
-        caption: item.caption || "",
+        caption: item.caption ?? "",
         duration: item.media_type === "VIDEO" ? "Reels" : "Post",
       }));
 
@@ -71,11 +75,12 @@ export async function GET() {
       success: true,
       data: items,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json(
       {
         success: false,
-        error: error.message,
+        error: errorMessage,
         data: [],
       },
       { status: 500 }

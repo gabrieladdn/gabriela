@@ -7,7 +7,12 @@ export const testimonialsList: Testimonial[] = [
   {
     quote:
       "Uma profissional maravilhosa, tranquila, empática e excepcional! Tem me ajudado a superar coisas que eu nem sabia que tinha que superar! Super recomendo!",
-    author: "SGF",
+    author: "S.F",
+  },
+  {
+    quote:
+      "Excelente profissional! Muito atenciosa, empática e competente. As sessões me ajudaram bastante no meu autoconhecimento e no enfrentamento de dificuldades pessoais. Recomendo fortemente.",
+    author: "J.L",
   },
   {
     quote:
@@ -31,11 +36,7 @@ export const testimonialsList: Testimonial[] = [
       "Muito simpática e acolhedora me senti muito avontade e bem amparada, nunca consegui fazer terapia mas com ela estou disposta a tentar!",
     author: "V.M",
   },
-  {
-    quote:
-      "Excelente profissional! Muito atenciosa, empática e competente. As sessões me ajudaram bastante no meu autoconhecimento e no enfrentamento de dificuldades pessoais. Recomendo fortemente.",
-    author: "J.L",
-  },
+
   {
     quote: "Uma profissional muito carismática e me ajuda muito, sempre, em cada encontro!",
     author: "R.D",

@@ -9,7 +9,7 @@ interface InstagramMedia {
   media_type: string;
   media_url: string;
   permalink: string;
-  caption: string;
+  caption?: string;
   duration: string;
 }
 
@@ -20,7 +20,7 @@ export function InstagramSection() {
     {
       id: "fallback1",
       media_type: "VIDEO",
-      media_url: "/images/ansiedade1.jpg",
+      media_url: "/images/insta/insta1.jpeg",
       permalink: instagramUrl,
       caption:
         "Ansiedade e os sinais do corpo\nComo o sofrimento emocional se expressa fisicamente em nós.",
@@ -29,7 +29,7 @@ export function InstagramSection() {
     {
       id: "fallback2",
       media_type: "VIDEO",
-      media_url: "/images/autoestima2.jpg",
+      media_url: "/images/insta/insta2.jpeg",
       permalink: instagramUrl,
       caption:
         "Autocrítica e Perfeccionismo\nA busca por ideais muito exigentes e seus impactos na autoestima.",
@@ -38,7 +38,7 @@ export function InstagramSection() {
     {
       id: "fallback3",
       media_type: "VIDEO",
-      media_url: "/images/corpo3.jpg",
+      media_url: "/images/insta/insta3.jpeg",
       permalink: instagramUrl,
       caption:
         "O espaço da psicoterapia\nCompreender padrões repetitivos e construir novas formas de se relacionar.",
@@ -84,10 +84,10 @@ export function InstagramSection() {
 
         <div className="instagram-grid">
           {reels.map((reel, idx) => {
-            const captionLines = reel.caption.split("\n");
-            const displayTitle = captionLines[0] || "Instagram Post";
-            const displayDesc =
-              captionLines.slice(1).join(" ") || reel.caption || "Acompanhe no perfil oficial";
+            const hasCaption = Boolean(reel.caption && reel.caption.trim().length > 0);
+            const captionLines = hasCaption ? reel.caption!.split("\n") : [];
+            const displayTitle = captionLines[0] || "";
+            const displayDesc = captionLines.slice(1).join(" ") || "";
 
             return (
               <Reveal key={reel.id} delay={idx + 2} className="instagram-card-reveal">
@@ -100,7 +100,7 @@ export function InstagramSection() {
                   <div className="instagram-image-wrap">
                     <Image
                       src={reel.media_url}
-                      alt={displayTitle}
+                      alt={displayTitle || "Instagram post"}
                       fill
                       sizes="(max-width: 900px) 100vw, 360px"
                       style={{ objectFit: "cover" }}
@@ -109,14 +109,16 @@ export function InstagramSection() {
                       <span className="instagram-badge-icon">▶</span>
                       <span className="instagram-duration">{reel.duration}</span>
                     </div>
-                    <div className="instagram-overlay">
+                    <div className={`instagram-overlay ${hasCaption ? "has-gradient" : "no-gradient"}`}>
                       <div className="instagram-play-btn">
                         <span className="play-triangle">▶</span>
                       </div>
-                      <div className="instagram-overlay-text">
-                        <h4 className="instagram-post-title">{displayTitle}</h4>
-                        <p className="instagram-post-desc">{displayDesc}</p>
-                      </div>
+                      {hasCaption && (
+                        <div className="instagram-overlay-text">
+                          <h4 className="instagram-post-title">{displayTitle}</h4>
+                          {displayDesc && <p className="instagram-post-desc">{displayDesc}</p>}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </a>
@@ -210,7 +212,6 @@ export function InstagramSection() {
         .instagram-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(180deg, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.85) 100%);
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
@@ -218,6 +219,14 @@ export function InstagramSection() {
           opacity: 0.95;
           transition: opacity 0.3s ease;
           z-index: 1;
+        }
+
+        .instagram-overlay.has-gradient {
+          background: linear-gradient(180deg, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.85) 100%);
+        }
+
+        .instagram-overlay.no-gradient {
+          background: transparent;
         }
 
         .instagram-play-btn {

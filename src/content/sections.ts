@@ -1,6 +1,6 @@
 // Centralized content for sections — keeps texts and structured data in one place
 export const heroText = {
-  kicker: "Psicoterapia Online",
+  kicker: "Psicóloga Online",
   titleParts: [
     "Psicoterapia online para adultos e adolescentes que convivem com ",
     "emoções intensas e angústias",
@@ -28,7 +28,7 @@ export const psychoText = {
   blockquote:
     "Muitas vezes, aquilo que aparece como ansiedade, angústia ou sofrimento emocional intenso não surge de forma isolada.",
   paragraphs: [
-    "Ao longo do processo da psicoterapia, buscaremos a identificação do sofrimento, afetos e expressão de emoções; compreender os padrões que se repetem em suas ações, em seus sentimentos, pensamentos, experiências e nas próprias relações;  entender as necessidades emocionais envolvidas e aquilo que, por vezes, ainda não encontrou palavras para ser nomeado. A partir dessa construção, podem surgir formas mais conscientes e autênticas de se relacionar consigo, com as emoções, os vínculos e com a sua própria história, possibilitando um viver com mais leveza e confiança em quem você é e deseja ser.",
+    "Ao longo da terapia, buscaremos a identificação do sofrimento, afetos e expressão de emoções; compreender os padrões que se repetem em suas ações, em seus sentimentos, pensamentos, experiências e nas próprias relações;  entender as necessidades emocionais envolvidas e aquilo que, por vezes, ainda não encontrou palavras para ser nomeado. A partir dessa construção, podem surgir formas mais conscientes e autênticas de se relacionar consigo, com as emoções, os vínculos e com a sua própria história, possibilitando um viver com mais leveza e confiança em quem você é e deseja ser.",
   ],
 };
 
