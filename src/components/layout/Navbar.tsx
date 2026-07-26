@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { WHATSAPP_URL } from "@/lib/whatsapp";
+import { WHATSAPP_URL, trackWhatsAppConversion } from "@/lib/whatsapp";
 
 const navLinks = [
   { href: "/#home", label: "Home", section: "home" },
@@ -88,7 +88,13 @@ export function Navbar() {
           })}
         </div>
 
-        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="navbar-cta">
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackWhatsAppConversion()}
+          className="navbar-cta"
+        >
           Agendar Consulta
         </a>
 
@@ -137,7 +143,10 @@ export function Navbar() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => setMobileOpen(false)}
+            onClick={() => {
+              setMobileOpen(false);
+              trackWhatsAppConversion();
+            }}
             className="navbar-drawer-cta"
           >
             Agendar Consulta

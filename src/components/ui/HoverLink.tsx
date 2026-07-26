@@ -1,5 +1,7 @@
 "use client";
 
+import { trackWhatsAppConversion } from "@/lib/whatsapp";
+
 interface Props {
   href: string;
   children: React.ReactNode;
@@ -7,7 +9,13 @@ interface Props {
 
 export function HoverLink({ href, children }: Props) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="hover-link">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => trackWhatsAppConversion()}
+      className="hover-link"
+    >
       {children}
 
       <style>{`

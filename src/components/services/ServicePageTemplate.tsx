@@ -1,7 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
-import { WHATSAPP_URL } from "@/lib/whatsapp";
+import { WHATSAPP_URL, trackWhatsAppConversion } from "@/lib/whatsapp";
 import type { ServicePageContent } from "@/content/services";
 import { DynamicTestimonials } from "@/components/ui/DynamicTestimonials";
 
@@ -34,6 +36,7 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppConversion()}
               className="service-button"
             >
               {content.heroCtaLabel}
@@ -127,6 +130,7 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppConversion()}
               className="service-inline-link"
             >
               {content.processCtaLabel}
@@ -148,6 +152,7 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppConversion()}
               className="service-button service-button-inverse"
             >
               {content.footerCtaLabel}

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { WHATSAPP_URL } from "@/lib/whatsapp";
+import { WHATSAPP_URL, trackWhatsAppConversion } from "@/lib/whatsapp";
 
 const footerLinks = [
   { href: "/#home", label: "Home" },
@@ -38,13 +38,14 @@ export function Footer() {
                 href: "https://www.instagram.com/gabrielanunes_psi?igsh=MWFkc2dwNm84cjhmYg==",
               },
               { label: "E-mail", icon: "✉", href: "mailto:contato@gabrielanunes.com.br" },
-              { label: "WhatsApp", icon: "WA", href: WHATSAPP_URL },
-            ].map(({ label, icon, href }) => (
+              { label: "WhatsApp", icon: "WA", href: WHATSAPP_URL, isWhatsApp: true },
+            ].map(({ label, icon, href, isWhatsApp }) => (
               <a
                 key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={isWhatsApp ? () => trackWhatsAppConversion() : undefined}
                 aria-label={label}
                 className="footer-social"
               >

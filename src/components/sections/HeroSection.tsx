@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
-import { WHATSAPP_URL } from "@/lib/whatsapp";
+import { WHATSAPP_URL, trackWhatsAppConversion } from "@/lib/whatsapp";
 import { heroText } from "@/content/sections";
 
 export function HeroSection() {
@@ -39,6 +39,7 @@ export function HeroSection() {
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppConversion()}
                   className="hero-button hero-button-primary"
                 >
                   {heroText.actions[0]}

@@ -97,6 +97,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('js', new Date());
             gtag('config', 'AW-18347937410');
             ${gaId ? `gtag('config', '${gaId}');` : ""}
+
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined' && url) {
+                  window.location = url;
+                }
+              };
+              if (typeof gtag !== 'undefined') {
+                gtag('event', 'conversion', {
+                  'send_to': 'AW-18347937410/iMSKCJHH89YcEIKd_axE',
+                  'event_callback': callback
+                });
+              } else {
+                callback();
+              }
+              return false;
+            }
+            window.gtag_report_conversion = gtag_report_conversion;
           `}
         </Script>
 
