@@ -1,0 +1,18 @@
+---
+import type { HTMLTag } from "astro/types";
+
+interface Props {
+  delay?: number;
+  style?: string;
+  class?: string;
+  className?: string;
+  as?: HTMLTag;
+}
+
+const { delay = 0, style, class: classProp, className, as: Tag = "div" } = Astro.props;
+const mergedClass = [classProp, className].filter(Boolean).join(" ") || undefined;
+---
+
+<Tag data-reveal data-reveal-delay={delay || undefined} class={mergedClass} style={style}>
+  <slot />
+</Tag>

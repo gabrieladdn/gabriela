@@ -3,8 +3,10 @@ node_modules/
 .pnp
 .pnp.js
 
-# next
-.next/
+# astro & build
+.astro/
+.vercel/
+dist/
 out/
 build/
 
@@ -25,4 +27,3 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts

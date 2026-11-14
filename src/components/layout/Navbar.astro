@@ -1,0 +1,340 @@
+---
+import { WHATSAPP_URL } from "@/lib/whatsapp";
+
+const navLinks = [
+  { href: "/#home", label: "Home", section: "home" },
+  { href: "/#sobre", label: "Sobre Mim", section: "sobre" },
+  { href: "/#psicanalise", label: "Psicanálise", section: "psicanalise" },
+  { href: "/#atendimento", label: "Atendimento Online", section: "atendimento" },
+  { href: "/blog", label: "Artigos", section: null },
+];
+
+const pathname = Astro.url.pathname;
+const normalizedPath = pathname === "/" ? "/" : pathname.replace(/\/$/, "");
+
+const isLinkActive = (link: (typeof navLinks)[number]) => {
+  if (link.section === "sobre") {
+    return normalizedPath === "/sobre-mim";
+  }
+  if (link.href === "/blog") {
+    return normalizedPath.startsWith("/blog");
+  }
+  return false;
+};
+
+const getHref = (link: (typeof navLinks)[number]) => {
+  if (link.section === "sobre") {
+    return normalizedPath === "/" ? "/#sobre" : "/sobre-mim/";
+  }
+  return link.href;
+};
+---
+
+<header class="navbar-shell" data-navbar-shell>
+  <nav class="container navbar-inner">
+    <a href="/" class="navbar-brand" aria-label="Gabriela Nunes">
+      <img
+        class="navbar-brand-logo"
+        src="/logo.png"
+        alt="Gabriela Nunes"
+        width="280"
+        height="38"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </a>
+
+    <div class="desktop-nav">
+      {
+        navLinks.map((link) => {
+          const active = isLinkActive(link);
+          return (
+            <a
+              href={getHref(link)}
+              data-nav-section={link.section ?? undefined}
+              class={active ? "navbar-link navbar-link-active" : "navbar-link"}
+            >
+              {link.label}
+            </a>
+          );
+        })
+      }
+    </div>
+
+    <a
+      href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-whatsapp-track
+      class="navbar-cta"
+    >
+      Agendar Consulta
+    </a>
+
+    <button
+      type="button"
+      class="mobile-burger"
+      data-mobile-burger
+      aria-label="Abrir menu"
+      aria-expanded="false"
+    >
+      <span class="burger-line burger-line-top"></span>
+      <span class="burger-line burger-line-middle"></span>
+      <span class="burger-line burger-line-bottom"></span>
+    </button>
+  </nav>
+
+  <div class="navbar-drawer" data-navbar-drawer>
+    <div class="navbar-drawer-inner">
+      {
+        navLinks.map((link) => (
+          <a href={getHref(link)} class="navbar-drawer-link">
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-whatsapp-track
+        class="navbar-drawer-cta"
+      >
+        Agendar Consulta
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const shell = document.querySelector<HTMLElement>("[data-navbar-shell]");
+  const burger = document.querySelector<HTMLButtonElement>("[data-mobile-burger]");
+  const drawer = document.querySelector<HTMLElement>("[data-navbar-drawer]");
+
+  const updateScrolled = () => {
+    shell?.classList.toggle("navbar-shell-scrolled", window.scrollY > 20);
+  };
+  updateScrolled();
+  window.addEventListener("scroll", updateScrolled, { passive: true });
+
+  const setMobileOpen = (open: boolean) => {
+    drawer?.classList.toggle("navbar-drawer-open", open);
+    burger?.setAttribute("aria-expanded", String(open));
+    burger?.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+    burger?.querySelector(".burger-line-top")?.classList.toggle("burger-line-top-open", open);
+    burger?.querySelector(".burger-line-middle")?.classList.toggle("burger-line-middle-open", open);
+    burger?.querySelector(".burger-line-bottom")?.classList.toggle("burger-line-bottom-open", open);
+  };
+
+  burger?.addEventListener("click", () => {
+    const isOpen = drawer?.classList.contains("navbar-drawer-open") ?? false;
+    setMobileOpen(!isOpen);
+  });
+
+  drawer?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMobileOpen(false));
+  });
+
+  if (window.location.pathname === "/") {
+    const sectionLinks = document.querySelectorAll<HTMLAnchorElement>("[data-nav-section]");
+    const sections = document.querySelectorAll<HTMLElement>("section[id]");
+
+    if (sections.length > 0 && "IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              sectionLinks.forEach((link) => {
+                link.classList.toggle("navbar-link-active", link.dataset.navSection === id);
+              });
+            }
+          });
+        },
+        { rootMargin: "-30% 0px -60% 0px" }
+      );
+      sections.forEach((s) => observer.observe(s));
+    }
+  }
+</script>
+
+<style is:global>
+  .navbar-shell {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 248, 244, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: box-shadow 0.3s;
+  }
+
+  .navbar-shell-scrolled {
+    box-shadow: 0 1px 0 rgba(199, 199, 191, 0.6);
+  }
+
+  .navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-brand-logo {
+    display: block;
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .navbar-link {
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--color-on-surface-variant);
+    transition:
+      color 0.2s,
+      border-color 0.2s;
+  }
+
+  .navbar-link-active {
+    color: var(--color-secondary);
+    border-bottom-color: var(--color-secondary);
+  }
+
+  .navbar-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    border-radius: 9999px;
+    background: var(--color-secondary);
+    box-shadow: 0 4px 16px rgba(143, 75, 66, 0.25);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #fff;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+  }
+
+  .navbar-cta:hover {
+    transform: scale(1.04);
+    box-shadow: 0 6px 24px rgba(143, 75, 66, 0.35);
+  }
+
+  .mobile-burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .burger-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-on-surface);
+    transition:
+      transform 0.3s,
+      opacity 0.3s;
+  }
+
+  .burger-line-top-open {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .burger-line-middle-open {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  .burger-line-bottom-open {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .navbar-drawer {
+    max-height: 0;
+    overflow: hidden;
+    background: rgba(255, 248, 244, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition:
+      max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      border-top 0.2s;
+  }
+
+  .navbar-drawer-open {
+    max-height: 400px;
+    border-top: 1px solid var(--color-outline-variant);
+  }
+
+  .navbar-drawer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px var(--margin-mobile) 24px;
+  }
+
+  .navbar-drawer-link {
+    padding: 12px 8px;
+    border-bottom: 1px solid var(--color-outline-variant);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-on-surface-variant);
+  }
+
+  .navbar-drawer-cta {
+    margin-top: 16px;
+    padding: 14px 24px;
+    border-radius: 9999px;
+    background: var(--color-secondary);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  @media (max-width: 900px) {
+    .navbar-brand-logo {
+      height: 30px;
+      width: auto;
+    }
+
+    .desktop-nav {
+      display: none !important;
+    }
+    .navbar-cta {
+      display: none !important;
+    }
+    .mobile-burger {
+      display: flex !important;
+    }
+  }
+</style>

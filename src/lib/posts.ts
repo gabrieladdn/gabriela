@@ -1,58 +1,91 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
+import type { PostCategory } from "@/content.config";
 
-const postsDir = path.join(process.cwd(), "content/posts");
+export type PostEntry = CollectionEntry<"posts">;
 
-export type PostMeta = {
+export const POST_CATEGORY_LABELS: Record<PostCategory, string> = {
+  ansiedade: "Ansiedade",
+  autoestima: "Autoestima",
+  relacionamentos: "Relacionamentos",
+  psicanalise: "Psicanálise",
+  autoconhecimento: "Autoconhecimento",
+  "corpo-e-alimentacao": "Corpo e Alimentação",
+  "saude-mental": "Saúde Mental",
+};
+
+export const POST_FILTER_CATEGORIES: Array<{ value: "" | PostCategory; label: string }> = [
+  { value: "", label: "Todos" },
+  { value: "ansiedade", label: "Ansiedade" },
+  { value: "autoestima", label: "Autoestima" },
+  { value: "relacionamentos", label: "Relacionamentos" },
+  { value: "psicanalise", label: "Psicanálise" },
+  { value: "autoconhecimento", label: "Autoconhecimento" },
+  { value: "corpo-e-alimentacao", label: "Corpo e Alimentação" },
+  { value: "saude-mental", label: "Saúde Mental" },
+];
+
+export const DEFAULT_CATEGORY_COVER_IMAGE: Record<PostCategory, string> = {
+  ansiedade: "/images/ansiedade2.jpg",
+  autoestima: "/images/autoestima2.jpg",
+  relacionamentos: "/images/sofrimtn3.jpg",
+  psicanalise: "/images/extra4.jpg",
+  autoconhecimento: "/images/extra2.jpg",
+  "corpo-e-alimentacao": "/images/corpo2.jpg",
+  "saude-mental": "/images/consultorio.jpeg",
+};
+
+export interface PostCover {
+  src: string;
+  alt: string;
+}
+
+export function resolvePostCover(post: PostEntry): PostCover {
+  return {
+    src: post.data.coverImage ?? DEFAULT_CATEGORY_COVER_IMAGE[post.data.category],
+    alt: post.data.coverImageAlt ?? post.data.title,
+  };
+}
+
+export interface PostMeta {
   slug: string;
   title: string;
   excerpt: string;
-  category: string;
-  publishedAt: string;
+  category: PostCategory;
+  publishedAt: Date;
   readingTime: number;
-};
-
-export type Post = PostMeta & {
-  content: string;
-};
-
-export function getAllPosts(): PostMeta[] {
-  const files = fs.readdirSync(postsDir).filter((f) => f.endsWith(".mdx"));
-
-  const posts = files.map((file) => {
-    const slug = file.replace(/\.mdx$/, "");
-    const raw = fs.readFileSync(path.join(postsDir, file), "utf-8");
-    const { data } = matter(raw);
-    return {
-      slug,
-      title: data.title as string,
-      excerpt: data.excerpt as string,
-      category: data.category as string,
-      publishedAt: data.publishedAt as string,
-      readingTime: data.readingTime as number,
-    };
-  });
-
-  return posts.sort(
-    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
+  coverImage: string;
+  coverImageAlt: string;
 }
 
-export function getPostBySlug(slug: string): Post | null {
-  const filePath = path.join(postsDir, `${slug}.mdx`);
-  if (!fs.existsSync(filePath)) return null;
+export async function getAllPosts(): Promise<PostMeta[]> {
+  const entries = await getCollection("posts");
 
-  const raw = fs.readFileSync(filePath, "utf-8");
-  const { data, content } = matter(raw);
+  return entries
+    .map((entry) => {
+      const cover = resolvePostCover(entry);
+      return {
+        slug: entry.id,
+        title: entry.data.title,
+        excerpt: entry.data.excerpt,
+        category: entry.data.category,
+        publishedAt: entry.data.publishedAt,
+        readingTime: entry.data.readingTime,
+        coverImage: cover.src,
+        coverImageAlt: cover.alt,
+      };
+    })
+    .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+}
 
-  return {
-    slug,
-    title: data.title as string,
-    excerpt: data.excerpt as string,
-    category: data.category as string,
-    publishedAt: data.publishedAt as string,
-    readingTime: data.readingTime as number,
-    content,
-  };
+export async function getPostBySlug(slug: string): Promise<PostEntry | undefined> {
+  return getEntry("posts", slug);
+}
+
+export function formatPostDate(date: Date): string {
+  return date.toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
 }

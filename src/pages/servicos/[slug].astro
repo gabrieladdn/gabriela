@@ -1,0 +1,57 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ServicePageTemplate from "@/components/services/ServicePageTemplate.astro";
+import { servicePages, type ServicePageContent } from "@/content/services";
+import { buildMedicalServiceSchemas, buildServiceMetadata } from "@/lib/seo";
+
+const serviceBreadcrumbLabels: Record<string, string> = {
+  "ansiedade-e-psicossomatica": "Ansiedade e Psicossomática",
+  "autocritica-perfeccionismo": "Autoestima, Autoimagem e Autocrítica",
+  "imagem-corporal-autoestima-e-alimentacao":
+    "Imagem Corporal, Autoestima e Transtornos Alimentares",
+  "relacionamentos-vinculos-e-sofrimento-emocional":
+    "Relacionamentos, vínculos e sofrimento emocional",
+  "sofrimento-psiquico-instabilidade-emocional-e-vinculos":
+    "Sofrimento Psíquico, Instabilidade Emocional e Vínculos",
+};
+
+export function getStaticPaths() {
+  return Object.values(servicePages)
+    .filter((service) => service.route.startsWith("/servicos/"))
+    .map((service) => ({
+      params: { slug: service.slug },
+      props: { service },
+    }));
+}
+
+interface Props {
+  service: ServicePageContent;
+}
+
+const { service } = Astro.props;
+
+const seo = await buildServiceMetadata({
+  title: service.seo.title,
+  description: service.seo.description,
+  pathname: service.route,
+  image: service.seo.image,
+});
+
+const schemas = buildMedicalServiceSchemas({
+  title: service.seo.title,
+  description: service.seo.description,
+  route: service.route,
+  breadcrumbName: serviceBreadcrumbLabels[service.slug] ?? service.title,
+});
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  ogType={seo.ogType}
+  ogImage={seo.ogImage}
+  schemas={schemas}
+>
+  <ServicePageTemplate content={service} />
+</BaseLayout>

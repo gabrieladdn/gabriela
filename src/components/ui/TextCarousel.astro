@@ -1,0 +1,273 @@
+---
+interface Props {
+  items: string[];
+  interval?: number;
+  autoplay?: boolean;
+  showDots?: boolean;
+  showControls?: boolean;
+  className?: string;
+  class?: string;
+}
+
+const {
+  items,
+  interval,
+  autoplay = true,
+  showDots = true,
+  showControls = true,
+  className = "",
+  class: classProp = "",
+} = Astro.props;
+
+const formatItem = (item: string) => `${item}.`;
+const rootClass = ["text-carousel", className, classProp].filter(Boolean).join(" ");
+---
+
+<div
+  class={rootClass}
+  data-text-carousel
+  data-items={JSON.stringify(items)}
+  data-interval={typeof interval === "number" ? String(interval) : undefined}
+  data-autoplay={String(autoplay)}
+>
+  <div class="carousel-viewport" data-carousel-viewport>
+    <p class="carousel-text" data-carousel-active-text>{formatItem(items[0] ?? "")}</p>
+
+    <div class="carousel-measurement" aria-hidden="true">
+      {
+        items.map((item) => (
+          <p class="carousel-text" data-carousel-measure>
+            {formatItem(item)}
+          </p>
+        ))
+      }
+    </div>
+  </div>
+
+  {
+    showDots && (
+      <div class="carousel-dots">
+        {items.map((_, i) => (
+          <button
+            type="button"
+            class={`dot-btn ${i === 0 ? "active" : ""}`}
+            data-carousel-dot={i}
+            aria-label={`Ir para ${i + 1}`}
+          />
+        ))}
+      </div>
+    )
+  }
+
+  {
+    showControls && (
+      <div class="carousel-controls">
+        <button type="button" class="carousel-btn prev" data-carousel-prev aria-label="Anterior">
+          ‹
+        </button>
+        <span class="carousel-index" data-carousel-index>
+          1/{items.length}
+        </span>
+        <button type="button" class="carousel-btn next" data-carousel-next aria-label="Próximo">
+          ›
+        </button>
+      </div>
+    )
+  }
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-text-carousel]").forEach((root) => {
+    const rawItems = root.dataset.items;
+    if (!rawItems) return;
+
+    let items: string[] = [];
+    try {
+      const parsed: unknown = JSON.parse(rawItems);
+      if (Array.isArray(parsed)) {
+        items = parsed.map(String);
+      }
+    } catch {
+      return;
+    }
+    if (items.length === 0) return;
+
+    const fixedInterval = root.dataset.interval ? Number(root.dataset.interval) : undefined;
+    const autoplay = root.dataset.autoplay !== "false";
+
+    const viewport = root.querySelector<HTMLElement>("[data-carousel-viewport]");
+    const activeText = root.querySelector<HTMLElement>("[data-carousel-active-text]");
+    const measureEls = Array.from(root.querySelectorAll<HTMLElement>("[data-carousel-measure]"));
+    const dotEls = Array.from(root.querySelectorAll<HTMLElement>("[data-carousel-dot]"));
+    const indexEl = root.querySelector<HTMLElement>("[data-carousel-index]");
+    const prevBtn = root.querySelector<HTMLElement>("[data-carousel-prev]");
+    const nextBtn = root.querySelector<HTMLElement>("[data-carousel-next]");
+
+    let currentIndex = 0;
+    let timerId: number | undefined;
+
+    const updateHeight = () => {
+      if (!viewport) return;
+      const heights = measureEls.map((el) => el.offsetHeight).filter((h) => h > 0);
+      if (heights.length > 0) {
+        viewport.style.height = `${Math.max(...heights)}px`;
+      }
+    };
+
+    updateHeight();
+    if (viewport && typeof ResizeObserver !== "undefined") {
+      const observer = new ResizeObserver(updateHeight);
+      observer.observe(viewport);
+    }
+
+    const computeDuration = (text = "") => {
+      const words = String(text).trim().split(/\s+/).filter(Boolean).length;
+      const msPerWord = 400;
+      const minMs = 1500;
+      const maxMs = 10000;
+      const ms = Math.round(words * msPerWord);
+      return Math.min(maxMs, Math.max(minMs, ms || minMs)) + 1000;
+    };
+
+    const scheduleNext = () => {
+      if (timerId !== undefined) window.clearTimeout(timerId);
+      if (!autoplay || items.length <= 1) return;
+      const duration =
+        typeof fixedInterval === "number" && !Number.isNaN(fixedInterval)
+          ? fixedInterval
+          : computeDuration(items[currentIndex] ?? "");
+      timerId = window.setTimeout(() => {
+        setIndex((currentIndex + 1) % items.length);
+      }, duration);
+    };
+
+    const setIndex = (nextIndex: number) => {
+      currentIndex = (nextIndex + items.length) % items.length;
+      if (activeText) {
+        activeText.textContent = `${items[currentIndex] ?? ""}.`;
+      }
+      if (indexEl) {
+        indexEl.textContent = `${currentIndex + 1}/${items.length}`;
+      }
+      dotEls.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentIndex);
+      });
+      scheduleNext();
+    };
+
+    prevBtn?.addEventListener("click", () => setIndex(currentIndex - 1));
+    nextBtn?.addEventListener("click", () => setIndex(currentIndex + 1));
+    dotEls.forEach((dot, i) => {
+      dot.addEventListener("click", () => setIndex(i));
+    });
+
+    scheduleNext();
+  });
+</script>
+
+<style is:global>
+  .carousel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.86);
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-ambient);
+  }
+
+  .carousel-slide {
+    flex: 1 1 auto;
+    padding: 8px 12px;
+    min-height: 68px;
+  }
+
+  .carousel-index {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-on-surface-variant);
+    text-align: center;
+  }
+
+  .carousel-text {
+    font-size: 2rem;
+    line-height: 1.5;
+    color: var(--color-on-surface);
+    margin: 0;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .carousel-viewport {
+    position: relative;
+    width: 100%;
+    align-content: center;
+  }
+
+  .carousel-measurement {
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .carousel-measurement .carousel-text {
+    width: 100%;
+  }
+
+  .text-carousel {
+    display: grid;
+    grid-template-rows: 1fr auto auto;
+    padding: 36px 28px;
+    border-radius: 24px;
+    border: 1px solid rgba(253, 235, 220, 0.7);
+    background: var(--color-surface-container);
+    cursor: default;
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
+  }
+
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .carousel-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.6rem;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-secondary);
+    cursor: pointer;
+  }
+
+  .carousel-dots {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .dot-btn {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.12);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .dot-btn.active {
+    background: var(--color-secondary);
+  }
+</style>

@@ -1,0 +1,197 @@
+---
+import { WHATSAPP_URL } from "@/lib/whatsapp";
+
+const footerLinks = [
+  { href: "/#home", label: "Home" },
+  { href: "/#sobre", label: "Sobre Mim" },
+  { href: "/#psicanalise", label: "Psicanálise" },
+  { href: "/#atendimento", label: "Atendimento Online" },
+  { href: "/blog", label: "Artigos" },
+  { href: "/#contato", label: "Contato" },
+];
+
+const socials = [
+  {
+    label: "Instagram",
+    icon: "IG",
+    href: "https://www.instagram.com/gabrielanunes_psi?igsh=MWFkc2dwNm84cjhmYg==",
+    isWhatsApp: false,
+  },
+  {
+    label: "E-mail",
+    icon: "✉",
+    href: "mailto:contato@gabrielanunes.com.br",
+    isWhatsApp: false,
+  },
+  {
+    label: "WhatsApp",
+    icon: "WA",
+    href: WHATSAPP_URL,
+    isWhatsApp: true,
+  },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer-shell">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <p class="footer-brand-name">Gabriela Nunes</p>
+        <p class="footer-brand-role">Psicóloga Clínica</p>
+      </div>
+
+      <div class="footer-nav-links">
+        {
+          footerLinks.map(({ href, label }) => (
+            <a href={href} class="footer-nav-link">
+              {label}
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="footer-socials">
+        {
+          socials.map(({ label, icon, href, isWhatsApp }) => (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-whatsapp-track={isWhatsApp ? true : undefined}
+              aria-label={label}
+              class="footer-social"
+            >
+              {icon}
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="footer-legal-shell">
+        <p class="footer-legal-copy">Gabriela Nunes | Psicóloga Clínica | CRP 06/132479</p>
+        <div class="footer-legal-links">
+          <a href="/privacidade">Privacidade</a>
+          <span>•</span>
+          <a href="/termos">Termos de Uso</a>
+          <span>•</span>
+          <a href="/faq">FAQ</a>
+        </div>
+        <p class="footer-copyright">
+          © {currentYear} Gabriela Nunes — Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style is:global>
+  .footer-shell {
+    padding-block: 64px;
+    border-top: 1px solid rgba(199, 199, 191, 0.3);
+    background: var(--color-surface-container-low);
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .footer-brand-name {
+    margin-bottom: 8px;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-on-surface);
+  }
+
+  .footer-brand-role {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-outline);
+  }
+
+  .footer-nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 32px;
+  }
+
+  .footer-nav-link {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-on-surface-variant);
+    transition: color 0.2s;
+  }
+
+  .footer-nav-link:hover {
+    color: var(--color-secondary);
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 12px;
+  }
+
+  .footer-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1.5px solid rgba(143, 75, 66, 0.3);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    transition:
+      background 0.2s,
+      color 0.2s,
+      transform 0.2s;
+  }
+
+  .footer-social:hover {
+    background: var(--color-secondary);
+    color: #fff;
+    transform: scale(1.1);
+  }
+
+  .footer-legal-shell {
+    width: 100%;
+    max-width: 480px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(199, 199, 191, 0.3);
+  }
+
+  .footer-legal-copy {
+    margin-bottom: 12px;
+    font-size: 0.8125rem;
+    color: var(--color-on-surface-variant);
+  }
+
+  .footer-legal-links {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(70, 71, 66, 0.5);
+  }
+
+  .footer-copyright {
+    margin-top: 24px;
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+    color: rgba(70, 71, 66, 0.45);
+  }
+</style>

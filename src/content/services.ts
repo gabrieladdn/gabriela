@@ -196,7 +196,8 @@ export const servicePages: Record<string, ServicePageContent> = {
         author: "Ricardo",
       },
     ],
-    footerCtaText: "Dê o primeiro passo para compreender melhor a sua ansiedade e iniciar um processo de cuidado com você mesma(o).",
+    footerCtaText:
+      "Dê o primeiro passo para compreender melhor a sua ansiedade e iniciar um processo de cuidado com você mesma(o).",
     footerCtaLabel: "Agende agora",
     seo: {
       title: "Ansiedade e Psicossomática | Gabriela Nunes",
@@ -396,7 +397,8 @@ export const servicePages: Record<string, ServicePageContent> = {
       },
       {
         title: "Preparo emocional e suporte ao longo do processo",
-        description: "Favorecer o preparo emocional para lidar com as mudanças que a cirurgia pode trazer, incluindo adaptações na rotina, na alimentação e na forma de se perceber. O objetivo é promover maior segurança e estabilidade emocional nesse novo ciclo.",
+        description:
+          "Favorecer o preparo emocional para lidar com as mudanças que a cirurgia pode trazer, incluindo adaptações na rotina, na alimentação e na forma de se perceber. O objetivo é promover maior segurança e estabilidade emocional nesse novo ciclo.",
       },
     ],
     importanceTitle: "Mais do que uma avaliação: preparo psicológico para a cirurgia bariátrica",

@@ -1,0 +1,113 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BlogCard from "@/components/blog/BlogCard.astro";
+import BlogFilterBar from "@/components/blog/BlogFilterBar.astro";
+import Reveal from "@/components/ui/Reveal.astro";
+import HoverLink from "@/components/ui/HoverLink.astro";
+import { getAllPosts, POST_FILTER_CATEGORIES } from "@/lib/posts";
+import { buildCanonicalUrl } from "@/lib/seo";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
+
+const allPosts = await getAllPosts();
+---
+
+<BaseLayout
+  title="Artigos"
+  description="Reflexões sobre saúde mental, psicanálise, ansiedade e autoconhecimento. Textos escritos por Gabriela Nunes, psicóloga clínica."
+  canonical={buildCanonicalUrl("/blog")}
+>
+  {/* Hero */}
+  <section
+    style="padding-top: clamp(64px, 10vh, 100px); padding-bottom: clamp(48px, 6vh, 80px); background: var(--color-background); border-bottom: 1px solid var(--color-outline-variant);"
+  >
+    <div class="container">
+      <Reveal>
+        <p
+          style="font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 16px;"
+        >
+          Reflexões
+        </p>
+        <h1
+          style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--color-on-surface); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 20px;"
+        >
+          Artigos sobre saúde mental
+        </h1>
+        <p
+          style="font-size: 1.0625rem; color: var(--color-on-surface-variant); max-width: 520px; line-height: 1.7;"
+        >
+          Textos escritos com cuidado sobre ansiedade, autoconhecimento, relacionamentos e o
+          cotidiano da vida emocional.
+        </p>
+      </Reveal>
+    </div>
+  </section>
+
+  {/* Filter bar */}
+  <div
+    style="padding-block: 24px; background: rgba(255,241,231,0.4); border-bottom: 1px solid rgba(199,199,191,0.3); position: sticky; top: 80px; z-index: 10; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"
+  >
+    <div class="container">
+      <BlogFilterBar categories={POST_FILTER_CATEGORIES} active="" />
+    </div>
+  </div>
+
+  {/* Posts grid */}
+  <section style="padding-block: clamp(48px, 8vh, 96px); background: var(--color-background);">
+    <div class="container">
+      <div
+        data-blog-empty
+        style={allPosts.length === 0
+          ? "text-align: center; padding: 80px 0;"
+          : "display: none; text-align: center; padding: 80px 0;"}
+      >
+        <p
+          style="font-family: var(--font-display); font-size: 1.25rem; color: var(--color-on-surface-variant);"
+        >
+          Nenhum artigo encontrado nesta categoria.
+        </p>
+      </div>
+
+      {
+        allPosts.length > 0 && (
+          <div
+            data-blog-grid
+            style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 32px;"
+          >
+            {allPosts.map((post, i) => (
+              <div data-blog-item data-category={post.category}>
+                <Reveal delay={i % 3}>
+                  <BlogCard
+                    slug={post.slug}
+                    title={post.title}
+                    excerpt={post.excerpt}
+                    category={post.category}
+                    publishedAt={post.publishedAt}
+                    readingTime={post.readingTime}
+                    coverImageUrl={post.coverImage}
+                    coverImageAlt={post.coverImageAlt}
+                  />
+                </Reveal>
+              </div>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section
+    style="padding-block: clamp(48px, 8vh, 80px); background: var(--color-surface-container-low); text-align: center;"
+  >
+    <div class="container">
+      <Reveal>
+        <p
+          style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--color-on-surface); margin-bottom: 24px;"
+        >
+          Identificou algo que ressoa com você?
+        </p>
+        <HoverLink href={WHATSAPP_URL}>Agendar uma conversa</HoverLink>
+      </Reveal>
+    </div>
+  </section>
+</BaseLayout>

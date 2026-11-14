@@ -1,0 +1,33 @@
+---
+import Reveal from "@/components/ui/Reveal.astro";
+import DynamicTestimonials from "@/components/ui/DynamicTestimonials.astro";
+---
+
+<section class="testimonials-section">
+  <div class="container">
+    <Reveal class="testimonials-header">
+      <h2 class="testimonials-title">O que dizem os pacientes</h2>
+    </Reveal>
+
+    <DynamicTestimonials limit={3} variant="home" />
+  </div>
+</section>
+
+<style is:global>
+  .testimonials-section {
+    padding-block: clamp(64px, 10vh, var(--section-gap-desktop));
+    background: var(--color-background);
+  }
+
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .testimonials-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 600;
+    color: var(--color-on-surface);
+  }
+</style>

@@ -1,15 +1,29 @@
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTypeScript from "eslint-config-next/typescript";
+import eslintPluginAstro from "eslint-plugin-astro";
+import tseslint from "typescript-eslint";
 import prettierConfig from "eslint-config-prettier";
 
-/** @type {import("eslint").Linter.FlatConfig[]} */
-const config = [
-  ...nextVitals,
-  ...nextTypeScript,
+export default [
+  ...tseslint.configs.recommended,
+  ...eslintPluginAstro.configs.recommended,
   {
-    ignores: [".next/**", "node_modules/**", "out/**", "build/**", "coverage/**", "next-env.d.ts"],
+    ignores: [
+      ".astro/**",
+      ".vercel/**",
+      "dist/**",
+      "node_modules/**",
+      "out/**",
+      "build/**",
+      "coverage/**",
+    ],
+  },
+  {
+    files: ["**/*.astro"],
+    rules: {
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
+    },
   },
   prettierConfig,
 ];
-
-export default config;

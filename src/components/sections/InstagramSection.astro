@@ -1,0 +1,348 @@
+---
+import { Image } from "astro:assets";
+import Reveal from "@/components/ui/Reveal.astro";
+import { resolveAssetImage } from "@/lib/images";
+
+interface InstagramMedia {
+  id: string;
+  media_type: string;
+  media_url: string;
+  permalink: string;
+  caption?: string;
+  duration: string;
+}
+
+const instagramUrl = "https://www.instagram.com/gabrielanunes_psi?igsh=MWFkc2dwNm84cjhmYg==";
+
+const fallbackReels: InstagramMedia[] = [
+  {
+    id: "fallback1",
+    media_type: "POST",
+    media_url: "/images/insta/insta1.jpeg",
+    permalink: instagramUrl,
+    caption:
+      "Ansiedade e os sinais do corpo\nComo o sofrimento emocional se expressa fisicamente em nós.",
+    duration: "Post",
+  },
+  {
+    id: "fallback2",
+    media_type: "POST",
+    media_url: "/images/insta/insta2.jpeg",
+    permalink: instagramUrl,
+    caption:
+      "Autocrítica e Perfeccionismo\nA busca por ideais muito exigentes e seus impactos na autoestima.",
+    duration: "Post",
+  },
+  {
+    id: "fallback3",
+    media_type: "POST",
+    media_url: "/images/insta/insta3.jpeg",
+    permalink: instagramUrl,
+    caption:
+      "O espaço da psicoterapia\nCompreender padrões repetitivos e construir novas formas de se relacionar.",
+    duration: "Post",
+  },
+];
+---
+
+<section class="instagram-section">
+  <div class="container">
+    <div class="instagram-header">
+      <Reveal>
+        <h2 class="instagram-title">Acompanhe no Instagram</h2>
+      </Reveal>
+      <Reveal delay={1}>
+        <a href={instagramUrl} target="_blank" rel="noopener noreferrer" class="instagram-handle">
+          @gabrielanunes_psi
+        </a>
+      </Reveal>
+    </div>
+
+    <div class="instagram-grid" data-instagram-grid>
+      {
+        fallbackReels.map((reel, idx) => {
+          const hasCaption = Boolean(reel.caption && reel.caption.trim().length > 0);
+          const captionLines = hasCaption ? reel.caption!.split("\n") : [];
+          const displayTitle = captionLines[0] || "";
+          const displayDesc = captionLines.slice(1).join(" ") || "";
+          const asset = resolveAssetImage(reel.media_url);
+
+          return (
+            <Reveal delay={idx + 2} class="instagram-card-reveal">
+              <a
+                href={reel.permalink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="instagram-card"
+                data-instagram-card={idx}
+              >
+                <div class="instagram-image-wrap">
+                  <Image
+                    src={asset}
+                    alt={displayTitle || "Instagram post"}
+                    widths={[360, 640]}
+                    sizes="(max-width: 900px) 100vw, 360px"
+                    format="webp"
+                    style="position: absolute; height: 100%; width: 100%; inset: 0; object-fit: cover;"
+                  />
+                  <div class="instagram-badge">
+                    <span class="instagram-badge-icon">▶</span>
+                    <span class="instagram-duration">{reel.duration}</span>
+                  </div>
+                  <div class="instagram-overlay">
+                    <div class="instagram-play-btn">
+                      <span class="play-triangle">▶</span>
+                    </div>
+                    {hasCaption && (
+                      <div class="instagram-overlay-text">
+                        <h4 class="instagram-post-title">{displayTitle}</h4>
+                        {displayDesc && <p class="instagram-post-desc">{displayDesc}</p>}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </a>
+            </Reveal>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  interface InstagramApiItem {
+    id: string;
+    media_type: string;
+    media_url: string;
+    permalink: string;
+    caption?: string;
+    duration: string;
+  }
+
+  interface InstagramApiResponse {
+    success: boolean;
+    data?: InstagramApiItem[];
+  }
+
+  async function loadInstagramFeed() {
+    const grid = document.querySelector<HTMLElement>("[data-instagram-grid]");
+    if (!grid) return;
+
+    try {
+      const res = await fetch("/api/instagram");
+      if (!res.ok) return;
+
+      const json = (await res.json()) as InstagramApiResponse;
+      if (!json.success || !json.data || json.data.length === 0) return;
+
+      const cards = grid.querySelectorAll<HTMLAnchorElement>("[data-instagram-card]");
+      json.data.slice(0, cards.length).forEach((item, idx) => {
+        const card = cards[idx];
+        if (!card) return;
+
+        card.href = item.permalink;
+
+        const img = card.querySelector("img");
+        if (img && item.media_url) {
+          img.removeAttribute("srcset");
+          img.src = item.media_url;
+        }
+
+        const durationEl = card.querySelector(".instagram-duration");
+        if (durationEl) {
+          durationEl.textContent = item.duration;
+        }
+
+        const hasCaption = Boolean(item.caption && item.caption.trim().length > 0);
+        const captionLines = hasCaption ? item.caption!.split("\n") : [];
+        const displayTitle = captionLines[0] || "";
+        const displayDesc = captionLines.slice(1).join(" ") || "";
+
+        if (img) {
+          img.alt = displayTitle || "Instagram post";
+        }
+
+        const overlay = card.querySelector(".instagram-overlay");
+        if (overlay) {
+          const existingText = overlay.querySelector(".instagram-overlay-text");
+          if (hasCaption) {
+            const textWrap = existingText ?? document.createElement("div");
+            textWrap.className = "instagram-overlay-text";
+            textWrap.replaceChildren();
+
+            const titleEl = document.createElement("h4");
+            titleEl.className = "instagram-post-title";
+            titleEl.textContent = displayTitle;
+            textWrap.appendChild(titleEl);
+
+            if (displayDesc) {
+              const descEl = document.createElement("p");
+              descEl.className = "instagram-post-desc";
+              descEl.textContent = displayDesc;
+              textWrap.appendChild(descEl);
+            }
+
+            if (!existingText) {
+              overlay.appendChild(textWrap);
+            }
+          } else {
+            existingText?.remove();
+          }
+        }
+      });
+    } catch (error) {
+      console.error("Failed to load Instagram media feed:", error);
+    }
+  }
+
+  loadInstagramFeed();
+</script>
+
+<style is:global>
+  .instagram-section {
+    padding-block: clamp(64px, 10vh, var(--section-gap-desktop));
+    background: rgba(255, 241, 231, 0.25);
+    border-top: 1px solid rgba(143, 75, 66, 0.08);
+  }
+
+  .instagram-header {
+    text-align: center;
+    margin-bottom: clamp(32px, 5vh, 48px);
+  }
+
+  .instagram-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 600;
+    color: var(--color-on-surface);
+    margin-bottom: 8px;
+  }
+
+  .instagram-handle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s;
+  }
+
+  .instagram-handle:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
+  .instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .instagram-card {
+    display: block;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    aspect-ratio: 4 / 5;
+    transition:
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .instagram-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hero);
+  }
+
+  .instagram-image-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .instagram-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 9999px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+  }
+
+  .instagram-badge-icon {
+    font-size: 0.65rem;
+  }
+
+  .instagram-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+    background: transparent;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+
+  .instagram-overlay-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .instagram-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transition:
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.3s ease;
+  }
+
+  .play-triangle {
+    color: var(--color-secondary);
+    font-size: 1rem;
+    margin-left: 3px;
+  }
+
+  .instagram-card:hover .instagram-play-btn {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  @media (max-width: 900px) {
+    .instagram-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+  }
+</style>

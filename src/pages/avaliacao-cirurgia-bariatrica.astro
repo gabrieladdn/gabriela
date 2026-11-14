@@ -1,0 +1,33 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ServicePageTemplate from "@/components/services/ServicePageTemplate.astro";
+import { servicePages } from "@/content/services";
+import { buildMedicalServiceSchemas, buildServiceMetadata } from "@/lib/seo";
+
+const service = servicePages["avaliacao-cirurgia-bariatrica"];
+
+const seo = await buildServiceMetadata({
+  title: service.seo.title,
+  description: service.seo.description,
+  pathname: service.route,
+  image: service.seo.image,
+});
+
+const schemas = buildMedicalServiceSchemas({
+  title: service.seo.title,
+  description: service.seo.description,
+  route: service.route,
+  breadcrumbName: "Avaliação e Preparo para Cirurgia Bariátrica",
+});
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  ogType={seo.ogType}
+  ogImage={seo.ogImage}
+  schemas={schemas}
+>
+  <ServicePageTemplate content={service} />
+</BaseLayout>

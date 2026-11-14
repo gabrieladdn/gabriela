@@ -1,0 +1,260 @@
+---
+import { getCollection, render } from "astro:content";
+import { Image, getImage } from "astro:assets";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import HoverLink from "@/components/ui/HoverLink.astro";
+import { resolveAssetImage } from "@/lib/images";
+import {
+  formatPostDate,
+  POST_CATEGORY_LABELS,
+  resolvePostCover,
+  type PostEntry,
+} from "@/lib/posts";
+import { buildCanonicalUrl } from "@/lib/seo";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: PostEntry;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const categoryLabel = POST_CATEGORY_LABELS[post.data.category] || post.data.category;
+const formattedDate = formatPostDate(post.data.publishedAt);
+const cover = resolvePostCover(post);
+const coverAsset = resolveAssetImage(cover.src);
+const authorAsset = resolveAssetImage("/images/sobre.jpeg");
+const optimizedOgImage = await getImage({ src: coverAsset, format: "webp", width: 1200 });
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.excerpt}
+  canonical={buildCanonicalUrl(`/blog/${post.id}`)}
+  ogType="article"
+  ogImage={{ url: buildCanonicalUrl(optimizedOgImage.src), alt: cover.alt }}
+  publishedTime={post.data.publishedAt.toISOString()}
+>
+  {/* Header */}
+  <section
+    style="padding-top: clamp(64px, 10vh, 100px); padding-bottom: clamp(48px, 6vh, 72px); background: var(--color-background);"
+  >
+    <div class="container">
+      <div
+        style="display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; color: var(--color-outline); margin-bottom: 40px;"
+      >
+        <a href="/" style="color: inherit;">Home</a>
+        <span>›</span>
+        <a href="/blog" style="color: inherit;">Artigos</a>
+        <span>›</span>
+        <span style="color: var(--color-on-surface-variant);">{categoryLabel}</span>
+      </div>
+
+      <div style="max-width: 720px;">
+        <span
+          style="display: inline-block; background: rgba(143,75,66,0.1); color: var(--color-secondary); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; border-radius: 9999px; margin-bottom: 20px;"
+        >
+          {categoryLabel}
+        </span>
+
+        <h1
+          style="font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; color: var(--color-on-surface); letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 24px;"
+        >
+          {post.data.title}
+        </h1>
+
+        <p
+          style="font-size: 1.125rem; line-height: 1.7; color: var(--color-on-surface-variant); font-style: italic; margin-bottom: 32px;"
+        >
+          {post.data.excerpt}
+        </p>
+
+        <div
+          style="display: flex; align-items: center; gap: 16px; padding-top: 24px; border-top: 1px solid var(--color-outline-variant);"
+        >
+          <div
+            style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: var(--color-surface-container); flex-shrink: 0;"
+          >
+            <Image
+              src={authorAsset}
+              alt="Gabriela Nunes"
+              widths={[40, 80]}
+              sizes="40px"
+              format="webp"
+              style="width: 100%; height: 100%; object-fit: cover;"
+            />
+          </div>
+          <div>
+            <p style="font-size: 0.875rem; font-weight: 600; color: var(--color-on-surface);">
+              Gabriela Nunes
+            </p>
+            <p style="font-size: 0.75rem; color: var(--color-outline); margin-top: 2px;">
+              {formattedDate} · {post.data.readingTime} min de leitura
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Cover image */}
+  <div
+    style="width: 100%; max-width: var(--container-max); margin: 0 auto; padding-inline: var(--gutter); margin-bottom: -48px;"
+  >
+    <div
+      style="aspect-ratio: 16/6; border-radius: 24px; overflow: hidden; position: relative; background: linear-gradient(135deg, var(--color-surface-container-high), var(--color-surface-container));"
+    >
+      <Image
+        src={coverAsset}
+        alt={cover.alt}
+        widths={[720, 1200]}
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        format="webp"
+        style="width: 100%; height: 100%; object-fit: cover;"
+      />
+    </div>
+  </div>
+
+  {/* Content */}
+  <section style="padding-block: clamp(80px, 12vh, 120px); background: var(--color-background);">
+    <div class="container">
+      <div class="blog-mdx-content" style="margin: 0 auto; max-width: 720px;">
+        <Content />
+      </div>
+
+      {/* Author box */}
+      <div
+        style="max-width: 720px; margin: 80px auto 0; padding: 32px; background: var(--color-surface-container-low); border-radius: 20px; display: flex; gap: 24px; align-items: flex-start;"
+      >
+        <div
+          style="width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: var(--color-surface-container); flex-shrink: 0;"
+        >
+          <Image
+            src={authorAsset}
+            alt="Gabriela Nunes"
+            widths={[64, 128]}
+            sizes="64px"
+            format="webp"
+            style="width: 100%; height: 100%; object-fit: cover;"
+          />
+        </div>
+        <div>
+          <p
+            style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 6px;"
+          >
+            Escrito por
+          </p>
+          <p
+            style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--color-on-surface); margin-bottom: 8px;"
+          >
+            Gabriela Nunes
+          </p>
+          <p
+            style="font-size: 0.875rem; line-height: 1.65; color: var(--color-on-surface-variant);"
+          >
+            Psicóloga clínica com abordagem psicanalítica. Especializada no atendimento a mulheres
+            que vivem em autocobrança e ansiedade.
+          </p>
+        </div>
+      </div>
+
+      <div style="max-width: 720px; margin: 48px auto 0; text-align: center;">
+        <a
+          href="/blog"
+          style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.875rem; font-weight: 600; color: var(--color-secondary); letter-spacing: 0.04em;"
+        >
+          ← Voltar para artigos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section style="padding-block: 80px; background: var(--color-secondary); text-align: center;">
+    <div class="container">
+      <p
+        style="font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: #fff; margin-bottom: 24px;"
+      >
+        Esse texto tocou em algo?
+      </p>
+      <HoverLink href={WHATSAPP_URL}>Agendar uma conversa</HoverLink>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  .blog-mdx-content h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 700;
+    color: var(--color-on-surface);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-mdx-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-on-surface);
+    line-height: 1.4;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-mdx-content p {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--color-on-surface-variant);
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-mdx-content blockquote {
+    border-left: 3px solid var(--color-secondary);
+    padding-left: 1.5rem;
+    font-style: italic;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--color-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-mdx-content blockquote p {
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin-bottom: 0;
+  }
+
+  .blog-mdx-content ul,
+  .blog-mdx-content ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-on-surface-variant);
+    line-height: 1.8;
+    font-size: 1.0625rem;
+  }
+
+  .blog-mdx-content strong {
+    font-weight: 700;
+    color: var(--color-on-surface);
+  }
+
+  .blog-mdx-content hr {
+    border: none;
+    border-top: 1px solid var(--color-outline-variant);
+    margin-block: 2.5rem;
+  }
+</style>

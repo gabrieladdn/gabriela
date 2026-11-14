@@ -5,13 +5,19 @@ declare global {
   }
 }
 
-export const WHATSAPP_PHONE = process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? "5513982007343";
+export const WHATSAPP_PHONE =
+  import.meta.env.PUBLIC_WHATSAPP_PHONE ??
+  import.meta.env.NEXT_PUBLIC_WHATSAPP_PHONE ??
+  "5513982007343";
+
 export const WHATSAPP_URL =
-  process.env.NEXT_PUBLIC_WHATSAPP_URL ?? `https://wa.me/${WHATSAPP_PHONE}`;
+  import.meta.env.PUBLIC_WHATSAPP_URL ??
+  import.meta.env.NEXT_PUBLIC_WHATSAPP_URL ??
+  `https://wa.me/${WHATSAPP_PHONE}`;
 
 export const trackWhatsAppConversion = (url?: string) => {
-  if (typeof window == "undefined") return;
-  
+  if (typeof window === "undefined") return;
+
   if (typeof window.gtag_report_conversion === "function") {
     window.gtag_report_conversion(url);
   } else if (typeof window.gtag === "function") {

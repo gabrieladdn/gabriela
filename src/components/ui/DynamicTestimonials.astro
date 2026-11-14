@@ -1,0 +1,173 @@
+---
+import { testimonialsList } from "@/content/testimonials";
+
+interface Props {
+  limit?: number;
+  variant?: "home" | "service";
+}
+
+const { limit = 3, variant = "home" } = Astro.props;
+const displayed = testimonialsList.slice(0, limit);
+const shouldShuffle = variant === "service" || limit > 3;
+---
+
+{
+  displayed.length === 0 ? (
+    <div class="testimonials-skeleton" style="min-height: 200px" />
+  ) : variant === "service" ? (
+    <div class="dynamic-service-list" data-dynamic-testimonials="service" data-limit={limit}>
+      {displayed.slice(0, 2).map(({ quote, author }) => (
+        <article class="service-testimonial-card">
+          <p class="service-testimonial-quote">{quote}</p>
+          <p class="service-testimonial-author">{author}</p>
+        </article>
+      ))}
+    </div>
+  ) : (
+    <div
+      class="testimonials-grid"
+      data-dynamic-testimonials={shouldShuffle ? "home" : undefined}
+      data-limit={limit}
+    >
+      {displayed.map(({ quote, author }) => (
+        <div class="testimonials-card">
+          <span aria-hidden="true" class="testimonials-quote-mark">
+            &ldquo;
+          </span>
+          <p class="testimonials-quote">{quote}</p>
+          <div class="testimonials-author-row">
+            <div class="testimonials-avatar" />
+            <span class="testimonials-author">{author}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+<script>
+  import { testimonialsList } from "@/content/testimonials";
+
+  document.querySelectorAll<HTMLElement>("[data-dynamic-testimonials]").forEach((container) => {
+    const variant = container.dataset.dynamicTestimonials;
+    const limit = Number(container.dataset.limit || "3");
+
+    if (variant === "service") {
+      const shuffled = [...testimonialsList].sort(() => 0.5 - Math.random()).slice(0, 2);
+      const cards = container.querySelectorAll<HTMLElement>(".service-testimonial-card");
+      shuffled.forEach((item, idx) => {
+        const card = cards[idx];
+        if (!card) return;
+        const quoteEl = card.querySelector(".service-testimonial-quote");
+        const authorEl = card.querySelector(".service-testimonial-author");
+        if (quoteEl) quoteEl.textContent = item.quote;
+        if (authorEl) authorEl.textContent = item.author;
+      });
+    } else if (variant === "home" && limit > 3) {
+      const fixedCount = 3;
+      const fixed = testimonialsList.slice(0, fixedCount);
+      const pool = [...testimonialsList.slice(fixedCount)].sort(() => 0.5 - Math.random());
+      const picked = [...fixed, ...pool.slice(0, limit - fixedCount)];
+      const cards = container.querySelectorAll<HTMLElement>(".testimonials-card");
+      picked.forEach((item, idx) => {
+        const card = cards[idx];
+        if (!card) return;
+        const quoteEl = card.querySelector(".testimonials-quote");
+        const authorEl = card.querySelector(".testimonials-author");
+        if (quoteEl) quoteEl.textContent = item.quote;
+        if (authorEl) authorEl.textContent = item.author;
+      });
+    }
+  });
+</script>
+
+<style is:global>
+  .dynamic-service-list {
+    display: grid;
+    gap: 14px;
+  }
+  .service-testimonial-card {
+    border-radius: 16px;
+    background: var(--color-surface-container-low);
+    padding: 16px;
+    box-shadow: var(--shadow-card);
+  }
+  .service-testimonial-quote {
+    font-size: 0.96rem;
+    line-height: 1.65;
+    color: var(--color-on-surface-variant);
+  }
+  .service-testimonial-author {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .testimonials-card {
+    position: relative;
+    padding: 40px 32px 32px;
+    border: 1px solid var(--color-surface-container-low);
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(143, 75, 66, 0.06);
+    transition:
+      box-shadow 0.3s,
+      transform 0.3s;
+  }
+
+  .testimonials-card:hover {
+    box-shadow: 0 12px 40px rgba(143, 75, 66, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .testimonials-quote-mark {
+    position: absolute;
+    top: -18px;
+    left: 24px;
+    font-family: var(--font-display);
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--color-tertiary-fixed-dim);
+    opacity: 0.35;
+    user-select: none;
+  }
+
+  .testimonials-quote {
+    margin-bottom: 24px;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    font-style: italic;
+    color: var(--color-on-surface-variant);
+    min-height: 80px;
+  }
+
+  .testimonials-author-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .testimonials-avatar {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--color-surface-container);
+  }
+
+  .testimonials-author {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--color-secondary);
+  }
+</style>
