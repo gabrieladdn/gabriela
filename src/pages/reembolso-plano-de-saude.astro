@@ -1,0 +1,387 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Reveal from "@/components/ui/Reveal.astro";
+import CTASection from "@/components/sections/CTASection.astro";
+import { buildBreadcrumbSchema, buildCanonicalUrl, buildServiceMetadata } from "@/lib/seo";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
+
+const route = "/reembolso-plano-de-saude/";
+
+const seo = await buildServiceMetadata({
+  title: "Terapia Online com Reembolso do Plano de Saúde | Gabriela Nunes",
+  description:
+    "Atendimento psicológico particular 100% online com emissão de recibo profissional (CRP) para solicitação de reembolso junto ao seu plano de saúde.",
+  pathname: route,
+  image: "/images/consultorio.jpeg",
+});
+
+const canonical = buildCanonicalUrl(route);
+
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: "Home", url: buildCanonicalUrl("/") },
+  { name: "Reembolso pelo Plano de Saúde", url: canonical },
+]);
+
+const steps = [
+  {
+    number: "01",
+    title: "Confira seu plano",
+    description:
+      "Verifique no aplicativo ou central do seu convênio se a sua categoria possui reembolso para consultas de psicologia (modalidade livre escolha).",
+  },
+  {
+    number: "02",
+    title: "Agende e faça sua sessão",
+    description:
+      "O atendimento é particular, 100% online via Google Meet, com duração aproximada de 50 minutos e sigilo garantido.",
+  },
+  {
+    number: "03",
+    title: "Receba o recibo completo",
+    description:
+      "Após o pagamento, você recebe o recibo profissional com todas as especificações exigidas pelas operadoras, incluindo o registro no CRP.",
+  },
+  {
+    number: "04",
+    title: "Solicite no app do convênio",
+    description:
+      "Envie o recibo pelo aplicativo ou portal do seu plano de saúde para receber o reembolso conforme a tabela e o contrato da sua apólice.",
+  },
+];
+
+const receiptItems = [
+  "Nome completo e CPF da psicóloga",
+  "Número de registro ativo no CRP (Conselho Regional de Psicologia)",
+  "Nome completo e CPF do paciente",
+  "Data de realização de cada sessão e valor pago",
+  "Descrição do serviço prestado (psicoterapia / atendimento psicológico)",
+];
+
+const reimbursementFaq = [
+  {
+    question: "O atendimento é pelo convênio ou particular?",
+    answer:
+      "O atendimento é particular — não sou credenciada diretamente aos planos de saúde. Por isso, você realiza o pagamento da sessão e utiliza o recibo emitido por mim para solicitar o reembolso ao seu convênio.",
+  },
+  {
+    question: "Quais planos costumam aceitar reembolso de psicoterapia?",
+    answer:
+      "A maioria dos planos com modalidade de livre escolha oferece reembolso para psicologia, como Bradesco Saúde, SulAmérica, Amil, Porto Seguro, Omint, Care Plus e alguns contratos da Unimed. O percentual reembolsado varia conforme a categoria do seu plano.",
+  },
+  {
+    question: "Preciso de encaminhamento médico para pedir reembolso?",
+    answer:
+      "Algumas operadoras solicitam pedido ou encaminhamento médico (de clínico geral ou psiquiatra) indicando psicoterapia para liberar o reembolso. Vale consultar as regras no aplicativo do seu plano antes da primeira solicitação.",
+  },
+  {
+    question: "Posso fazer uma prévia de reembolso antes de começar?",
+    answer:
+      "Sim. Quase todos os aplicativos de convênios permitem simular a prévia de reembolso informando o serviço (psicoterapia) e o valor da sessão.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: reimbursementFaq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  ogType={seo.ogType}
+  ogImage={seo.ogImage}
+  schemas={[breadcrumbSchema, faqSchema]}
+>
+  <section class="reembolso-hero">
+    <div class="container reembolso-hero-inner">
+      <Reveal>
+        <p class="reembolso-kicker">Atendimento Particular com Reembolso</p>
+        <h1 class="reembolso-title">
+          Psicoterapia Online com Recibo para Reembolso do Plano de Saúde
+        </h1>
+        <p class="reembolso-lead">
+          Os atendimentos são realizados de forma particular, com emissão de recibo profissional
+          completo (incluindo registro no CRP) para que você solicite o reembolso diretamente ao seu
+          convênio na modalidade de livre escolha.
+        </p>
+        <div class="reembolso-hero-actions">
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-whatsapp-track
+            class="reembolso-cta-btn"
+          >
+            Agendar Sessão pelo WhatsApp
+          </a>
+          <a href="#como-funciona" class="reembolso-secondary-link"> Entender como funciona </a>
+        </div>
+      </Reveal>
+    </div>
+  </section>
+
+  <section id="como-funciona" class="reembolso-section">
+    <div class="container">
+      <Reveal>
+        <p class="reembolso-section-kicker">Passo a passo</p>
+        <h2 class="reembolso-section-title">Como funciona o reembolso na prática</h2>
+      </Reveal>
+
+      <div class="reembolso-steps-grid">
+        {
+          steps.map((step, index) => (
+            <Reveal delay={index % 4}>
+              <article class="reembolso-step-card">
+                <span class="reembolso-step-num">{step.number}</span>
+                <h3 class="reembolso-step-title">{step.title}</h3>
+                <p class="reembolso-step-desc">{step.description}</p>
+              </article>
+            </Reveal>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="reembolso-section reembolso-section-alt">
+    <div class="container reembolso-split">
+      <Reveal>
+        <div>
+          <p class="reembolso-section-kicker">Documentação</p>
+          <h2 class="reembolso-section-title">O que consta no recibo emitido</h2>
+          <p class="reembolso-text">
+            Para evitar pendências ou devoluções na análise do seu convênio, o recibo é emitido com
+            todos os dados exigidos pelas operadoras de saúde e também serve para dedução no Imposto
+            de Renda.
+          </p>
+        </div>
+      </Reveal>
+
+      <Reveal delay={1}>
+        <div class="reembolso-checklist-card">
+          <ul class="reembolso-checklist">
+            {receiptItems.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </Reveal>
+    </div>
+  </section>
+
+  <section class="reembolso-section">
+    <div class="container reembolso-faq-wrap">
+      <Reveal>
+        <p class="reembolso-section-kicker">Dúvidas comuns</p>
+        <h2 class="reembolso-section-title">Perguntas sobre reembolso</h2>
+      </Reveal>
+
+      <div class="reembolso-faq-grid">
+        {
+          reimbursementFaq.map((item, index) => (
+            <Reveal delay={index % 2}>
+              <article class="reembolso-faq-card">
+                <h3 class="reembolso-faq-question">{item.question}</h3>
+                <p class="reembolso-faq-answer">{item.answer}</p>
+              </article>
+            </Reveal>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .reembolso-hero {
+    padding-block: clamp(120px, 16vh, 168px) clamp(56px, 8vh, 84px);
+    background: var(--color-surface);
+  }
+
+  .reembolso-hero-inner {
+    max-width: 780px;
+  }
+
+  .reembolso-kicker,
+  .reembolso-section-kicker {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+  }
+
+  .reembolso-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.1rem, 4.4vw, 3.25rem);
+    line-height: 1.15;
+    color: var(--color-text);
+    margin-bottom: 20px;
+  }
+
+  .reembolso-lead {
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 32px;
+  }
+
+  .reembolso-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .reembolso-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 28px;
+    border-radius: 999px;
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .reembolso-cta-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.94;
+  }
+
+  .reembolso-secondary-link {
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    padding: 8px 4px;
+  }
+
+  .reembolso-section {
+    padding-block: clamp(56px, 8vh, 88px);
+  }
+
+  .reembolso-section-alt {
+    background: var(--color-surface);
+  }
+
+  .reembolso-section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.65rem, 3vw, 2.3rem);
+    line-height: 1.22;
+    color: var(--color-text);
+    margin-bottom: 28px;
+  }
+
+  .reembolso-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 24px;
+  }
+
+  .reembolso-step-card {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    padding: 28px 24px;
+    height: 100%;
+  }
+
+  .reembolso-step-num {
+    display: inline-block;
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+  }
+
+  .reembolso-step-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 10px;
+  }
+
+  .reembolso-step-desc,
+  .reembolso-text,
+  .reembolso-faq-answer {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+  }
+
+  .reembolso-split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 36px;
+    align-items: center;
+  }
+
+  .reembolso-checklist-card {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    padding: 28px 32px;
+  }
+
+  .reembolso-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 14px;
+  }
+
+  .reembolso-checklist li {
+    position: relative;
+    padding-left: 26px;
+    line-height: 1.55;
+    color: var(--color-text);
+  }
+
+  .reembolso-checklist li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .reembolso-faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .reembolso-faq-card {
+    background: var(--color-surface);
+    border-radius: 16px;
+    padding: 26px 24px;
+    height: 100%;
+  }
+
+  .reembolso-faq-question {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 10px;
+  }
+</style>
