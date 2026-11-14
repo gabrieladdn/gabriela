@@ -51,7 +51,7 @@ export async function buildServiceMetadata(input: ServiceMetadataInput): Promise
     imageUrl = input.image;
   } else {
     const asset = resolveAssetImage(input.image);
-    const optimized = await getImage({ src: asset, format: "jpeg", width: 1200 });
+    const optimized = await getImage({ src: asset, format: "jpg", width: 1200 });
     imageUrl = buildCanonicalUrl(optimized.src);
   }
 

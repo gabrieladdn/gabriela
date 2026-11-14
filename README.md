@@ -1,6 +1,6 @@
 # Gabriela Nunes — Site Clínico
 
-Site profissional de psicoterapia construído com **Astro 5** (`output: "static"` + `@astrojs/mdx` + `@astrojs/vercel`), com design editorial minimalista, imagens otimizadas em build e blog alimentado por arquivos MDX em `content/posts`.
+Site profissional de psicoterapia construído com **Astro 5** (`output: "static"` + `@astrojs/mdx` + `@astrojs/netlify`), com design editorial minimalista, imagens otimizadas em build e blog alimentado por arquivos MDX em `content/posts`.
 
 ---
 
@@ -13,7 +13,7 @@ Site profissional de psicoterapia construído com **Astro 5** (`output: "static"
 | Estilização | CSS Variables + estilos escopados Astro           |
 | Fontes      | Playfair Display + Manrope (`@fontsource`)        |
 | Imagens     | `astro:assets` + `sharp` (WebP responsivo)        |
-| Deploy      | Vercel (`@astrojs/vercel`)                        |
+| Deploy      | Netlify (`@astrojs/netlify`)                      |
 
 ---
 
@@ -80,7 +80,7 @@ pnpm run dev
 pnpm run check    # Type-check do Astro e TypeScript (astro check)
 pnpm run lint     # Verificação ESLint (TS + Astro)
 pnpm run format   # Verificação de formatação com Prettier
-pnpm run build    # Type-check + build de produção para Vercel
+pnpm run build    # Type-check + build de produção para Netlify
 pnpm run preview  # Pré-visualização local do build
 ```
 
@@ -142,7 +142,8 @@ Todas as cores, tipografia e espaçamentos estão como CSS variables em `src/sty
 
 ---
 
-## Deploy (Vercel)
+## Deploy (Netlify)
 
-1. Configure `PUBLIC_SERVER_URL`, `PUBLIC_WHATSAPP_PHONE` e (se usado) `INSTAGRAM_ACCESS_TOKEN` na Vercel
-2. Faça push para a branch principal — a Vercel executa `pnpm run build` com `@astrojs/vercel` automaticamente
+1. Configure `PUBLIC_SERVER_URL`, `PUBLIC_WHATSAPP_PHONE` e (se usado) `INSTAGRAM_ACCESS_TOKEN` nas variáveis de ambiente do Netlify
+2. No painel do Netlify (**Site configuration → Build & deploy**), garanta que o **Publish directory** seja `dist` e que o runtime/plugin legado do Next.js (`@netlify/plugin-nextjs`) esteja desativado (definido em `netlify.toml`)
+3. Faça push para a branch `main` — o Netlify executa `pnpm run build` com `@astrojs/netlify` automaticamente
