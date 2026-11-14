@@ -1,6 +1,6 @@
 # Gabriela Nunes — Site Clínico
 
-Site profissional de psicoterapia construído com **Astro 5** (`output: "static"` + `@astrojs/mdx` + `@astrojs/netlify`), com design editorial minimalista, imagens otimizadas em build e blog alimentado por arquivos MDX em `content/posts`.
+Site profissional de psicoterapia construído com **Astro 5** (`output: "static"` + `@astrojs/mdx`), com design editorial minimalista, imagens otimizadas em build e blog alimentado por arquivos MDX em `content/posts`.
 
 ---
 
@@ -8,12 +8,12 @@ Site profissional de psicoterapia construído com **Astro 5** (`output: "static"
 
 | Camada      | Tecnologia                                        |
 | ----------- | ------------------------------------------------- |
-| Framework   | Astro 5 (SSG + API serverless em `/api/*`)        |
+| Framework   | Astro 5 (SSG estático)                            |
 | Conteúdo    | Astro Content Collections + MDX (`content/posts`) |
 | Estilização | CSS Variables + estilos escopados Astro           |
 | Fontes      | Playfair Display + Manrope (`@fontsource`)        |
 | Imagens     | `astro:assets` + `sharp` (WebP responsivo)        |
-| Deploy      | Netlify (`@astrojs/netlify`)                      |
+| Deploy      | Netlify (site estático em `dist/`)                |
 
 ---
 
@@ -38,7 +38,6 @@ src/
 │   └── BaseLayout.astro       # Layout global, SEO, JSON-LD, fontes e tracking
 ├── lib/                       # Helpers de imagens, posts, SEO e WhatsApp
 ├── pages/
-│   ├── api/instagram.ts       # Endpoint serverless (prerender = false)
 │   ├── blog/                  # Listagem (/blog) e artigos (/blog/[slug])
 │   ├── servicos/              # Páginas dinâmicas (/servicos/[slug])
 │   ├── avaliacao-cirurgia-bariatrica.astro
@@ -80,7 +79,7 @@ pnpm run dev
 pnpm run check    # Type-check do Astro e TypeScript (astro check)
 pnpm run lint     # Verificação ESLint (TS + Astro)
 pnpm run format   # Verificação de formatação com Prettier
-pnpm run build    # Type-check + build de produção para Netlify
+pnpm run build    # Type-check + build estático de produção (dist/)
 pnpm run preview  # Pré-visualização local do build
 ```
 
@@ -123,7 +122,6 @@ Copie `.env.example` para `.env` e configure conforme necessário:
 - `PUBLIC_WHATSAPP_PHONE`: número do WhatsApp com DDI/DDD apenas com dígitos
 - `PUBLIC_WHATSAPP_URL`: override opcional da URL completa do WhatsApp
 - `PUBLIC_GA_ID`: ID do Google Analytics (opcional)
-- `INSTAGRAM_ACCESS_TOKEN`: token da Instagram Graph API para o feed dinâmico em `/api/instagram` (opcional)
 
 ---
 
@@ -144,6 +142,6 @@ Todas as cores, tipografia e espaçamentos estão como CSS variables em `src/sty
 
 ## Deploy (Netlify)
 
-1. Configure `PUBLIC_SERVER_URL`, `PUBLIC_WHATSAPP_PHONE` e (se usado) `INSTAGRAM_ACCESS_TOKEN` nas variáveis de ambiente do Netlify
-2. No painel do Netlify (**Site configuration → Build & deploy**), garanta que o **Publish directory** seja `dist` e que o runtime/plugin legado do Next.js (`@netlify/plugin-nextjs`) esteja desativado (definido em `netlify.toml`)
-3. Faça push para a branch `main` — o Netlify executa `pnpm run build` com `@astrojs/netlify` automaticamente
+1. Configure `PUBLIC_SERVER_URL` e `PUBLIC_WHATSAPP_PHONE` nas variáveis de ambiente do Netlify
+2. No painel do Netlify (**Site configuration → Build & deploy**), garanta que o **Publish directory** seja `dist` e que o runtime/plugin legado do Next.js (`@netlify/plugin-nextjs`) esteja desativado (`netlify.toml` define `command = "pnpm run build"` e `publish = "dist"`)
+3. Faça push ou PR para a branch `main` — o Netlify gera e publica os arquivos estáticos em `dist/` automaticamente
