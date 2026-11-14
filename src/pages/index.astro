@@ -1,4 +1,5 @@
 ---
+import { getImage } from "astro:assets";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import HeroSection from "@/components/sections/HeroSection.astro";
 import ServicesSection from "@/components/sections/ServicesSection.astro";
@@ -9,9 +10,26 @@ import HowItWorksSection from "@/components/sections/HowItWorksSection.astro";
 import TestimonialsSection from "@/components/sections/TestimonialsSection.astro";
 import InstagramSection from "@/components/sections/InstagramSection.astro";
 import CTASection from "@/components/sections/CTASection.astro";
+import { resolveAssetImage } from "@/lib/images";
+
+const heroPreload = await getImage({
+  src: resolveAssetImage("/images/gabriela1.jpeg"),
+  widths: [360, 480, 640, 920],
+  format: "webp",
+  quality: 75,
+});
 ---
 
 <BaseLayout>
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    href={heroPreload.src}
+    imagesrcset={heroPreload.srcSet.attribute}
+    imagesizes="(max-width: 900px) calc(100vw - 40px), 460px"
+    fetchpriority="high"
+  />
   <HeroSection />
   <ServicesSection />
   <PsychoanalysisSection />

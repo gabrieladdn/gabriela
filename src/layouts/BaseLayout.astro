@@ -1,14 +1,12 @@
 ---
-import "@fontsource/playfair-display/400.css";
-import "@fontsource/playfair-display/600.css";
-import "@fontsource/playfair-display/700.css";
-import "@fontsource/playfair-display/400-italic.css";
-import "@fontsource/playfair-display/600-italic.css";
-import "@fontsource/manrope/300.css";
-import "@fontsource/manrope/400.css";
-import "@fontsource/manrope/500.css";
-import "@fontsource/manrope/600.css";
-import "@fontsource/manrope/700.css";
+import "@fontsource/playfair-display/latin-400.css";
+import "@fontsource/playfair-display/latin-600.css";
+import "@fontsource/playfair-display/latin-700.css";
+import "@fontsource/playfair-display/latin-400-italic.css";
+import "@fontsource/manrope/latin-400.css";
+import "@fontsource/manrope/latin-500.css";
+import "@fontsource/manrope/latin-600.css";
+import "@fontsource/manrope/latin-700.css";
 import "@/styles/globals.css";
 
 import Navbar from "@/components/layout/Navbar.astro";
@@ -70,6 +68,7 @@ const gaId =
     <link rel="icon" href="/favicon.ico" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/icon.png" />
+    <slot name="head" />
 
     <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="pt_BR" />
@@ -154,9 +153,9 @@ const gaId =
 
       window.addEventListener("load", function () {
         if ("requestIdleCallback" in window) {
-          window.requestIdleCallback(loadTrackingScripts, { timeout: 2500 });
+          window.requestIdleCallback(loadTrackingScripts, { timeout: 5000 });
         } else {
-          window.setTimeout(loadTrackingScripts, 2500);
+          window.setTimeout(loadTrackingScripts, 5000);
         }
       });
     </script>
