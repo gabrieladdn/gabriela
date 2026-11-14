@@ -1,5 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import { WHATSAPP_URL } from "@/lib/whatsapp";
+import { resolveAssetImage } from "@/lib/images";
+
+const logoImg = resolveAssetImage("/images/logo.png");
 
 const navLinks = [
   { href: "/#home", label: "Home", section: "home" },
@@ -33,13 +37,14 @@ const getHref = (link: (typeof navLinks)[number]) => {
 <header class="navbar-shell" data-navbar-shell>
   <nav class="container navbar-inner">
     <a href="/" class="navbar-brand" aria-label="Gabriela Nunes">
-      <img
+      <Image
         class="navbar-brand-logo"
-        src="/logo.png"
+        src={logoImg}
         alt="Gabriela Nunes"
-        width="280"
-        height="38"
-        fetchpriority="high"
+        widths={[280, 560]}
+        sizes="(max-width: 768px) 200px, 280px"
+        format="webp"
+        loading="eager"
         decoding="async"
       />
     </a>

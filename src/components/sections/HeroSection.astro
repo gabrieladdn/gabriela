@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import Reveal from "@/components/ui/Reveal.astro";
 import { WHATSAPP_URL } from "@/lib/whatsapp";
 import { heroText } from "@/content/sections";
 import { resolveAssetImage } from "@/lib/images";
@@ -17,49 +16,42 @@ const heroImage = resolveAssetImage("/images/gabriela1.jpeg");
   <div class="container">
     <div class="hero-grid">
       <div class="hero-copy">
-        <Reveal delay={1}>
-          <p class="hero-kicker">{heroText.kicker}</p>
-        </Reveal>
+        <p class="hero-kicker">{heroText.kicker}</p>
 
-        <Reveal delay={2}>
-          <h1 class="hero-title">
-            {heroText.titleParts[0]}
-            <em class="hero-title-emphasis">{heroText.titleParts[1]}</em>
-            {heroText.titleParts[2]}
-          </h1>
-        </Reveal>
+        <h1 class="hero-title">
+          {heroText.titleParts[0]}
+          <em class="hero-title-emphasis">{heroText.titleParts[1]}</em>
+          {heroText.titleParts[2]}
+        </h1>
 
-        <Reveal delay={3}>
-          <p class="hero-description">{heroText.description}</p>
-        </Reveal>
+        <p class="hero-description">{heroText.description}</p>
 
-        <Reveal delay={4}>
-          <div class="hero-actions">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-whatsapp-track
-              class="hero-button hero-button-primary"
-            >
-              {heroText.actions[0]}
-            </a>
+        <div class="hero-actions">
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-whatsapp-track
+            class="hero-button hero-button-primary"
+          >
+            {heroText.actions[0]}
+          </a>
 
-            <a href="/#sobre" class="hero-button hero-button-secondary">
-              {heroText.actions[1]}
-            </a>
-          </div>
-        </Reveal>
+          <a href="/#sobre" class="hero-button hero-button-secondary">
+            {heroText.actions[1]}
+          </a>
+        </div>
       </div>
 
-      <Reveal delay={2} class="hero-visual">
+      <div class="hero-visual">
         <div class="hero-photo-frame">
           <Image
             src={heroImage}
             alt="Gabriela Nunes - Psicóloga Clínica"
-            widths={[480, 640, 750, 920]}
+            widths={[360, 480, 640, 920]}
             sizes="(max-width: 900px) calc(100vw - 40px), 460px"
             format="webp"
+            quality={75}
             fetchpriority="high"
             loading="eager"
             decoding="async"
@@ -72,7 +64,7 @@ const heroImage = resolveAssetImage("/images/gabriela1.jpeg");
           <span class="hero-status-dot"></span>
           <span class="hero-status-text">Atendendo online</span>
         </div>
-      </Reveal>
+      </div>
     </div>
   </div>
 </section>
