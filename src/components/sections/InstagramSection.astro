@@ -58,7 +58,7 @@ const fallbackReels: InstagramMedia[] = [
       </Reveal>
     </div>
 
-    <div class="instagram-grid" data-instagram-grid>
+    <div class="instagram-grid">
       {
         fallbackReels.map((reel, idx) => {
           const hasCaption = Boolean(reel.caption && reel.caption.trim().length > 0);
@@ -74,7 +74,6 @@ const fallbackReels: InstagramMedia[] = [
                 target="_blank"
                 rel="noopener noreferrer"
                 class="instagram-card"
-                data-instagram-card={idx}
               >
                 <div class="instagram-image-wrap">
                   <Image
@@ -109,95 +108,6 @@ const fallbackReels: InstagramMedia[] = [
     </div>
   </div>
 </section>
-
-<script>
-  interface InstagramApiItem {
-    id: string;
-    media_type: string;
-    media_url: string;
-    permalink: string;
-    caption?: string;
-    duration: string;
-  }
-
-  interface InstagramApiResponse {
-    success: boolean;
-    data?: InstagramApiItem[];
-  }
-
-  async function loadInstagramFeed() {
-    const grid = document.querySelector<HTMLElement>("[data-instagram-grid]");
-    if (!grid) return;
-
-    try {
-      const res = await fetch("/api/instagram");
-      if (!res.ok) return;
-
-      const json = (await res.json()) as InstagramApiResponse;
-      if (!json.success || !json.data || json.data.length === 0) return;
-
-      const cards = grid.querySelectorAll<HTMLAnchorElement>("[data-instagram-card]");
-      json.data.slice(0, cards.length).forEach((item, idx) => {
-        const card = cards[idx];
-        if (!card) return;
-
-        card.href = item.permalink;
-
-        const img = card.querySelector("img");
-        if (img && item.media_url) {
-          img.removeAttribute("srcset");
-          img.src = item.media_url;
-        }
-
-        const durationEl = card.querySelector(".instagram-duration");
-        if (durationEl) {
-          durationEl.textContent = item.duration;
-        }
-
-        const hasCaption = Boolean(item.caption && item.caption.trim().length > 0);
-        const captionLines = hasCaption ? item.caption!.split("\n") : [];
-        const displayTitle = captionLines[0] || "";
-        const displayDesc = captionLines.slice(1).join(" ") || "";
-
-        if (img) {
-          img.alt = displayTitle || "Instagram post";
-        }
-
-        const overlay = card.querySelector(".instagram-overlay");
-        if (overlay) {
-          const existingText = overlay.querySelector(".instagram-overlay-text");
-          if (hasCaption) {
-            const textWrap = existingText ?? document.createElement("div");
-            textWrap.className = "instagram-overlay-text";
-            textWrap.replaceChildren();
-
-            const titleEl = document.createElement("h4");
-            titleEl.className = "instagram-post-title";
-            titleEl.textContent = displayTitle;
-            textWrap.appendChild(titleEl);
-
-            if (displayDesc) {
-              const descEl = document.createElement("p");
-              descEl.className = "instagram-post-desc";
-              descEl.textContent = displayDesc;
-              textWrap.appendChild(descEl);
-            }
-
-            if (!existingText) {
-              overlay.appendChild(textWrap);
-            }
-          } else {
-            existingText?.remove();
-          }
-        }
-      });
-    } catch (error) {
-      console.error("Failed to load Instagram media feed:", error);
-    }
-  }
-
-  loadInstagramFeed();
-</script>
 
 <style is:global>
   .instagram-section {
