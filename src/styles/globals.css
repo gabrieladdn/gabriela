@@ -1,3 +1,21 @@
+@font-face {
+  font-family: "Playfair Display Fallback";
+  src: local("Georgia"), local("Times New Roman"), local("Times");
+  size-adjust: 95%;
+  ascent-override: 114%;
+  descent-override: 26%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Manrope Fallback";
+  src: local("Roboto"), local("Arial"), local("Segoe UI"), local("Helvetica Neue");
+  size-adjust: 105.5%;
+  ascent-override: 101%;
+  descent-override: 28.5%;
+  line-gap-override: 0%;
+}
+
 /* ─── Design Tokens ─────────────────────────────────────────────── */
 :root {
   /* Colors - Serene Path */
@@ -32,8 +50,8 @@
   --color-surface-variant: #f1dfd1;
 
   /* Typography */
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-body: "Manrope", system-ui, sans-serif;
+  --font-display: "Playfair Display", "Playfair Display Fallback", Georgia, serif;
+  --font-body: "Manrope", "Manrope Fallback", system-ui, sans-serif;
 
   /* Spacing */
   --container-max: 1200px;

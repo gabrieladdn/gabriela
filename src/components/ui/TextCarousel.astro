@@ -114,10 +114,17 @@ const rootClass = ["text-carousel", className, classProp].filter(Boolean).join("
       }
     };
 
-    updateHeight();
+    let resizeRafId: number | undefined;
+    const scheduleUpdateHeight = () => {
+      if (resizeRafId !== undefined) cancelAnimationFrame(resizeRafId);
+      resizeRafId = requestAnimationFrame(updateHeight);
+    };
+
     if (viewport && typeof ResizeObserver !== "undefined") {
-      const observer = new ResizeObserver(updateHeight);
+      const observer = new ResizeObserver(scheduleUpdateHeight);
       observer.observe(viewport);
+    } else {
+      scheduleUpdateHeight();
     }
 
     const computeDuration = (text = "") => {

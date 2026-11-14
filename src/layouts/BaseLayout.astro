@@ -7,7 +7,13 @@ import "@fontsource/manrope/latin-400.css";
 import "@fontsource/manrope/latin-500.css";
 import "@fontsource/manrope/latin-600.css";
 import "@fontsource/manrope/latin-700.css";
+import playfair400Url from "@fontsource/playfair-display/files/playfair-display-latin-400-normal.woff2?url";
+import playfair700Url from "@fontsource/playfair-display/files/playfair-display-latin-700-normal.woff2?url";
+import playfair400ItalicUrl from "@fontsource/playfair-display/files/playfair-display-latin-400-italic.woff2?url";
+import manrope400Url from "@fontsource/manrope/files/manrope-latin-400-normal.woff2?url";
 import "@/styles/globals.css";
+
+const preloadFontUrls = [playfair700Url, playfair400ItalicUrl, playfair400Url, manrope400Url];
 
 import Navbar from "@/components/layout/Navbar.astro";
 import Footer from "@/components/layout/Footer.astro";
@@ -68,6 +74,11 @@ const gaId =
     <link rel="icon" href="/favicon.ico" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/icon.png" />
+    {
+      preloadFontUrls.map((href) => (
+        <link rel="preload" href={href} as="font" type="font/woff2" crossorigin="anonymous" />
+      ))
+    }
     <slot name="head" />
 
     <meta property="og:type" content={ogType} />
@@ -153,9 +164,9 @@ const gaId =
 
       window.addEventListener("load", function () {
         if ("requestIdleCallback" in window) {
-          window.requestIdleCallback(loadTrackingScripts, { timeout: 5000 });
+          window.requestIdleCallback(loadTrackingScripts, { timeout: 7500 });
         } else {
-          window.setTimeout(loadTrackingScripts, 5000);
+          window.setTimeout(loadTrackingScripts, 7500);
         }
       });
     </script>
