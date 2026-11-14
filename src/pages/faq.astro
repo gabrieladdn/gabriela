@@ -6,6 +6,10 @@ import { buildCanonicalUrl } from "@/lib/seo";
 interface FAQItem {
   question: string;
   answer: string;
+  link?: {
+    href: string;
+    label: string;
+  };
 }
 
 const faqList: FAQItem[] = [
@@ -23,11 +27,19 @@ const faqList: FAQItem[] = [
     question: "Você atende convênios médicos (planos de saúde)?",
     answer:
       "Os atendimentos são realizados de forma particular. No entanto, emito recibos e notas fiscais com todas as especificações necessárias (registro do CRP) para que você possa solicitar o reembolso diretamente junto ao seu plano de saúde.",
+    link: {
+      href: "/reembolso-plano-de-saude/",
+      label: "Ver como funciona o atendimento com reembolso →",
+    },
   },
   {
     question: "Como funciona o reembolso do plano de saúde?",
     answer:
       "A maioria dos convênios possui a modalidade de reembolso de livre escolha para consultas de psicologia. Você realiza o pagamento da sessão, eu te forneço o recibo profissional correspondente e você dá entrada no aplicativo do seu convênio para receber o valor de volta (conforme a tabela e contrato do seu plano).",
+    link: {
+      href: "/reembolso-plano-de-saude/",
+      label: "Confira o passo a passo completo e os dados do recibo →",
+    },
   },
   {
     question: "Como posso agendar uma primeira consulta?",
@@ -88,6 +100,11 @@ const faqSchema = {
                 <div class="faq-answer-wrap">
                   <div class="faq-answer-text">
                     <p>{item.answer}</p>
+                    {item.link && (
+                      <a href={item.link.href} class="faq-answer-link">
+                        {item.link.label}
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -228,7 +245,7 @@ const faqSchema = {
   }
 
   .faq-item-open .faq-answer-wrap {
-    max-height: 250px;
+    max-height: 320px;
   }
 
   .faq-answer-text {
@@ -236,5 +253,18 @@ const faqSchema = {
     font-size: 0.98rem;
     line-height: 1.75;
     color: var(--color-on-surface-variant);
+  }
+
+  .faq-answer-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 600;
+    color: var(--color-secondary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .faq-answer-link:hover {
+    opacity: 0.85;
   }
 </style>
